@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Entities | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Entities" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/entities/" />
+<meta property="og:url" content="http://localhost:4000/entities/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/entities/","headline":"Entities","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body>
+    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav ml-auto"><li class="nav-item">
+              <a class="nav-link" href="/basics/">Basics</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/getting-started/">Getting Started</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/platform/">Platform</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/contributing/">Contributing</a>
+            </li></ul>
+    </div></nav>
+
+</header>
+<main aria-label="Content">
+          <div class="row">
+          <div class="col-md-3">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/basics/">Basics</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/systems/">Systems</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/modules/">Modules</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/entities/">Entities</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/terms/">Terms and Definitions</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/module-broker/">Module Broker</a>
+                          </li></ul>
+          </div>
+          <div class="col-md-9">
+              <h3 id="a-guide-to-the-xgraph-entity">A Guide to the xGraph Entity</h3>
+
+<p>An <strong>entity</strong> is the base component (function and data) of all xGraph solutions. An entity is a single 
+JavaScript function that is instantiated with the xGraph core. An entity must be encapsulated in a module to 
+be run in an xGraph system.  An entity is generated using an entity definition. If the entity is generated 
+when the module is generated, the entity’s definition is found in the module’s <code class="highlighter-rouge">"schema.json"</code> file. If the 
+entity is generated dynamically by another entity in the module, the entity definition is found in the entity 
+that called the generation.</p>
+
+<h4 id="entity-definition">Entity Definition</h4>
+<p>Below is an example of an entity definition.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"HelloWorld2": {
+    "Entity": "HelloWorld2.js",
+    "SomePar": "SomeValue"
+}
+</code></pre></div></div>
+
+<p>The entity definition starts by declaring the entity file with the <code class="highlighter-rouge">"Entity"</code> key. After the entity file is 
+listed, you can add any number of entity parameters as key-value pairs.</p>
+
+<p>The <code class="highlighter-rouge">"Entity"</code> key defines the JavaScript file that has the entities function.</p>
+
+<p>The <code class="highlighter-rouge">"SomePar"</code> key is an example of a parameter that will be passed to the entity as a key, value pair. This 
+parameter can be accessed in the context of the entity by accessing <code class="highlighter-rouge">this.Par.SomePar</code>. Any number of 
+parameters can be added here.</p>
+
+<h4 id="javascript-function">JavaScript Function</h4>
+<p>An entity is represented by a single JavaScript class or function in a single JavaScript file.</p>
+
+<p>The most simple way to create a JavaScript entity is with a JavaScript class. xGraph can interpret a 
+JavaScript file with a single JavaScript class as an entity.</p>
+
+<p>Additionally, an entity can be a self-executing function that returns a dispatch table. xGraph can interpret 
+a JavaScript file with a single JavaScript self-executing function as an entity. To use a self-executing 
+function as an entity, the function must return the entities dispatch table. This is an object containing the 
+entity’s commands.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   var dispatch = {
+        Start: Start,
+        Pong:Pong
+   };
+</code></pre></div></div>
+
+<p>If the self-executing function contains a JavaScript class, you can return the class prototype as the 
+dispatch table.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return {
+	dispatch: LayoutManager.prototype
+}
+</code></pre></div></div>
+
+<h4 id="commands">Commands</h4>
+<p>Most of the entities code consists of command functions. Both types of entity will have a number of 
+functions, called xGraph commands. These functions accept two arguments: the command object, <code class="highlighter-rouge">com</code>, and a 
+callback function, <code class="highlighter-rouge">fun</code>. Each function must be called by an xGraph command.</p>
+
+<p><code class="highlighter-rouge">Start</code> and <code class="highlighter-rouge">Setup</code> are commands that xGraph can send to modules on instantiation. These functions can be 
+included in the module’s apex entity but are not required. Then when they are sent to a module, <code class="highlighter-rouge">Setup</code> and 
+<code class="highlighter-rouge">Start</code> commands are received by the module’s apex entity.</p>
+
+<p>To tell a module how it should handle the <code class="highlighter-rouge">Setup</code> and <code class="highlighter-rouge">Start</code> commands, you must include the <code class="highlighter-rouge">"$Setup"</code> and 
+<code class="highlighter-rouge">"$Start"</code> keys in the entity definition of the module’s apex entity, pointing to the function that should 
+respond to the command.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Apex": {
+		"$Setup": "Setup",
+		"$Start": "Start",
+		"Entity": "HelloWorld.js",
+		"Friend": "#OtherEntity"
+	},
+	"OtherEntity": {
+		"$Start": "Start",
+		"Entity": "HelloWorld2.js"
+	}
+}
+</code></pre></div></div>
+
+<p>Here is an example of a simple <code class="highlighter-rouge">Setup</code> command.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   function Setup(com,fun) {
+        console.log("--HelloWorld/Setup");
+
+        // Nothing happens here, continue on...
+
+        if(this.Par.SomePar) {
+            console.log("There is a parameter SomePar valued: " + this.Par.SomePar);
+        }
+
+        if (fun){
+            fun(null, com);
+        }
+    }
+</code></pre></div></div>
+<p>Finally, here is an example of a simple, yet complete, entity.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//# sourceURL=Ping
+(
+    /**
+     * The Ping entity communicates with the Pong entities.
+     * Starting with the Ping module, the Start() function calls Pong.
+     * Encapsulating module is defined in the PingPong system config file.
+     * @param {pid} this.Par.Pong   The Pid of the Pong entity.
+     */
+function Ping() {
+
+    /*
+        Define all commands. This will be returned so that the xGraph core knows what
+        commands the entity can accept.
+    */
+    var dispatch = {
+        Start: Start,
+        Pong:Pong
+    };
+
+
+    //-------------------------------------------------------Start
+    /**
+     * The Start command sets up a setTimeout function that will send the first "Ping" command
+     * to the entity referenced in this.Par.Pong.
+     *
+     * @param {object} com  The command object.
+     * @callback fun
+     */
+    function Start(com,fun) {
+        console.log("--Ping/Start");
+
+        // Launch the ball by sending the first Ping a command to Pong
+        // This command does not need any information back, so it is sent
+        //  without a callback
+        this.send({"Cmd":"Ping"}, this.Par.Pong);
+
+
+        if (fun){
+            fun(null, com);
+        }
+    }
+
+    //-------------------------------------------------------Pong
+    /**
+     * The Pong command is sent from the Pong entity, Pong.js. When Pong is received,
+     * this module prints "Pong" in the console, then sends a 'Ping' command to the
+     * module referenced in this.Par.Pong.
+     * @param {object} com  The command object.
+     * @callback fun
+     */
+    function Pong(com, fun){
+        console.log("          |      Pong");
+        // some useful variables
+        let that = this;
+        let Par = this.Par;
+
+        // Wait one second before sending Ping command back.
+        // This prevents stack overflow due to infinent loop.
+        setTimeout(sendCommand, 1000);
+
+        function sendCommand() {
+            // Send Ping command to the Pong Module. Like before, this command does not need
+            //      any information back, so it is sent without a callback
+            // Here you will see we have used the 'that' variable to retain the
+            //      parent functions context.
+            that.send({"Cmd": "Ping"}, Par.Pong);
+        }
+
+        // call the Callback
+        if (fun){
+            fun(null, com);
+        }
+    }
+
+    // return the dispatch, the commands that this entity can receive.
+    return {
+        dispatch: dispatch
+    };
+})();
+</code></pre></div></div>
+
+          </div>
+          </div>
+      </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+    <h2 class="footer-heading">xGraph</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+
+
+</footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Building Modules | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Building Modules" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/building-modules/" />
+<meta property="og:url" content="http://localhost:4000/building-modules/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/building-modules/","headline":"Building Modules","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body>
+    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav ml-auto"><li class="nav-item">
+              <a class="nav-link" href="/basics/">Basics</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/getting-started/">Getting Started</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/platform/">Platform</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/contributing/">Contributing</a>
+            </li></ul>
+    </div></nav>
+
+</header>
+<main aria-label="Content">
+          <div class="row">
+          <div class="col-md-3">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/getting-started/">Getting Started</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/building-systems/">Building Systems</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/building-modules/">Building Modules</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/viewify/">Viewify</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/viewify-quick-start/">Viewify Quick Start</a>
+                          </li></ul>
+          </div>
+          <div class="col-md-9">
+              <h1 id="xgraph-modules">xGraph Modules</h1>
+
+<p>xGraph fosters an open source community and we encourage developers to build their own xGraph modules. Additionally, if you are building a specialized system, you may want to build your own xGraph modules.</p>
+
+<p>It is easy to start building an xGraph module using the xgraph Executable Command Line Interface (CLI).</p>
+
+<p>To generate a new module with the name <code class="highlighter-rouge">ModuleName</code> use the following command:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xgraph generate module ModuleName
+</code></pre></div></div>
+
+<p>This command will generate a new module, with the name <code class="highlighter-rouge">ModuleName</code>. If you provide the generate module command a path instead of a simple string, the module will be generated at the path provided.</p>
+
+<p>The directory <code class="highlighter-rouge">ModuleName</code> will have a <code class="highlighter-rouge">ModuleName.js</code> entity file, a module structure object in a schema.json file, and a module interface object in a module.json file.</p>
+
+<p>The  <code class="highlighter-rouge">ModuleName.js</code> file is the modules Apex entity. The generated entity looks like the entity below:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//# sourceURL=ModuleName.js
+(function ModuleName() {
+	class ModuleName {
+		Setup(com, fun) {
+			//this function is typically used to allow the entity/module to handle any internal setup
+			//procedures prior to being connected to by other entities/modules
+
+			fun(null, com);
+		}
+
+		Start(com, fun){
+			//this function is typically used to allow the entity/module to handle any external setup
+			//procedures
+
+			fun(null, com);
+		}
+	}
+	return {dispatch:ModuleName.prototype}
+})();
+</code></pre></div></div>
+
+<p>This generated entity is a JavaScript class. It has two commands, <code class="highlighter-rouge">Setup</code> and <code class="highlighter-rouge">Start</code>. Like all xGraph commands, <code class="highlighter-rouge">Setup</code> and <code class="highlighter-rouge">Start</code> accept two arguments: <code class="highlighter-rouge">com</code>, the command object, and <code class="highlighter-rouge">fun</code>, the callback function.</p>
+
+<p>The command object can pass arguments with the command through its key-value pairs. Every command object has they <code class="highlighter-rouge">"Cmd"</code> key, valued with the command name. Additional arguments can use any key.</p>
+
+<p>The callback function must be called when the command has completed. The callback function should only be called once for each call to the command.</p>
+
+<p>Code that is added to <code class="highlighter-rouge">Setup</code> and <code class="highlighter-rouge">Start</code> can be called by Nexus when the module is generated. You can add more commands to your xGraph entity, which must be called by some entity, or another module.</p>
+
+<p>You can add more entities to the module by adding JavaScript entity files and adding the entity to the modules structure (schema.json file).</p>
+
+<p>The schema.json file holds the modules structure. The module’s structure describes how the entities within the module work together. After generation, the schema.json file will look like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Apex": {
+		"$Setup": "Setup",
+		"$Start": "Start",
+		"Entity": "ModuleName.js"
+	}
+}
+</code></pre></div></div>
+
+<p>To add another entity to the module, you have to add the entity to the modules structure, as follows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Apex": {
+		"$Setup": "Setup",
+		"$Start": "Start",
+		"Entity": "HelloWorld.js",
+		"Friend": "#OtherEntity"
+	},
+	"OtherEntity": {
+		"$Start": "Start",
+		"Entity": "HelloWorld2.js"
+	}
+}
+</code></pre></div></div>
+<p>You will notice <code class="highlighter-rouge">"Apex"</code> has key <code class="highlighter-rouge">"Friend"</code> that references <code class="highlighter-rouge">"#OtherEntity"</code>. The <code class="highlighter-rouge">#</code> reference will be replaced by the Pid of OtherEntity, allowing the Apex to communicate with OtherEntity.</p>
+
+<p>The module.json file is the module’s interface file. This is where you will add information on how to communicate with the module. This information includes the module’s definition parameters, input commands that the module can receive, and output commands that the module can send.</p>
+
+<p>The only commands that need to be included in the the module interface are the commands that the module receives from other modules, or commands that the module sends to other modules. Commands that are sent between entities within the same module do not need to be documented here.</p>
+
+<p>Additionally, some basic information about the modules identity is recorded in the module’s interface file. The following is an example of a blank <code class="highlighter-rouge">module.json</code> file.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"name": "",
+	"version": "",
+	"info": {
+		"author": ""
+	},
+	"doc": "README.md",
+	"input": {
+		"required": [
+			{
+				"Cmd": "",
+				"required": {},
+				"optional": {}
+			}
+		],
+		"optional": [
+			{
+				"Cmd": "",
+				"required": {},
+				"optional": {}
+			}
+		]
+	},
+	"output": {
+		"required": [
+			{
+				"par": "",
+				"Cmd": "",
+				"required": {},
+				"optional": {}
+			}
+		],
+		"optional": [
+			{
+				"par": "",
+				"Cmd": "",
+				"required": {},
+				"optional": {}
+			}
+		]
+	},
+	"par": {
+		"required": {},
+		"optional": {}
+	}
+}
+</code></pre></div></div>
+
+          </div>
+          </div>
+      </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+    <h2 class="footer-heading">xGraph</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+
+
+</footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

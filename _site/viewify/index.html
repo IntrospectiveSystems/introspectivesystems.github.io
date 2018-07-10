@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Viewify | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Viewify" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/viewify/" />
+<meta property="og:url" content="http://localhost:4000/viewify/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/viewify/","headline":"Viewify","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body>
+    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav ml-auto"><li class="nav-item">
+              <a class="nav-link" href="/basics/">Basics</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/getting-started/">Getting Started</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/platform/">Platform</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/contributing/">Contributing</a>
+            </li></ul>
+    </div></nav>
+
+</header>
+<main aria-label="Content">
+          <div class="row">
+          <div class="col-md-3">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/getting-started/">Getting Started</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/building-systems/">Building Systems</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/building-modules/">Building Modules</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/viewify/">Viewify</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/viewify-quick-start/">Viewify Quick Start</a>
+                          </li></ul>
+          </div>
+          <div class="col-md-9">
+              <h1 id="viewify">Viewify</h1>
+
+<p>A <strong>View</strong> is defined as any Module who’s Apex is an entity that returns a <a href="#view-dispatch-table">dispatch table</a> that has been run through Viewify. This will give the module some default functionality it can work off of to create visualizations.</p>
+
+<h3 id="container-views">Container Views</h3>
+
+<p>Container Views are Views which are designed primarily as a means of layout. Examples of Container Views include: <code class="highlighter-rouge">PanelView</code> and <code class="highlighter-rouge">GridView</code>.</p>
+
+<h3 id="root-container-views">Root Container Views</h3>
+
+<p>A Root Container View is like a Container View, in that its primary purpose is a means of layout. However, Root Containers are required to attach Views to the DOM, and act as the controller for all descendants. Examples of Root Container Views include <code class="highlighter-rouge">RootView</code> and <code class="highlighter-rouge">PopupView</code>.</p>
+
+<h2 id="basic-preparation">Basic Preparation</h2>
+
+<p>For a View to work, the <code class="highlighter-rouge">Viewify.js</code> script needs to be included on your Webpage. for example, <code class="highlighter-rouge">xGraph.WebViewer</code> automatically imports viewify into its pages. Unless you are writing your own Http server, Viewify is probably already imported for you. To verify it has been imported, in a browser console, type <code class="highlighter-rouge">window.Viewify</code>. if it comes back with a function, then you’re good to go.</p>
+
+<h2 id="thissuper">this.super</h2>
+
+<p>When the first command is sent to your view (typically the Setup command), it injects <code class="highlighter-rouge">super</code> into the <code class="highlighter-rouge">this</code> context. <code class="highlighter-rouge">super</code> is used as a means to access shared View functionality, the Viewify base-class. A call to <code class="highlighter-rouge">this.Super</code> accepts two parameters: the command object <code class="highlighter-rouge">com</code>, and a callback function <code class="highlighter-rouge">fun</code>. The intended use is to maintain Base functionality while extending a command.</p>
+
+<p>For example, if you had your own setup process:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="k">super</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--MyView/Setup'</span><span class="p">);</span>
+        <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="schema">Schema</h2>
+
+<p>The View “Base Class” Utilizes the <code class="highlighter-rouge">Setup</code> command, so even if your view doesn’t require it, any entity that returns a <a href="#view-dispatch-table"><em>View Dispatch Table</em></a> should include <code class="highlighter-rouge">Setup</code> in its <code class="highlighter-rouge">schema.json</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Apex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyView.js"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"$Setup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Setup"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="view-dispatch-table">View Dispatch Table</h2>
+
+<p>A <em>View Dispatch Table</em> is the core functionality that allows the View “Base Class” to define common &amp; shared functionality. A <em>View Dispatch Table</em> is created by passing your Entity class or dispatch table into <code class="highlighter-rouge">Viewify</code>. The resulting object can be returned by the Entity’s closure and used as its Mod. In practice, Defining an Entity with a <em>View Dispatch Table</em> looks like the following:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">(){</span>
+
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="nx">MyCommand</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--MyView/MyCommand'</span><span class="p">);</span>
+            <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s2">"3.0"</span><span class="p">);</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+
+<p>Alternatively, if you aren’t using classes:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">(){</span>
+
+    <span class="kd">function</span> <span class="nx">MyCommand</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--MyView/MyCommand'</span><span class="p">);</span>
+        <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">({</span>
+        <span class="na">MyCommand</span><span class="p">:</span> <span class="nx">MyCommand</span>
+    <span class="p">},</span> <span class="s2">"3.0"</span><span class="p">);</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+
+<h2 id="setup">Setup</h2>
+<p>All Views receive a ‘Setup’ command before the first Render command is sent. This is a good place to setup the basic structure, or build elements that will not change.</p>
+
+<h2 id="render">Render</h2>
+
+<p>The <code class="highlighter-rouge">Render</code> command is automatically sent to any entity who’s children have changed. Before the command is dispatched to you, the array <code class="highlighter-rouge">this.Vlt.viewDivs</code> is populated with jQuery wrapped elements that are your View’s children. If the View is not a Container View, you can safely ignore, and not implement the <code class="highlighter-rouge">Render</code> command.</p>
+
+<p>A simple <code class="highlighter-rouge">Render</code> command override:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Render</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">.</span><span class="nx">viewDivs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">.</span><span class="nx">div</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">.</span><span class="nx">viewDivs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="k">super</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You’ll notice that in this case, the super call is at the end. This is because the purpose of the super call, in this case, is to cascade the <code class="highlighter-rouge">Render</code> command down the DOM tree.</p>
+
+<h2 id="domloaded">DOMLoaded</h2>
+
+<p><code class="highlighter-rouge">DOMLoaded</code> is sent to you when all Views in the local <a href="#root-container-views"><em>root container</em></a> have completed loading. This refers, for example, to all views under a <code class="highlighter-rouge">RootView</code> or <code class="highlighter-rouge">PopupView</code>.</p>
+
+<p>Just like in <code class="highlighter-rouge">Render</code>, the purpose of the base class <code class="highlighter-rouge">DOMLoaded</code> command is to cascade the command down the DOM, so calling it after the view does what it needs to do is recommended.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">DOMLoaded</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'DOM Loaded!'</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="k">super</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="viewify-changelog">Viewify Changelog</h1>
+
+<h2 id="35-released-with-xgraph-11">3.5 (Released with xGraph 1.1)</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">this.authenticate</code></li>
+  <li><code class="highlighter-rouge">this.evoke</code></li>
+  <li><code class="highlighter-rouge">this.ascend</code></li>
+</ul>
+
+<h3 id="thisauthenticate"><code class="highlighter-rouge">this.authenticate</code></h3>
+
+<p><code class="highlighter-rouge">this.Authenticate</code> returns a promise that resolves to an Authenticated version of any command object, given as its first parameter. Usage of this command requires there be a module in the system that registers itself as a CommandAuthenticator. (i.e. It sets <code class="highlighter-rouge">window.CommandAuthenticator</code> to its Pid)</p>
+
+<h3 id="thisevoke"><code class="highlighter-rouge">this.evoke</code></h3>
+
+<p><code class="highlighter-rouge">this.evoke</code> was amended to take an options object as its second parameter that get applied to the outgoing Evoke Command. For more information, See version 3.4, where <code class="highlighter-rouge">this.evoke</code> was introduced</p>
+
+<h3 id="thisascend"><code class="highlighter-rouge">this.ascend</code></h3>
+
+<p><code class="highlighter-rouge">this.ascend</code> was patched to disallow the options object parameter to overwrite the First parameter (Command Name). This will not effect most uses of ascend, however sometimes resulted in a bug. For more info on <code class="highlighter-rouge">this.ascend</code> see version 3.0 and 3.3</p>
+
+<h2 id="34-released-with-xgraph-10">3.4 (Released with xGraph 1.0)</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">this.asuper</code></li>
+  <li><code class="highlighter-rouge">this.genModuleAsync</code></li>
+  <li><code class="highlighter-rouge">this.cdnImportCSS</code></li>
+  <li><code class="highlighter-rouge">this.id</code></li>
+  <li><code class="highlighter-rouge">this.evoke</code></li>
+</ul>
+
+<h3 id="thisasuper"><code class="highlighter-rouge">this.asuper</code></h3>
+
+<p><code class="highlighter-rouge">this.asuper(com: object): Promise&lt;com: object || throws [err: any, cmd: object]&gt;</code> is an asynchronous wrapper for <code class="highlighter-rouge">this.super(com: object, fun: (err: any, cmd: object) =&gt; void): void</code></p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// before base class setup</span>
+            <span class="k">this</span><span class="p">.</span><span class="k">super</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// after base class setup</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s1">'3.4'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>can be written asynchronously as</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="k">async</span> <span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// before base class setup</span>
+            <span class="nx">com</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">asuper</span><span class="p">(</span><span class="nx">com</span><span class="p">);</span>
+            <span class="c1">// after base class setup</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s1">'3.4'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<h3 id="thisgenmoduleasync"><code class="highlighter-rouge">this.genModuleAsync</code></h3>
+
+<p><code class="highlighter-rouge">this.genModuleAsync(modDef: {Module: string, Par: object, Source?: string}): Promise&lt;apx: string || throws err: any&gt;</code> is an asynchronous wrapper for <code class="highlighter-rouge">this.genModule(modDef: {Module: string, Par: object, Source?: string}, fun: (err: any, apx: string) =&gt; void): void</code>.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="nx">CreateThing</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">genModule</span><span class="p">({</span>
+                <span class="na">Module</span><span class="p">:</span> <span class="s1">'Custom.Module'</span><span class="p">,</span>
+                <span class="na">Par</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">Link</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Link</span>
+                <span class="p">}</span>
+            <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">apx</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">com</span><span class="p">.</span><span class="nx">Apx</span>  <span class="o">=</span> <span class="nx">apx</span><span class="p">;</span>
+                <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s1">'3.4'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>can be written asynchronously as</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="k">async</span> <span class="nx">CreateThing</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">apx</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">genModuleAsync</span><span class="p">({</span>
+                <span class="na">Module</span><span class="p">:</span> <span class="s1">'Custom.Module'</span><span class="p">,</span>
+                <span class="na">Par</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">Link</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Link</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+            <span class="nx">com</span><span class="p">.</span><span class="nx">Apx</span> <span class="o">=</span> <span class="nx">apx</span><span class="p">;</span>
+            <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s1">'3.4'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<h3 id="thiscdnimportcss"><code class="highlighter-rouge">this.cdnImportCSS</code></h3>
+
+<p><code class="highlighter-rouge">this.cdnImportCSS(url: string): void</code> will Import a stylesheet from a CDN. This is useful generally only in development.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">cdnImportCss</span><span class="p">(</span><span class="s1">'//fonts.googleapis.com/icon?family=Material+Icons'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="thisid"><code class="highlighter-rouge">this.id</code></h3>
+
+<p><code class="highlighter-rouge">this.id(id: string): string</code> is a function that creates GUIDs based on the provided <code class="highlighter-rouge">id</code> and your View’s <code class="highlighter-rouge">Pid</code>. The same <code class="highlighter-rouge">this.id</code> call in the same entity instance will always return the same GUID. This allows for a view to declare simple IDs like <code class="highlighter-rouge">id="${this.id('button')}"</code> in the DOM and avoid conflicts.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="nx">Render</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">.</span><span class="nx">div</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">`
+                &lt;p id="</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">'paragraphOne'</span><span class="p">)}</span><span class="s2">"&gt;
+                    this paragraph's ID is actualy a GUID,
+                    however within this entity, we can get
+                    that GUID again, with this.id.
+                &lt;/p&gt;
+                &lt;p id="</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">'paragraphTwo'</span><span class="p">)}</span><span class="s2">"&gt;
+                    So your easy to remember IDs can exist
+                    in the DOM's global scope without
+                    conflict!
+                &lt;/p&gt;
+            `</span><span class="p">));</span>
+
+            <span class="kd">let</span> <span class="nx">paragraphOne</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">`#</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">'paraGraphOne'</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+            <span class="kd">let</span> <span class="nx">paragraphTwo</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">`#</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">'paraGraphTwo'</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+            <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s1">'3.4'</span><span class="p">);</span>
+<span class="p">})();</span>
+
+</code></pre></div></div>
+
+<h3 id="thisevoke-1"><code class="highlighter-rouge">this.evoke</code></h3>
+
+<p><code class="highlighter-rouge">this.evoke(pid: string): Promise&lt;void&gt;</code> will send an evoke to a pid, and take action on the response. This is used to standardize the way that a module declares its visualization.</p>
+
+<p>Example</p>
+
+<p>In a server side module</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">Serverside</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">Serverside</span> <span class="p">{</span>
+        <span class="nx">Evoke</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">com</span><span class="p">.</span><span class="nx">Type</span> <span class="o">=</span> <span class="s2">"View"</span><span class="p">;</span>
+            <span class="nx">com</span><span class="p">.</span><span class="nx">Container</span> <span class="o">=</span> <span class="s1">'xGraph.Views.Popup'</span><span class="p">;</span>
+            <span class="nx">com</span><span class="p">.</span><span class="nx">View</span> <span class="o">=</span> <span class="s2">"xGraph.Views.TableView"</span><span class="p">;</span>
+            <span class="nx">com</span><span class="p">.</span><span class="nx">Par</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="na">Serverside</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Pid</span>
+            <span class="p">};</span>
+            <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span> <span class="na">dispatch</span><span class="p">:</span> <span class="nx">Serverside</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">};</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>On the Browser, to open <code class="highlighter-rouge">Serverside</code>’s Visualization</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">BrowserButton</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">BrowserButton</span> <span class="p">{</span>
+        <span class="k">async</span> <span class="nx">Click</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//example button click command</span>
+            <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">Evoke</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">ServersidePid</span><span class="p">);</span>
+            <span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span> <span class="na">dispatch</span><span class="p">:</span> <span class="nx">BrowserButton</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">};</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<h2 id="33">3.3</h2>
+
+<ul>
+  <li>updated ascend functionality</li>
+  <li>debugger logging</li>
+  <li>Cleanup / Destroy</li>
+</ul>
+
+<h3 id="update-ascend-funtionality">Update ascend Funtionality</h3>
+
+<p>If ascend throws an error, it will now be in the form of <code class="highlighter-rouge">[err, cmd]</code> such that you can still pull out the original com, even in the event of a rejection.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">ascend</span><span class="p">(</span><span class="s1">'CommandToFail'</span><span class="p">,</span> <span class="p">{},</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Somewhere</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">([</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// cmd = { Cmd: 'CommandToFail' }</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">e</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="debugger-loggging">debugger loggging</h3>
+
+<p>If URL Parameters are supported by the server beingg used, you can append <code class="highlighter-rouge">?debug</code> or <code class="highlighter-rouge">&amp;debug</code> to display the full Viewify command tree in the browser console.</p>
+
+<p>Example</p>
+
+<p><code class="highlighter-rouge">http://localhost:80/login?debug</code></p>
+
+<p><code class="highlighter-rouge">http://localhost:80/View?item=28884737749&amp;debug</code></p>
+
+<h3 id="cleanup--destroy">Cleanup / Destroy</h3>
+
+<p>Sending a <code class="highlighter-rouge">Destroy</code> command to a View will cause it to remove itself from the DOM and the entity cache, causing it to be garbage collected.</p>
+
+<p>As a result, The <code class="highlighter-rouge">Cleanup</code> command will be sent to the module, before it is destroyed, in case it needs to perform some actions on exit.</p>
+
+<p>As well, the parent of the destroyed view will be sent a Render command with an updated <code class="highlighter-rouge">Vlt.views</code> and <code class="highlighter-rouge">Vlt.viewDivs</code></p>
+
+<h2 id="32">3.2</h2>
+
+<ul>
+  <li>Drag and Drop</li>
+</ul>
+
+<h3 id="drag-and-drop">Drag and Drop</h3>
+
+<p><code class="highlighter-rouge">AttachDragListener</code> will make an element that you specify draggable. along with it, you can set some other data to be tied to the element / drop event (when it fires).</p>
+
+<p>Example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="k">super</span><span class="p">({</span>
+    <span class="na">Cmd</span><span class="p">:</span> <span class="s1">'AttachDragListener'</span><span class="p">,</span>
+    <span class="na">To</span><span class="p">:</span> <span class="nx">myDraggableElement</span><span class="p">,</span> <span class="c1">//Native element, not jquery.</span>
+    <span class="na">Datatype</span><span class="p">:</span> <span class="s1">'ItemList'</span><span class="p">,</span>
+    <span class="na">Data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Items</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>To create an area where you can drop items, add the <code class="highlighter-rouge">dropArea</code> class to an element. the View that the Element belongs to will then get a <code class="highlighter-rouge">Drop</code> Event Command sent to it. the com will look like the following:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">com</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">Cmd</span><span class="p">:</span> <span class="s1">'Drop'</span><span class="p">,</span>
+    <span class="na">Data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Items</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">DropArea</span><span class="p">:</span> <span class="nx">Native_HTML_Element</span><span class="p">,</span>
+    <span class="na">Datatype</span><span class="p">:</span> <span class="s1">'ItemList'</span><span class="p">,</span>
+    <span class="na">PageX</span><span class="p">:</span> <span class="mi">463</span><span class="p">,</span>
+    <span class="na">PageY</span><span class="p">:</span> <span class="mi">285</span><span class="p">,</span>
+    <span class="na">DivX</span><span class="p">:</span> <span class="mi">463</span><span class="p">,</span>
+    <span class="na">DivY</span><span class="p">:</span> <span class="mi">247</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="31">3.1</h2>
+
+<ul>
+  <li>Version Specificty</li>
+  <li>Classes</li>
+  <li>IDs</li>
+</ul>
+
+<h3 id="version-specificty">Version Specificty</h3>
+
+<p><code class="highlighter-rouge">Viewify</code> function now accepts a second parameter, <code class="highlighter-rouge">version</code> as type <code class="highlighter-rouge">string</code> that is the semantic version number the view was built in compliance with.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="c1">//Contents</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">,</span> <span class="s1">'3.0'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<h3 id="classes">Classes</h3>
+
+<p>Each View’s userland div, <code class="highlighter-rouge">this.Vlt.div</code>, is now given a class name equal to the last token in the dot separated <code class="highlighter-rouge">this.Par.Module</code>.</p>
+
+<h3 id="ids">IDs</h3>
+
+<p>Each View, in its Config Par, Can now declared and <code class="highlighter-rouge">ID</code> key. If present, the value of the key will be used as the value of the <code class="highlighter-rouge">ID</code> attribute on <code class="highlighter-rouge">this.Vlt.div</code>.</p>
+
+<h2 id="30">3.0</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">this.super</code></li>
+  <li><code class="highlighter-rouge">this.ascend</code></li>
+</ul>
+
+<h3 id="thissuper-1"><code class="highlighter-rouge">this.super</code></h3>
+
+<p><code class="highlighter-rouge">this.super(com, fun)</code> is a way to pass commands to your view’s base class. For example, you may define your own setup function, however Viewify’s own setup still needs to run. in this case, you would call <code class="highlighter-rouge">this.super</code> in your setup function.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="nx">MyView</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nx">MyView</span> <span class="p">{</span>
+        <span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// before base class setup</span>
+            <span class="k">this</span><span class="p">.</span><span class="k">super</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// after base class setup</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">Viewify</span><span class="p">(</span><span class="nx">MyView</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<h3 id="thisascend-1"><code class="highlighter-rouge">this.ascend</code></h3>
+
+<p><code class="highlighter-rouge">this.ascend</code> is an asyncronous version of <code class="highlighter-rouge">this.send</code> with slightly different parameters. the signature is <code class="highlighter-rouge">this.ascend(command: string, options: object, destination: string): Promise&lt;com: object || throws err: any&gt;</code></p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">asyncFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">ascend</span><span class="p">(</span><span class="s1">'GetData'</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">Type</span><span class="p">:</span> <span class="s1">'Volume/Time'</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">DataSource</span><span class="p">);</span>
+        <span class="c1">// data is the returned com</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">w</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+          </div>
+          </div>
+      </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+    <h2 class="footer-heading">xGraph</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+
+
+</footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Module Documentation Requirements | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Module Documentation Requirements" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/module-documentation-requirements/" />
+<meta property="og:url" content="http://localhost:4000/module-documentation-requirements/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-documentation-requirements/","headline":"Module Documentation Requirements","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body>
+    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav ml-auto"><li class="nav-item">
+              <a class="nav-link" href="/basics/">Basics</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/getting-started/">Getting Started</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/platform/">Platform</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/contributing/">Contributing</a>
+            </li></ul>
+    </div></nav>
+
+</header>
+<main aria-label="Content">
+          <div class="row">
+          <div class="col-md-3">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/contributing/">Contributing</a>
+                        </li><li class="nav-item active"><a class="nav-link" href="/module-documentation-requirements/">Module Documentation Requirements</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/writing-style-guide/">Writing Style Guide</a>
+                          </li></ul>
+          </div>
+          <div class="col-md-9">
+              <p>This is a guide for creating xGraph module documentation. When building an xGraph module for the module repository, it is important to include the following documentation. This will make it easier for others to find and use your modules.</p>
+
+<h3 id="two-types-of-documentation">Two Types of Documentation</h3>
+<p>We require our community to include both user and developer documentation for their modules. User documentation must be included as a README.md file, and developer documentation must be included as a README.html file. Next, we will discuss the details for the user and developer documentation.</p>
+
+<h3 id="user-documentation-readmemd">User Documentation (README.md)</h3>
+<p>A README.md file is required for all xGraph Modules. This file provides user documentation. The README.md file should be written to be interpreted by the general public. Below is a list of sections that are required for the README.md, as well as some suggestions for good documentation.</p>
+
+<p><strong>The following sections must be included in the README.md:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Module Name.</strong> The name of the module as it appears in the module broker.</p>
+  </li>
+  <li>
+    <p><strong>Module Version.</strong> The version of the module as it appears in the module broker.</p>
+  </li>
+  <li>
+    <p><strong>Module Author.</strong> The name of the individual or organization that developed the module.</p>
+  </li>
+  <li>
+    <p><strong>Module Description.</strong>  A short description (2-3 sentences) in plain English that describes what the module does.This will be the description that displays in the module broker.</p>
+  </li>
+  <li>
+    <p><strong>Module Interface.</strong> The Module Interface includes details about the Module which are necessary to use the Module in a System. These details are necessary for users to use the xGraph platform, and the module interface section for each module should include the following subsections.</p>
+
+    <ol>
+      <li>First, the <strong>module’s parameters</strong> that are set in the ‘Par’ of the Module Definition. We only want to include 
+   parameters that are found in the module definition of the module’s Apex.</li>
+      <li>
+        <p>Next, the <strong>output commands</strong>, which are the commands the module can send to other modules. Commands that are sent 
+to other entities within the module do not need to be listed here. For each command, this section should include 
+the following subsections:</p>
+
+        <ol>
+          <li>the command name</li>
+          <li>a brief description of the command</li>
+          <li>the reference of the Pid the command will be sent to</li>
+          <li>a description of the command object to be sent</li>
+          <li>a description of the expected returned object</li>
+        </ol>
+      </li>
+      <li>Last, the <strong>input commands</strong>, which are the commands the module can receive from other modules. These are all the 
+commands found in, and sent to, the module’s Apex. For each command, the this section should include the following 
+subsections:</li>
+    </ol>
+  </li>
+</ol>
+
+<p>An example of the <strong>module’s definition</strong> should be included in this documentation. This is the JSON format necessary to add a module to a systems definition. Also, add <strong>examples, pictures and walkthroughs</strong> to help people learn how to use your Module. Anything that you think will be helpful to someone trying to use your Module should be added to the README.md file.</p>
+
+<p>Next, we will consider developer documentation, intended to support xGraph module developers and found in the README.html file.</p>
+
+<h3 id="developer-documentation-readmehtml">Developer Documentation (README.html)</h3>
+
+<p>A README.html file is required for all xGraph Modules. This file provides developers with documentation so they can build and maintain xGraph Modules. The README.html file should be written to be interpreted by developers experienced in the programming language of the Module.</p>
+
+<p>For each module, the README.html file will include documentation for each entity and the commands within each entity.</p>
+
+<p>The README.html file should be generated from the JSDoc code documentation. Below is a list of requirements for the code documentation.</p>
+
+<h3 id="code-documentation-jsdoc">Code Documentation (JSDoc)</h3>
+
+<p>Each entity within a module must be documented using JSDoc format. This is a standard documentation format that enables generation of documentation into html files that are easier to read. Code documentation consists of two types of JSDoc formated comments, which is then generated into an html file.</p>
+
+<ol>
+  <li><strong>First, the entity definition should be documented.</strong> To capture these comments with the document generator, these comments must be placed right before the initial function declaration, inside of the first parenthesis. Here, provide a brief description of the entity, and the parameters passed into the entities context. These Parameters can be found in the module’s schema, or in the module definition for a module’s apex entity. An example of this documentation follows.</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(
+/**
+ * The HelloWorld entity, in the HelloWorld module, communicates with the    
+ * 	HelloWorld2 entity. 
+ * @param {object} this.Par     The Parameter object included in the module 
+ * 						definition.
+ * @param {Pid} this.Par.Friend The Pid of the Friend entity, as defined in 
+ * 						the module's schema.
+ */
+function HelloWorld() {
+	...
+</code></pre></div></div>
+
+<ol>
+  <li>Next, each commands within the entity should be documented. To capture these comments with the document generator, these comments must be placed immediately before each Command function. Here, provide a brief description of the command, the parameters passed with the command object, and the returns passed with the return function. Below is a simple example.</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Get module by module name and return full Module.zip
+ * @param {Object} com
+ * @param {String} com.Name  	Module name as written in module.json
+ * @param {String=} com.Version  Module version in semver format,
+ * @param {function} fun
+ * @return {com.Module} Zipped module in base64
+ */
+function GetModule(com, fun) {
+	...
+</code></pre></div></div>
+
+<h3 id="documentation-generator-basics">Documentation Generator Basics</h3>
+<p>Basic module documentation can be generated with DoxDox.</p>
+
+<p>DoxDox install instructions: https://doxdox.org/
+DoxDox uses JSdoc syntax, for specific syntax information see: http://usejsdoc.org/</p>
+
+<p>DoxDox can be used to create both Markdown, and Html pages.</p>
+
+<p>To create the full html documentation for the entire module run the following</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>doxdox '*.js' --layout bootstrap -o README.html
+</code></pre></div></div>
+
+<h3 id="module-definition">Module Definition</h3>
+
+<p>Basic Example</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* Pull a module from another ModuleBroker into this one.
+* @param {Object} 	com 		Command object
+* @param {String} 	com.Module 	Name of the module to retrieve
+* @param {String} 	com.From 	Pid of the other ModuleBroker
+* @param {function} fun callback function
+* @return {com.Module} Zipped module in base64
+*/</span>
+
+</code></pre></div></div>
+<p>Add additional @return lines to define additional parameters returned in callback command object.</p>
+
+<p>To define an optional parameter add = to the DataType:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**	 
+* 
+* @param {String=} 	Example     Optional string parameter
+*/</span>
+</code></pre></div></div>
+
+          </div>
+          </div>
+      </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+    <h2 class="footer-heading">xGraph</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+
+
+</footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

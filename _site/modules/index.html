@@ -33,7 +33,7 @@
             </li><li class="nav-item">
               <a class="nav-link" href="/getting-started/">Getting Started</a>
             </li><li class="nav-item">
-              <a class="nav-link" href="/documentation/">Documentation</a>
+              <a class="nav-link" href="/platform/">Platform</a>
             </li><li class="nav-item">
               <a class="nav-link" href="/contributing/">Contributing</a>
             </li></ul>
@@ -43,33 +43,283 @@
 <main aria-label="Content">
           <div class="row">
           <div class="col-md-3">
-              <ul class="nav flex-column"><li class="nav-item"><a class="nav-link" href="/basics/">Basics</a>
-                      </li><li class="nav-item"><a class="nav-link" href="/systems/">Systems</a>
-                      </li><li class="nav-item active"><a class="nav-link" href="/modules/">Modules</a>
-                      </li></ul>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/basics/">Basics</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/systems/">Systems</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/modules/">Modules</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/entities/">Entities</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/terms/">Terms and Definitions</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/module-broker/">Module Broker</a>
+                          </li></ul>
           </div>
           <div class="col-md-9">
-              <article class="post">
+              <h3 id="xgraph-modules">xGraph Modules</h3>
 
-  <header class="post-header">
-    <h1 class="post-title">Modules</h1>
-  </header>
+<p>An xGraph <strong>module</strong> is a collection of entities that work together to perform a service or task. Each module 
+includes:</p>
+<ol>
+  <li>at least one entity to act as the Apex</li>
+  <li>the module structure, in a schema.json file</li>
+  <li>a module.json file that describes the modules interface</li>
+  <li>a README.md file for user documentation and a README.html file for developer documentation</li>
+</ol>
 
-  <div class="post-content">
-    <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="https://jekyllrb.com/">jekyllrb.com</a></p>
+<p>First we will explain how to use a module in an xGraph system. Next, we will look at the parts of a module in 
+detail.</p>
 
-<p>You can find the source code for Minima at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/minima">minima</a></p>
+<h4 id="using-a-module">Using A Module</h4>
+<p>A module can be included in a system in the system’s structure, or generated later using the <code class="highlighter-rouge">genModule</code> 
+function. Module instances that are instantiated when the system is run are included in the <code class="highlighter-rouge">Modules</code> system, 
+while modules that will be included later using <code class="highlighter-rouge">genModule</code> can be pre-built by adding it to the the system’s 
+structure object under the <code class="highlighter-rouge">Deferred</code> section.</p>
 
-<p>You can find the source code for Jekyll at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/jekyll">jekyll</a></p>
+<p>When the system is run, modules listed in the <code class="highlighter-rouge">Modules</code> section of the system’s structure object will be 
+built and saved in a system’s cache, and then instantiated as a specific instances. This means that the 
+modules is loaded into memory, assigned a Pid, and sent the <code class="highlighter-rouge">Setup</code> and <code class="highlighter-rouge">Start</code> commands as necessary.</p>
 
+<p>A module’s definition is an object with three references: <code class="highlighter-rouge">Module</code>, <code class="highlighter-rouge">Source</code>, and <code class="highlighter-rouge">Par</code>. <code class="highlighter-rouge">Module</code> references 
+the module to be loaded. <code class="highlighter-rouge">Source</code> references a path to a local source or module broker. <code class="highlighter-rouge">Par</code> references an 
+object holding parameters as key-value pairs that will be passed to the module. Here is an example of a 
+module definition.</p>
 
-  </div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    Module: "xGraph.Popup",
+    Source: "core",
+    Par: {
+        Left: "com.mouse.x",
+        Top: "com.mouse.y",
+        View: "xGraph.3DView",
+        Width: 800,
+        Height: 600
+    }
+}
+</code></pre></div></div>
 
-</article>
+<p>Here is the system structure object for the Plexus system in the MultipleSystemWithPlexus example. This 
+system generates two modules on instantiation.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Sources": {
+        "core": "{core}"
+    },
+    "Modules": {
+        "Plexus": {
+            "Module": "xGraph.Plexus",
+            "Source": "core",
+            "Par": {}
+        },
+        "Proxy": {
+            "Module": "xGraph.Proxy",
+            "Source": "core",
+            "Par": {
+                "Link": "$Plexus",
+                "Role": "Server"
+            }
+        }
+    }
+}
+</code></pre></div></div>
+
+<p>The modules listed in the <code class="highlighter-rouge">Deferred</code> section of the system’s structure object will be pre-loaded in the 
+system’s cache, so that when they are later generated using <code class="highlighter-rouge">genModule</code> the module is already built. This 
+reduced the amount of latency when generating a module, because modules that are not listed in the system’s 
+structure object will have to be built before they can be generated and added to a system.</p>
+
+<p>Modules that are not included in the <code class="highlighter-rouge">Deferred</code> section of the system’s structure object will have to be 
+built before they can be generated, and the system must be run with the –allow-add-module flag to allow the 
+system to generate an unknown module.</p>
+
+<p><code class="highlighter-rouge">Deferred</code> modules are listed with their <code class="highlighter-rouge">Module</code> namespace and a path to their local or module broker 
+<code class="highlighter-rouge">Source</code>, as seen in the system structure object for a Validate module system.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Sources": {
+        "core": "{core}"
+    },
+    "Modules": {
+        "Server": {
+            "Module": "xGraph.Validate",
+            "Source": "core",
+            "Par": {
+                "TestModule": "xGraph.SQLite",
+                "TestJson": "@file: ../../Core/Modules/xGraph/SQLite/test.json"
+            }
+        },
+        "Deferred": [
+            {
+                "Module": "xGraph.SQLite",
+                "Source": "core"
+            }
+        ]
+    }
+}
+</code></pre></div></div>
+
+<p>The parameter object, <code class="highlighter-rouge">Par</code>, will be built and included in the module definition object sent to the 
+<code class="highlighter-rouge">genModule</code> function. Here you can see the Validate module generating the module that is being tested using 
+the information passed through Validate’s <code class="highlighter-rouge">Par</code>.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    //build the module instance from test.json required state
+    let instance = {};
+    instance.Module = that.Par.TestModule;
+    instance.Par = that.Vlt.Test.State;
+	
+    //instantiate the module
+    //this calls setup and start in the instance if necissary
+    log.v("Calling genMod on ", JSON.stringify(inst, null, 2));
+    that.genModule(instance, callback);
+
+    function callback(err, instApex) {
+        that.Vlt.InstModule = instApex;
+        that.Vlt.Test = setPid(that.Vlt.Test);
+        log.v("Test Json is :", JSON.stringify(that.Vlt.Test, null, 2));
+        if (typeof document != "undefined") {
+
+            instance.Module = "xGraph.RootView";
+            instance.Par = {
+                 Layout: instApex
+            };
+            that.genModule(inst, (err, instApex) =&gt; {
+                RunTests();
+            });
+        } else {
+            RunTests();
+        }
+    }
+</code></pre></div></div>
+
+<h4 id="apex-entity">Apex Entity</h4>
+<p>The module’s <strong>apex</strong> is the entity that will handle incoming messages. This entity is identified as the apex 
+in the module’s structure.</p>
+
+<h4 id="other-entities">Other Entities</h4>
+<p>An <strong>entity</strong> is the lowest fractal layer in an xGraph system. All entities must be encapsulated in a module 
+to be run in a system. Inside of a module, each entity is contained in a single JavaScript file.</p>
+
+<p>Each entity must be defined in the module’s structure, in the <code class="highlighter-rouge">schema.json</code> file. This tells xGraph how the 
+entities within a module can communicate with each other. Entities are discussed in greater detail in the 
+<a href="1.4-Entity-Guide">Entity Guide</a>. Next, we will look at the module’s structure and the <code class="highlighter-rouge">schema.json</code> file.</p>
+
+<h4 id="module-structure-schemajson">Module Structure (schema.json)</h4>
+<p>The module’s structure, defined by an object in the <code class="highlighter-rouge">schema.json</code> file, describes the internal architecture 
+of a module. In the <code class="highlighter-rouge">schema.json</code> file, apex entity is defined first, followed by any other entities in the 
+module.</p>
+
+<p>Each entity is declared with a reference key in the module’s structure object. Then, other entities can 
+reference an entity as a parameter by prefixing the key with a hashtag. All entities will have a reference to 
+the Apex entity. A simple example where the apex entity references the <code class="highlighter-rouge">"OtherEntity"</code> is found below.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Apex": {
+		"$Setup": "Setup",
+		"$Start": "Start",
+		"Entity": "HelloWorld.js",
+		"Friend": "#OtherEntity"
+	},
+	"OtherEntity": {
+		"$Start": "Start",
+		"Entity": "HelloWorld2.js"
+	}
+}
+</code></pre></div></div>
+
+<h4 id="module-interface-modulejson">Module Interface (module.json)</h4>
+<p>The <code class="highlighter-rouge">"module.json"</code> file determines the <strong>module’s interface</strong>. This object has several keys. The first set 
+of keys reference information about the module’s identity. The next set keys reference the input and output 
+commands that the module can send and receive.</p>
+
+<p>The first part of the object includes the following keys.</p>
+<ul>
+  <li><code class="highlighter-rouge">"name"</code>, the module’s name.</li>
+  <li><code class="highlighter-rouge">"version"</code>, the module’s version number, which may include decimals.</li>
+  <li><code class="highlighter-rouge">"doc"</code>, the .md file that has the module’s user documentation (see module documentation guide for details 
+ on documenting your module).</li>
+  <li><code class="highlighter-rouge">"info"</code>, an object that can hold additional information as key-value pairs, including the modules 
+<code class="highlighter-rouge">"author"</code>. Any useful information can be included here.</li>
+</ul>
+
+<p>The next key, <code class="highlighter-rouge">"input"</code>, holds information about the input commands the module can receive. This key holds an 
+object with two references, <code class="highlighter-rouge">"required"</code> and <code class="highlighter-rouge">"opts"</code>. Both keys reference arrays of objects that represent 
+commands the module can receive. Commands listed under <code class="highlighter-rouge">"required"</code> are required for the module to work 
+properly, while commands listed under <code class="highlighter-rouge">"optional"</code> are optional.</p>
+
+<p>Each input command object has three keys; <code class="highlighter-rouge">"Cmd"</code> references the command name, and <code class="highlighter-rouge">"required"</code> and <code class="highlighter-rouge">"opts"</code> 
+reference objects that hold arguments that will be passed with the command. Arguments referenced in 
+<code class="highlighter-rouge">"required"</code> must be provided, and arguments referenced in <code class="highlighter-rouge">"opts"</code> are optional.</p>
+
+<p>The next key, <code class="highlighter-rouge">"output"</code>, holds information about the output commands the module can send. This key holds an 
+object with two references, <code class="highlighter-rouge">"required"</code> and <code class="highlighter-rouge">"optional"</code>. Both keys reference arrays of objects that 
+represent commands the module can send. Commands listed under <code class="highlighter-rouge">"required"</code> are required for the module to 
+work properly, while commands listed under <code class="highlighter-rouge">"optional"</code> are optional.</p>
+
+<p>Each output command object has four keys; <code class="highlighter-rouge">"Cmd"</code> references the command name, “par” is only used by an 
+xGraph system and references the Pid of a module, and <code class="highlighter-rouge">"required"</code> and <code class="highlighter-rouge">"optional"</code> reference objects that 
+hold arguments that will be passed with the command. Arguments referenced in <code class="highlighter-rouge">"required"</code> must be provided, 
+and arguments referenced in <code class="highlighter-rouge">"optional"</code> are optional.</p>
+
+<p>Below is an example of a simple module.json file.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{  
+  "name": "Ping",
+  "version": "1.0",
+  "doc": "README.md",
+  "info": {
+    "author": "Introspective Systems"
+  },
+  "input": {
+    "required":[
+      {
+        "Cmd": "",
+        "required": {
+        },
+        "optional": {
+        }
+      }
+    ],
+    "optional":[
+      {
+        "Cmd": "Pong",
+        "required": {
+        },
+        "optional": {
+        }
+      }
+    ]
+  },
+  "output":{
+    "required":[
+      {
+        "par":"",
+        "Cmd": "",
+        "required": {
+        },
+        "optional": {
+        }
+      }
+    ],
+    "optional":[
+      {
+        "par":"",
+        "Cmd": "Ping",
+        "required": {
+        },
+        "optional": {
+        }
+      }
+    ]
+  },
+  "par": {
+    "required": {},
+    "optional": {}
+  }
+}
+</code></pre></div></div>
+
+<h4 id="documentation-readmemd-and-readmehtml">Documentation (README.md and README.html)</h4>
+<p>Each module must include both user and developer documentation. A brief description of these files is found 
+below. For more information about module documentation, see the 
+<a href="3.1-Module-Documentation-Requirements">Module Documentation Requirements</a>.</p>
+
+<p>The README.md file holds user documentation. This is where things like examples and tutorials can be added.</p>
+
+<p>The README.html file is mainly used for developer documentation. This file should include information for 
+each entity in a module, and can be generated using doxdox document generator. For information on how to 
+generate documentation, see the <a href="3.2-Documentation-Generation-Guide">Documentation Generation Guide</a>.</p>
 
           </div>
           </div>

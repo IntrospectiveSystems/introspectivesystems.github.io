@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Documentation
-permalink: /documentation/
-tags: ['root', 'documentation']
+title: Platform
+permalink: /platform/
+tags: ['root', 'platform']
 ---
 # Documentation
 

@@ -16,21 +16,32 @@
                     {%- assign current_tag = "basics" -%}
                   {%- elsif page.tags contains 'getting-started' -%}
                     {%- assign current_tag = "getting-started" -%}
-                  {% elsif page.tags contains "documentation" -%}
-                    {%- assign current_tag = "documentation" -%}
+                  {% elsif page.tags contains "platform" -%}
+                    {%- assign current_tag = "platform" -%}
                   {% elsif page.tags contains "contributing" -%}
                     {% assign current_tag = "contributing" -%}
                   {%- endif -%}
 
                   {%- if my_page.tags contains current_tag -%}
-                    {%- if my_page.title == page.title -%}
-                      <li class="nav-item active">
+                    {%- if my_page.tags contains "root" -%}
+                      {%- if my_page.title == page.title -%}
+                        <li class="nav-item active font-weight-bold">
+                      {%- else -%}
+                        <li class="nav-item font-weight-bold">
+                      {%- endif -%}
+                          <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title |
+                            escape }}</a>
+                        </li>
                     {%- else -%}
-                      <li class="nav-item">
-                    {%- endif -%}
-                        <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title |
-                           escape }}</a>
-                      </li>
+                        {%- if my_page.title == page.title -%}
+                          <li class="nav-item active">
+                        {%- else -%}
+                          <li class="nav-item">
+                        {%- endif -%}
+                            <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title |
+                               escape }}</a>
+                          </li>
+                        {%- endif -%}
                   {%- endif -%}
                 {% endfor -%}
               </ul>
