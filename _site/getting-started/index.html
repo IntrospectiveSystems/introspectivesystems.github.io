@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Getting Started | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Getting Started" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/getting-started/" />
+<meta property="og:url" content="http://localhost:4000/getting-started/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/getting-started/","headline":"Getting Started","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body>
+    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav ml-auto"><li class="nav-item">
+              <a class="nav-link" href="/basics/">Basics</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/getting-started/">Getting Started</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/documentation/">Documentation</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/contributing/">Contributing</a>
+            </li></ul>
+    </div></nav>
+
+</header>
+<main aria-label="Content">
+          <div class="row">
+          <div class="col-md-3">
+              <ul class="nav flex-column"><li class="nav-item active"><a class="nav-link" href="/getting-started/">Getting Started</a>
+                      </li></ul>
+          </div>
+          <div class="col-md-9">
+              <h1 id="getting-started">Getting Started</h1>
+<p>The xGraph package comes with two main features: the xGraph core and the xGraph 
+Command Line Interface (CLI). The xGraph core architecture handles compiling, 
+instantiating and communication between xGraph systems. The xGraph CLI makes it 
+easy to interact with xGraph systems. You can easily install xGraph using the 
+npm package installer.</p>
+
+<h2 id="getting-started-with-npm">Getting Started with npm</h2>
+<p>To install xGraph directly form npm, you will need the <a href="https://www.npmjs.com/">npm package manager</a>. 
+Once you have installed npm, you can install xGraph using the package manager.</p>
+
+<p>In your command line tool, use the following command to install xGraph core 
+globally using the npm package installer.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g xgraph
+</code></pre></div></div>
+
+<p>If you are on a unix operating system, such as macOS or Ubuntu, you may have to use 
+the <code class="highlighter-rouge">sudo</code> prefix.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo npm install -g xgraph
+</code></pre></div></div>
+
+<h2 id="xgraph-command-line-interface-cli">xGraph Command Line Interface (CLI)</h2>
+<p>The xGraph command line interface accelerates the building and running of xGraph 
+Systems. Using the xGraph CLI, you can generate new modules and systems, compile 
+systems from a system structure object, and run systems from a system cache. 
+You can use the xGraph executable CLI to run existing systems from a cache. To do this, use the command</p>
+
+<h3 id="xgraph-deploy">xgraph deploy</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xgraph deploy 
+</code></pre></div></div>
+<p>Deploy will look in the current working directory to run an xGraph system from a cache.</p>
+
+<p>See <a href="">Building an xGraph System</a> for more information on building xGraph systems.</p>
+
+<p>See <a href="">Building an xGraph Module</a> for more information on building xGraph modules.</p>
+
+<h3 id="xgraph-help">xgraph help</h3>
+<p>xGraph uses the following API commands, available in the xGraph CLI using <code class="highlighter-rouge">xgraph help</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Compile and Run xGraph systems with a few simple commands.
+
+Unless otherwise specified, commands will look in the current working
+directory for a config.json file or cache directory, depending on the
+command.
+
+If the system includes local module sources, these must be listed after
+the command and options, [--source directory ...].
+
+xGraph
+
+Usage: xgraph [command] [options] [--source directory ...]
+
+Command:
+    help        h                       : Displays this help screen.
+
+    compile     c                       : Generates a cache from a system
+                                            structure file.
+    deploy      d                       : Run a system from it's cache.
+    reset       r                       : Run a system from system structure
+                                            file, resetting the system's cache.
+    execute     x|run                   : Run a system from it's cache, or
+                                            it's system structure file if
+                                            the cache does not exist.
+    generate &lt;module|system&gt;    g &lt;m|s&gt; : Generate a new module or system
+                                            from a template with the given
+                                            name.
+
+Options:
+    --cwd                               : Sets the current working directory
+                                            for the command.
+    --config                            : Specifies a system's structure file.
+    --cache                             : Specifies a system's cache directory.
+    --allow-add-module                  : Enable a module to add new modules
+                                            in memory to the Module cache.
+
+Examples:
+    Compile the system in the current directory.
+        xgraph compile
+
+    Deploy a module from a system structure file.
+        xgraph deploy --config ./ExampleSystems/HelloWorld/config.json
+
+    Reset a system in a different working directory with an external source.
+        xgraph reset --cwd ./MultipleSystemsTemplate/Systems/Plexus/ --xGraph ../xGraph --xGraphTemplates ../../xGraphTemplates
+
+    Generate a new module called MyFirstModule.
+        xgraph generate module MyFirstModule
+</code></pre></div></div>
+
+<h3 id="contributing">Contributing</h3>
+
+<p>Please read CONTRIBUTING.md for details on our code of
+conduct, and the process for submitting pull requests to us.</p>
+
+<h3 id="versioning">Versioning</h3>
+
+<p>We use <a href="http://semver.org/">SemVer</a> for versioning.</p>
+
+<h3 id="license">License</h3>
+<p>This software is licensesd under the <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AFFERO GENERAL PUBLIC LICENSE Version 3</a>.<br />
+Please contact us at sales@introspectivesystems.com if you are interested in pursuing one of our Enterprise licenses.</p>
+
+          </div>
+          </div>
+      </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+    <h2 class="footer-heading">xGraph</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+
+
+</footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

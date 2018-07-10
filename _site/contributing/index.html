@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Contributing | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Contributing" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/contributing/" />
+<meta property="og:url" content="http://localhost:4000/contributing/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/contributing/","headline":"Contributing","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body>
+    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav ml-auto"><li class="nav-item">
+              <a class="nav-link" href="/basics/">Basics</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/getting-started/">Getting Started</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/documentation/">Documentation</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="/contributing/">Contributing</a>
+            </li></ul>
+    </div></nav>
+
+</header>
+<main aria-label="Content">
+          <div class="row">
+          <div class="col-md-3">
+              <ul class="nav flex-column"><li class="nav-item active"><a class="nav-link" href="/contributing/">Contributing</a>
+                      </li></ul>
+          </div>
+          <div class="col-md-9">
+              <h1 id="contributing">Contributing</h1>
+
+<p>We love pull requests from everyone. By participating in this project, you
+agree to abide by the Introspective Systems code guidelines.</p>
+
+<p>Fork, then clone the repo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/IntrospectiveSystems/xGraph.git
+</code></pre></div></div>
+
+<p>Set up your machine:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Install the xGraph binary and run it.
+</code></pre></div></div>
+
+<p>Make your change. Add tests for your change. Make the tests pass.</p>
+
+<p>Push to your fork and <a href="https://github.com/IntrospectiveSystems/xGraph/compare/">submit a pull request</a>.</p>
+
+<p>At this point you’re waiting on us. We like to at least comment on pull requests
+within three business days (and, typically, one business day). We may suggest
+some changes or improvements or alternatives.</p>
+
+<p>Some things that will increase the chance that your pull request is accepted:</p>
+
+<ul>
+  <li>Write tests.</li>
+  <li>Follow our style guide (coming soon).</li>
+  <li>Write a good commit message.</li>
+</ul>
+
+<h2 id="installing-from-github">Installing from Github</h2>
+<p>If you have <a href="https://github.com/IntrospectiveSystems/xGraph">cloned the xGraph repository from github</a>, 
+you can install xGraph using npm, system-specific installation files, or compile 
+native executables using npm build.</p>
+
+<h3 id="install-using-npm">Install using npm</h3>
+<p>From your command line, navigate to the xGraph repository and run <code class="highlighter-rouge">npm install -g .</code> will install xgraph globally. This will install xgraph from the current
+branch of the repository (<code class="highlighter-rouge">sudo</code> may be required by permissions if on unix systems).</p>
+
+<h3 id="install-using-system-specific-installation-files">Install using system-specific installation files</h3>
+<p>You will find installation files for the major operating systems (Windows, MacOS and Linux) 
+in the <code class="highlighter-rouge">./bin/</code> directory. To install the xGraph CLI using system-specific installation files, 
+follow the instructions for your operating system found below.</p>
+
+<h3 id="for-windows">For Windows:</h3>
+<p>You can use the <code class="highlighter-rouge">xgraph.msi</code> file to install the xgraph CLI. Simply double
+click the file and the installer will run.</p>
+
+<p>Additionally, you will have to add the xgraph path variable to your
+systems environment variable. This can be done for a single session
+through the command line, or you can set the environment variable
+permanently through windows settings.</p>
+
+<p>The xgraph path variable is <code class="highlighter-rouge">{path to...}ProgramFiles/xGraph</code>.
+Append this to your your Environmental Path Variable ($PATH).</p>
+
+<p>To add the xgraph path variable to your system environment variable, go
+to “My Computer” &gt; “Properties” &gt; “Advanced” &gt; “Environment Variables” &gt; “Path”
+and add it to the list.</p>
+
+<h3 id="for-mac">For Mac:</h3>
+<p>You can use the <code class="highlighter-rouge">xGraph.dmg</code> file to install the xgraph CLI. Simply double
+click the file and the installer will walk you through the installation
+process.</p>
+
+<p>Because the package is unsigned, you may have to allow the installation
+of unsigned packages in the security control panel.</p>
+
+<h3 id="for-linux">For Linux:</h3>
+<p>Simply unpack the installation file (.tar or .gz) and restart your terminal
+session.</p>
+
+<h3 id="compile-native-executables">Compile native executables</h3>
+<p>In your command line tool, navigate to the root of your xGraph core repository. 
+Here, you can enter the following command to build the xGraph executable directly.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>If you are on a unix operating system, such as macOS or Ubuntu, you may have to use 
+the <code class="highlighter-rouge">sudo</code> prefix.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo npm run build
+</code></pre></div></div>
+
+<h2 id="testing-using-the-npm-test">Testing using the npm test</h2>
+<p>xGraph core is verified using a number of tests. These tests can easily be run using 
+the <code class="highlighter-rouge">npm run qc</code> command for a fast test that tests common xgraph functionality, or the <code class="highlighter-rouge">npm test</code> command 
+for a comprehensive test.</p>
+
+<p>In your command line tool, navigate to the root of your xGraph core repository. 
+Use the following command to run the common tests.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run qc
+</code></pre></div></div>
+
+<p>Or you can enter the either of the following command to run the comprehensive xGraph core tests.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm test
+</code></pre></div></div>
+<p>or</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run test
+</code></pre></div></div>
+
+
+          </div>
+          </div>
+      </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+    <h2 class="footer-heading">xGraph</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+
+
+</footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>
