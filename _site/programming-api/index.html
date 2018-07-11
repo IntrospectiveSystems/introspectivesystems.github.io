@@ -21,33 +21,42 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
-<body>
-    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
-    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+<body class="bg-light">
+    <div class="row">
+      <div class="col"><header class="site-header" role="banner"><nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar-content">
-      <ul class="navbar-nav ml-auto"><li class="nav-item">
-              <a class="nav-link" href="/basics/">Basics</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/getting-started/">Getting Started</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/platform/">Platform</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/contributing/">Contributing</a>
-            </li></ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item">
+                <a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
     </div></nav>
 
 </header>
-<main aria-label="Content">
-          <div class="row">
-          <div class="col-md-3">
+</div>
+    </div>
+    <main aria-label="Content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 vertical-menu">
               <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/platform/">Platform</a>
                         </li><li class="nav-item active"><a class="nav-link" href="/programming-api/">Programming API</a>
                           </li></ul>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10 bg-white content">
               <h3 id="api">API</h3>
 
 <ol>
@@ -77,12 +86,17 @@
 </ol>
 
 <h4 id="functions">Functions</h4>
-<p>The xGraph platform offers a number of features to support the development of these fractal graph architectures. In addition to the self-similar architecture defined by entities and modules, xGraph’s Nexus provides programmers with a few special functions. These functions provide programmers with the ability to communicate between entities and modules (or build relations), generate xGraph structures dynamically, and save the current state of a system. All these functions exist in the <code class="highlighter-rouge">this</code> context of every entity.</p>
+<p>The xGraph platform offers a number of features to support the development of these fractal graph 
+architectures. In addition to the self-similar architecture defined by entities and modules, xGraph’s Nexus 
+provides programmers with a few special functions. These functions provide programmers with the ability to 
+communicate between entities and modules (or build relations), generate xGraph structures dynamically, and 
+save the current state of a system. All these functions exist in the <code class="highlighter-rouge">this</code> context of every entity.</p>
 
 <h5 id="thisgenmodulemoduleobject-callback">this.genModule(moduleObject, callback);</h5>
 <h5 id="-and-">-and-</h5>
 <h5 id="thisgenmodulesmoduleobject-callback">this.genModules(moduleObject, callback);</h5>
-<p>The <code class="highlighter-rouge">genModule</code> function takes a module object and a callback function, starts the modules found in the module object, and then calls the callback function.</p>
+<p>The <code class="highlighter-rouge">genModule</code> function takes a module object and a callback function, starts the modules found in the 
+module object, and then calls the callback function.</p>
 
 <p>The module object can be:
 Either a single module definition object</p>
@@ -116,14 +130,21 @@ Either a single module definition object</p>
 </code></pre></div></div>
 
 <h5 id="thisaddmodulemodulename-modulezip-callback">this.addModule(moduleName, moduleZip, callback);</h5>
-<p>The <code class="highlighter-rouge">addModule</code> function allows you to add a module to the system by adding the module’s zip to the system’s cache. To use this function, the <code class="highlighter-rouge">--allow-add-module</code> flag must be set when running the system from the CLI. <code class="highlighter-rouge">addModule</code> takes the Zipped module file and inserts it into the system’s cache under the name of the module.</p>
+<p>The <code class="highlighter-rouge">addModule</code> function allows you to add a module to the system by adding the module’s zip to the system’s 
+cache. To use this function, the <code class="highlighter-rouge">--allow-add-module</code> flag must be set when running the system from the CLI. 
+<code class="highlighter-rouge">addModule</code> takes the Zipped module file and inserts it into the system’s cache under the name of the module.</p>
 
 <h5 id="thisgenentityentitydefinition-callback">this.genEntity(entityDefinition, callback);</h5>
-<p>The <code class="highlighter-rouge">genEntity</code> command takes an entity definition object and generates the entity in the module. An entity can only be generated in the module that is making the call. When the function is complete, the callback is returned with the pid of the generated entity in object.Pid.</p>
+<p>The <code class="highlighter-rouge">genEntity</code> command takes an entity definition object and generates the entity in the module. An entity 
+can only be generated in the module that is making the call. When the function is complete, the callback is 
+returned with the pid of the generated entity in object.Pid.</p>
 
-<p>The entity definition must have an <code class="highlighter-rouge">"Entity"</code> key valued with the name of the entity being generated. The entity must exists in the same module as the entity that is calling genEntity. For more information on defining entities, see our Entity Guide.</p>
+<p>The entity definition must have an <code class="highlighter-rouge">"Entity"</code> key valued with the name of the entity being generated. The 
+entity must exists in the same module as the entity that is calling genEntity. For more information on 
+defining entities, see our Entity Guide.</p>
 
-<p>Here is an example of an entity being generated. The <code class="highlighter-rouge">Suite.js</code> entity is generated with a Setup and Start command and no parameters.</p>
+<p>Here is an example of an entity being generated. The <code class="highlighter-rouge">Suite.js</code> entity is generated with a Setup and Start 
+command and no parameters.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let entity = {
 	"Entity": "Suite.js",
 	"$Setup": "SetupCommand",
@@ -140,21 +161,27 @@ this.genEntity(entity, callback);
 </code></pre></div></div>
 
 <h5 id="thisdeleteentityapex-pid-callback">this.deleteEntity(apex, pid, callback);</h5>
-<p>The <code class="highlighter-rouge">deleteEntity</code> function takes a module apex, an entity pid and a callback function and deletes the entity from the module’s memory. If the entity pid is the module’s apex, then all the module’s entities are deleted.</p>
+<p>The <code class="highlighter-rouge">deleteEntity</code> function takes a module apex, an entity pid and a callback function and deletes the entity 
+from the module’s memory. If the entity pid is the module’s apex, then all the module’s entities are deleted.</p>
 
 <h5 id="thisgenpid">this.genPid();</h5>
 <p>The genPid function does not accept any parameters and returns a 32 character hexadecimal pid.</p>
 
 <h5 id="thissendcommand-pid-callback">this.send(command, pid, callback);</h5>
-<p>The special function that you will use most is the <code class="highlighter-rouge">send</code> function. <code class="highlighter-rouge">send</code> requires three parameters: a command object, a destination pid, and a callback function. Send then sends the command object and the callback function to the xGraph part (entity or module, depending on the fractal layer) specified in the Pid.</p>
+<p>The special function that you will use most is the <code class="highlighter-rouge">send</code> function. <code class="highlighter-rouge">send</code> requires three parameters: a 
+command object, a destination pid, and a callback function. Send then sends the command object and the 
+callback function to the xGraph part (entity or module, depending on the fractal layer) specified in the Pid.</p>
 
-<p>The command object must have a <code class="highlighter-rouge">Cmd</code> key valued as the command that is being sent. The simplest commands look like this:</p>
+<p>The command object must have a <code class="highlighter-rouge">Cmd</code> key valued as the command that is being sent. The simplest commands look 
+like this:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "Cmd": "Ping"
 }
 </code></pre></div></div>
 
-<p>Additionally, the command object is used to pass information from one node to another. Any number of key-value pairs can be added to the command object to handle information exchange. Here is a command with multiple parameters:</p>
+<p>Additionally, the command object is used to pass information from one node to another. Any number of 
+key-value pairs can be added to the command object to handle information exchange. Here is a command with 
+multiple parameters:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{ 
     Cmd: "Subscribe", 
     Pid: this.Par.Pid, 
@@ -162,9 +189,12 @@ this.genEntity(entity, callback);
 }
 </code></pre></div></div>
 
-<p>Pids are generated by Genesis when and xGraph system is compiled, and saved in references, typically in the <code class="highlighter-rouge">this.Par</code> object. These references are defined in a system’s structure object, typically a config.json file, or a module’s structure object, a schema.json file.</p>
+<p>Pids are generated by Genesis when and xGraph system is compiled, and saved in references, typically in the 
+<code class="highlighter-rouge">this.Par</code> object. These references are defined in a system’s structure object, typically a config.json file, 
+or a module’s structure object, a schema.json file.</p>
 
-<p>Here is an example of a command being sent to a <code class="highlighter-rouge">Pid</code> referenced in the entities parameter object, <code class="highlighter-rouge">this.Par</code>, and then calling a callback function.</p>
+<p>Here is an example of a command being sent to a <code class="highlighter-rouge">Pid</code> referenced in the entities parameter object, 
+<code class="highlighter-rouge">this.Par</code>, and then calling a callback function.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    var commandObject = {
         Cmd: "OtherFunction",
         someValue: 1
@@ -181,9 +211,14 @@ this.genEntity(entity, callback);
 </code></pre></div></div>
 
 <h5 id="thissavecallback">this.save(callback);</h5>
-<p>The <code class="highlighter-rouge">save</code> function takes only a callback function. The function saves the state of this entity, the entity that called the function, including its current <code class="highlighter-rouge">Par</code> and <code class="highlighter-rouge">Vlt</code>, to the cache. If this entity is not an Apex, the save message is sent to the Apex of this entity’s module. If it is an Apex, save the entity’s information, as well as all other relevant information. When this is complete, the callback function is called.</p>
+<p>The <code class="highlighter-rouge">save</code> function takes only a callback function. The function saves the state of this entity, the entity 
+that called the function, including its current <code class="highlighter-rouge">Par</code> and <code class="highlighter-rouge">Vlt</code>, to the cache. If this entity is not an Apex, 
+the save message is sent to the Apex of this entity’s module. If it is an Apex, save the entity’s 
+information, as well as all other relevant information. When this is complete, the callback function is 
+called.</p>
 
-<p>You can use <code class="highlighter-rouge">this.send()</code> anytime to save an entity by simply using <code class="highlighter-rouge">this.send(callback);</code> Here is an example of an entity that saves itself on the <code class="highlighter-rouge">Start</code> command:</p>
+<p>You can use <code class="highlighter-rouge">this.send()</code> anytime to save an entity by simply using <code class="highlighter-rouge">this.send(callback);</code> Here is an 
+example of an entity that saves itself on the <code class="highlighter-rouge">Start</code> command:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	function Start(com, fun) {
 		console.log('--Model/Start');
 		this.save();
@@ -196,9 +231,12 @@ this.genEntity(entity, callback);
 <p>Get a file from the module.json module definition.</p>
 
 <h5 id="thisrequiremodule">this.require(‘module’);</h5>
-<p>The <code class="highlighter-rouge">require</code> function handles external dependencies in xGraph. Given a module name, <code class="highlighter-rouge">require</code> loads the given module, returning the module object. Often, you will want to save the module object in the entity’s Vault, <code class="highlighter-rouge">this.Vlt</code>.</p>
+<p>The <code class="highlighter-rouge">require</code> function handles external dependencies in xGraph. Given a module name, <code class="highlighter-rouge">require</code> loads the 
+given module, returning the module object. Often, you will want to save the module object in the entity’s 
+Vault, <code class="highlighter-rouge">this.Vlt</code>.</p>
 
-<p>Here, we load the <code class="highlighter-rouge">sqlite3</code> dependency, check to see that it loaded properly, and then save sqlite3 module to <code class="highlighter-rouge">this.Vlt</code> with the key <code class="highlighter-rouge">Sqlite3</code>.</p>
+<p>Here, we load the <code class="highlighter-rouge">sqlite3</code> dependency, check to see that it loaded properly, and then save sqlite3 module to 
+<code class="highlighter-rouge">this.Vlt</code> with the key <code class="highlighter-rouge">Sqlite3</code>.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let sqlite3 = this.require('sqlite3');
 
@@ -211,30 +249,39 @@ Vlt.Sqlite3 = sqlite3;
 </code></pre></div></div>
 
 <h5 id="thisexitcode">this.exit(code);</h5>
-<p>The <code class="highlighter-rouge">exit</code> function instructs nexus to exit with the code provided. Nexus will then stop all running xGraph processes related to the system.</p>
+<p>The <code class="highlighter-rouge">exit</code> function instructs nexus to exit with the code provided. Nexus will then stop all running xGraph 
+processes related to the system.</p>
 
 <h4 id="logs">Logs</h4>
-<p>xGraph offers a suit of logging functions that enable logs to be printed or saved without losing information on the structure of your xGraph system. There are a variety of functions available to print logs, each with its own special functionality. Next we will look at the different log functions and how they might be used.</p>
+<p>xGraph offers a suit of logging functions that enable logs to be printed or saved without losing information 
+on the structure of your xGraph system. There are a variety of functions available to print logs, each with 
+its own special functionality. Next we will look at the different log functions and how they might be used.</p>
 
 <h5 id="info---logistring">Info - log.i(string);</h5>
-<p><code class="highlighter-rouge">log.i</code> takes a string and prints it. It is meant for printing general statements and logs. These will be printed and will be printed in turquoise.</p>
+<p><code class="highlighter-rouge">log.i</code> takes a string and prints it. It is meant for printing general statements and logs. These will be 
+printed and will be printed in turquoise.</p>
 
 <h5 id="warning---logwstring">Warning - log.w(string);</h5>
-<p><code class="highlighter-rouge">log.w</code> takes a string and prints it. It is meant for printing warning statements and logs. These will typically be printed in white.</p>
+<p><code class="highlighter-rouge">log.w</code> takes a string and prints it. It is meant for printing warning statements and logs. These will 
+typically be printed in white.</p>
 
 <h5 id="error---logestring">Error - log.e(string);</h5>
-<p><code class="highlighter-rouge">log.e</code> takes a string and prints it. It is meant for printing error statements and logs. These will typically be printed in red.</p>
+<p><code class="highlighter-rouge">log.e</code> takes a string and prints it. It is meant for printing error statements and logs. These will 
+typically be printed in red.</p>
 
 <h5 id="debug---logdstring">Debug - log.d(string);</h5>
-<p><code class="highlighter-rouge">log.d</code> takes a string and prints it. It is meant for printing debug statements and logs. These will typically be printed in fuchsia.</p>
+<p><code class="highlighter-rouge">log.d</code> takes a string and prints it. It is meant for printing debug statements and logs. These will 
+typically be printed in fuchsia.</p>
 
 <h5 id="verbose---logvstring">Verbose - log.v(string);</h5>
-<p><code class="highlighter-rouge">log.v</code> takes a string and prints it. It is meant for printing verbose statements, or statements that give specific or detailed information. These will typically be printed in gray.</p>
+<p><code class="highlighter-rouge">log.v</code> takes a string and prints it. It is meant for printing verbose statements, or statements that give 
+specific or detailed information. These will typically be printed in gray.</p>
 
           </div>
-          </div>
-      </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
+        </div>
+      </main><footer class="site-footer h-card bg-light">
+  <div class="container">
+    <data class="u-url" href="/"></data>
 
     <h2 class="footer-heading">xGraph</h2>
 
@@ -251,7 +298,7 @@ Vlt.Sqlite3 = sqlite3;
         <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
       </div>
     </div>
-
+  </div>
 
 </footer>
 </div>

@@ -21,63 +21,81 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
-<body>
-    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
-    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+<body class="bg-light">
+    <div class="row">
+      <div class="col"><header class="site-header" role="banner"><nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar-content">
-      <ul class="navbar-nav ml-auto"><li class="nav-item">
-              <a class="nav-link" href="/basics/">Basics</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/getting-started/">Getting Started</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/platform/">Platform</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/contributing/">Contributing</a>
-            </li></ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item">
+                <a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
     </div></nav>
 
 </header>
-<main aria-label="Content">
-          <div class="row">
-          <div class="col-md-3">
+</div>
+    </div>
+    <main aria-label="Content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 vertical-menu">
               <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/contributing/">Contributing</a>
                         </li><li class="nav-item"><a class="nav-link" href="/module-documentation-requirements/">Module Documentation Requirements</a>
                           </li><li class="nav-item active"><a class="nav-link" href="/writing-style-guide/">Writing Style Guide</a>
                           </li></ul>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10 bg-white content">
               <h3 id="writing-style-guidelines">Writing Style Guidelines</h3>
-<p>Here at Introspective Systems, we work hard to maintain a creative and welcoming community. We do this by making sure we follow some basic writing style guidelines when writing xGraph documentation. You should follow these guidelines when writing xGraph Module documentation.</p>
+<p>Here at Introspective Systems, we work hard to maintain a creative and welcoming community. We do this by 
+making sure we follow some basic writing style guidelines when writing xGraph documentation. You should 
+follow these guidelines when writing xGraph Module documentation.</p>
 
 <ol>
   <li>
-    <p><strong>Write concisely and clearly.</strong> Only use technical jargon where it is appropriate. When writing user documentation, remember that the reader may have little or no programming experience.</p>
+    <p><strong>Write concisely and clearly.</strong> Only use technical jargon where it is appropriate. When writing user 
+documentation, remember that the reader may have little or no programming experience.</p>
   </li>
   <li>
     <p><strong>Don’t use ambiguous pronouns.</strong> Use a noun when there is any chance of contextual confusion.</p>
   </li>
   <li>
-    <p><strong>Use gender neutral they/them when talking about the user or reader.</strong>  This is an easy way to maintain an inclusive community, and takes the difficulty out of trying to figure out the documents voice.</p>
+    <p><strong>Use gender neutral they/them when talking about the user or reader.</strong>  This is an easy way to maintain 
+an inclusive community, and takes the difficulty out of trying to figure out the documents voice.</p>
   </li>
   <li>
-    <p><strong>Do not use any language that demeans or degrades a person or a group of people.</strong> We want this to be an inclusive community, so keep political and social opinions out of writing.</p>
+    <p><strong>Do not use any language that demeans or degrades a person or a group of people.</strong> We want this to be an 
+inclusive community, so keep political and social opinions out of writing.</p>
   </li>
-  <li><strong>Use active voice.</strong> Using the active voice means that the subject of the sentence is the person or thing that carries out the action expressed by the verb. Consider the following:
+  <li><strong>Use active voice.</strong> Using the active voice means that the subject of the sentence is the person or thing 
+that carries out the action expressed by the verb. Consider the following:
     <ul>
       <li>The enter key is pressed by the user. (Passive voice, avoid this!)</li>
       <li>The user presses the enter key. (Active voice, strive for this!)</li>
     </ul>
   </li>
-  <li><strong>Use the code block syntax when referring to code.</strong> Adding examples to documentation is always encouraged. For readability, make sure you use the Markdown code block format for all code references in your documentation.</li>
+  <li><strong>Use the code block syntax when referring to code.</strong> Adding examples to documentation is always 
+encouraged. For readability, make sure you use the Markdown code block format for all code references in your 
+documentation.</li>
 </ol>
 
           </div>
-          </div>
-      </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
+        </div>
+      </main><footer class="site-footer h-card bg-light">
+  <div class="container">
+    <data class="u-url" href="/"></data>
 
     <h2 class="footer-heading">xGraph</h2>
 
@@ -94,7 +112,7 @@
         <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
       </div>
     </div>
-
+  </div>
 
 </footer>
 </div>

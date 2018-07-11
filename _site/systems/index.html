@@ -21,37 +21,45 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
-<body>
-    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
-    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+<body class="bg-light">
+    <div class="row">
+      <div class="col"><header class="site-header" role="banner"><nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar-content">
-      <ul class="navbar-nav ml-auto"><li class="nav-item">
-              <a class="nav-link" href="/basics/">Basics</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/getting-started/">Getting Started</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/platform/">Platform</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/contributing/">Contributing</a>
-            </li></ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item">
+                <a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
     </div></nav>
 
 </header>
-<main aria-label="Content">
-          <div class="row">
-          <div class="col-md-3">
+</div>
+    </div>
+    <main aria-label="Content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 vertical-menu">
               <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/basics/">Basics</a>
                         </li><li class="nav-item active"><a class="nav-link" href="/systems/">Systems</a>
                           </li><li class="nav-item"><a class="nav-link" href="/modules/">Modules</a>
                           </li><li class="nav-item"><a class="nav-link" href="/entities/">Entities</a>
                           </li><li class="nav-item"><a class="nav-link" href="/terms/">Terms and Definitions</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/module-broker/">Module Broker</a>
                           </li></ul>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10 bg-white content">
               <h1 id="xgraph-systems">xGraph Systems</h1>
 
 <p>An xGraph <strong>system</strong> is described as a collection of one or more modules that are instantiated by a single 
@@ -59,12 +67,12 @@ kernel process (Nexus.js in node). This means that an xGraph system is simply a 
 that are run as a single process using the xGraph core functionality.</p>
 
 <p>A <strong>system definition</strong> includes a <strong>system structure</strong> and the <strong>system cache</strong>. For information on how to 
-get started building xGraph systems, see <a href="2.2-Building-an-xGraph-System">Building an xGraph System</a>.</p>
+get started building xGraph systems, see <a href="/building-systems/">Building an xGraph System</a>.</p>
 
 <p>The <strong>system structure</strong> is a JSON object that describes the way a system should be built. The system 
 structure object has two parts: <code class="highlighter-rouge">"Sources"</code>, and <code class="highlighter-rouge">"Modules"</code>.</p>
 
-<p>xGraph systems are easy to compile and run using the <a href="2.1-Get-started-with-xGraph">xGraph Executable</a>.</p>
+<p>xGraph systems are easy to compile and run using the <a href="/getting-started/">xGraph Executable</a>.</p>
 
 <p>Here is an example of a simple system structure.</p>
 
@@ -119,7 +127,7 @@ Using the xGraph CLI, this would look like the following command.</p>
 
 <p>The next section, the <code class="highlighter-rouge">"Modules"</code> key, has information about all the modules in the system. First, you will 
 see modules that are explicitly defined, using their module definition. These will be loaded when the system 
-starts up. Details about module definitions can be found in the <a href="1.3-Module-Guide">Module Guide</a>.</p>
+starts up. Details about module definitions can be found in the <a href="/modules/">Module Guide</a>.</p>
 
 <p>Next inside of the <code class="highlighter-rouge">"Modules"</code> key is the <code class="highlighter-rouge">"Deferred"</code> array. This array is a list of modules the system 
 needs to run that are not loaded when the system starts up. Typically generated by other modules, the 
@@ -132,9 +140,10 @@ need any external dependencies to run a system, so the system can be run on a ma
 internet connection.</p>
 
           </div>
-          </div>
-      </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
+        </div>
+      </main><footer class="site-footer h-card bg-light">
+  <div class="container">
+    <data class="u-url" href="/"></data>
 
     <h2 class="footer-heading">xGraph</h2>
 
@@ -151,7 +160,7 @@ internet connection.</p>
         <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
       </div>
     </div>
-
+  </div>
 
 </footer>
 </div>

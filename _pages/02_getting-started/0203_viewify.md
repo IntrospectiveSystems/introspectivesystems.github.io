@@ -7,23 +7,34 @@ tags: ['getting-started']
 
 # Viewify 
 
-A **View** is defined as any Module who's Apex is an entity that returns a [dispatch table](#view-dispatch-table) that has been run through Viewify. This will give the module some default functionality it can work off of to create visualizations.
+A **View** is defined as any Module who's Apex is an entity that returns a 
+[dispatch table](#view-dispatch-table) that has been run through Viewify. This will give the module some 
+default functionality it can work off of to create visualizations.
 
 ### Container Views
 
-Container Views are Views which are designed primarily as a means of layout. Examples of Container Views include: `PanelView` and `GridView`.
+Container Views are Views which are designed primarily as a means of layout. Examples of Container Views 
+include: `PanelView` and `GridView`.
 
 ### Root Container Views
 
-A Root Container View is like a Container View, in that its primary purpose is a means of layout. However, Root Containers are required to attach Views to the DOM, and act as the controller for all descendants. Examples of Root Container Views include `RootView` and `PopupView`.
+A Root Container View is like a Container View, in that its primary purpose is a means of layout. However, 
+Root Containers are required to attach Views to the DOM, and act as the controller for all descendants. 
+Examples of Root Container Views include `RootView` and `PopupView`.
 
 ## Basic Preparation
 
-For a View to work, the `Viewify.js` script needs to be included on your Webpage. for example, `xGraph.WebViewer` automatically imports viewify into its pages. Unless you are writing your own Http server, Viewify is probably already imported for you. To verify it has been imported, in a browser console, type `window.Viewify`. if it comes back with a function, then you're good to go.
+For a View to work, the `Viewify.js` script needs to be included on your Webpage. for example, 
+`xGraph.WebViewer` automatically imports viewify into its pages. Unless you are writing your own Http server, 
+Viewify is probably already imported for you. To verify it has been imported, in a browser console, type 
+`window.Viewify`. if it comes back with a function, then you're good to go.
 
 ## this.super
 
-When the first command is sent to your view (typically the Setup command), it injects `super` into the `this` context. `super` is used as a means to access shared View functionality, the Viewify base-class. A call to `this.Super` accepts two parameters: the command object `com`, and a callback function `fun`. The intended use is to maintain Base functionality while extending a command. 
+When the first command is sent to your view (typically the Setup command), it injects `super` into the `this` 
+context. `super` is used as a means to access shared View functionality, the Viewify base-class. A call to 
+`this.Super` accepts two parameters: the command object `com`, and a callback function `fun`. The intended 
+use is to maintain Base functionality while extending a command. 
 
 For example, if you had your own setup process:
 
@@ -38,7 +49,8 @@ function Setup(com, fun) {
 
 ## Schema
 
-The View "Base Class" Utilizes the `Setup` command, so even if your view doesn't require it, any entity that returns a [*View Dispatch Table*](#view-dispatch-table) should include `Setup` in its `schema.json`.
+The View "Base Class" Utilizes the `Setup` command, so even if your view doesn't require it, any entity that 
+returns a [*View Dispatch Table*](#view-dispatch-table) should include `Setup` in its `schema.json`.
 
 ``` json
 {
@@ -84,11 +96,15 @@ Alternatively, if you aren't using classes:
 ```
 
 ## Setup
-All Views receive a 'Setup' command before the first Render command is sent. This is a good place to setup the basic structure, or build elements that will not change.
+All Views receive a 'Setup' command before the first Render command is sent. This is a good place to setup 
+the basic structure, or build elements that will not change.
 
 ## Render
 
-The `Render` command is automatically sent to any entity who's children have changed. Before the command is dispatched to you, the array `this.Vlt.viewDivs` is populated with jQuery wrapped elements that are your View's children. If the View is not a Container View, you can safely ignore, and not implement the `Render` command.
+The `Render` command is automatically sent to any entity who's children have changed. Before the command is 
+dispatched to you, the array `this.Vlt.viewDivs` is populated with jQuery wrapped elements that are your 
+View's children. If the View is not a Container View, you can safely ignore, and not implement the `Render` 
+command.
 
 A simple `Render` command override:
 
@@ -103,13 +119,16 @@ function Render(com, fun) {
 }
 ```
 
-You'll notice that in this case, the super call is at the end. This is because the purpose of the super call, in this case, is to cascade the `Render` command down the DOM tree.
+You'll notice that in this case, the super call is at the end. This is because the purpose of the super call, 
+in this case, is to cascade the `Render` command down the DOM tree.
 
 ## DOMLoaded
 
-`DOMLoaded` is sent to you when all Views in the local [*root container*](#root-container-views) have completed loading. This refers, for example, to all views under a `RootView` or `PopupView`.
+`DOMLoaded` is sent to you when all Views in the local [*root container*](#root-container-views) have 
+completed loading. This refers, for example, to all views under a `RootView` or `PopupView`.
 
-Just like in `Render`, the purpose of the base class `DOMLoaded` command is to cascade the command down the DOM, so calling it after the view does what it needs to do is recommended.
+Just like in `Render`, the purpose of the base class `DOMLoaded` command is to cascade the command down the 
+DOM, so calling it after the view does what it needs to do is recommended.
 
 ``` javascript
 function DOMLoaded(com, fun) {
@@ -130,15 +149,20 @@ function DOMLoaded(com, fun) {
 
 ### `this.authenticate`
 
-`this.Authenticate` returns a promise that resolves to an Authenticated version of any command object, given as its first parameter. Usage of this command requires there be a module in the system that registers itself as a CommandAuthenticator. (i.e. It sets `window.CommandAuthenticator` to its Pid)
+`this.Authenticate` returns a promise that resolves to an Authenticated version of any command object, given 
+as its first parameter. Usage of this command requires there be a module in the system that registers itself 
+as a CommandAuthenticator. (i.e. It sets `window.CommandAuthenticator` to its Pid)
 
 ### `this.evoke`
 
-`this.evoke` was amended to take an options object as its second parameter that get applied to the outgoing Evoke Command. For more information, See version 3.4, where `this.evoke` was introduced
+`this.evoke` was amended to take an options object as its second parameter that get applied to the outgoing 
+Evoke Command. For more information, See version 3.4, where `this.evoke` was introduced
 
 ### `this.ascend`
 
-`this.ascend` was patched to disallow the options object parameter to overwrite the First parameter (Command Name). This will not effect most uses of ascend, however sometimes resulted in a bug. For more info on `this.ascend` see version 3.0 and 3.3
+`this.ascend` was patched to disallow the options object parameter to overwrite the First parameter (Command 
+Name). This will not effect most uses of ascend, however sometimes resulted in a bug. For more info on 
+`this.ascend` see version 3.0 and 3.3
 
 ## 3.4 (Released with xGraph 1.0)
 
@@ -150,7 +174,8 @@ function DOMLoaded(com, fun) {
 
 ### `this.asuper`
 
-`this.asuper(com: object): Promise<com: object || throws [err: any, cmd: object]>` is an asynchronous wrapper for `this.super(com: object, fun: (err: any, cmd: object) => void): void`
+`this.asuper(com: object): Promise<com: object || throws [err: any, cmd: object]>` is an asynchronous 
+wrapper for `this.super(com: object, fun: (err: any, cmd: object) => void): void`
 
 Example
 
@@ -187,7 +212,9 @@ can be written asynchronously as
 
 ### `this.genModuleAsync`
 
-`this.genModuleAsync(modDef: {Module: string, Par: object, Source?: string}): Promise<apx: string || throws err: any>` is an asynchronous wrapper for `this.genModule(modDef: {Module: string, Par: object, Source?: string}, fun: (err: any, apx: string) => void): void`.
+`this.genModuleAsync(modDef: {Module: string, Par: object, Source?: string}): Promise<apx: string || throws err: any>` 
+is an asynchronous wrapper for 
+`this.genModule(modDef: {Module: string, Par: object, Source?: string}, fun: (err: any, apx: string) => void): void`.
 
 Example
 
@@ -234,7 +261,8 @@ can be written asynchronously as
 
 ### `this.cdnImportCSS`
 
-`this.cdnImportCSS(url: string): void` will Import a stylesheet from a CDN. This is useful generally only in development.
+`this.cdnImportCSS(url: string): void` will Import a stylesheet from a CDN. This is useful generally only in 
+development.
 
 Example
 
@@ -244,7 +272,9 @@ this.cdnImportCss('//fonts.googleapis.com/icon?family=Material+Icons');
 
 ### `this.id`
 
-`this.id(id: string): string` is a function that creates GUIDs based on the provided `id` and your View's `Pid`. The same `this.id` call in the same entity instance will always return the same GUID. This allows for a view to declare simple IDs like `id="${this.id('button')}"` in the DOM and avoid conflicts.
+`this.id(id: string): string` is a function that creates GUIDs based on the provided `id` and your View's 
+`Pid`. The same `this.id` call in the same entity instance will always return the same GUID. This allows for 
+a view to declare simple IDs like `id="${this.id('button')}"` in the DOM and avoid conflicts.
 
 Example
 
@@ -278,7 +308,8 @@ Example
 
 ### `this.evoke`
 
-`this.evoke(pid: string): Promise<void>` will send an evoke to a pid, and take action on the response. This is used to standardize the way that a module declares its visualization. 
+`this.evoke(pid: string): Promise<void>` will send an evoke to a pid, and take action on the response. This 
+is used to standardize the way that a module declares its visualization. 
 
 Example
 
@@ -325,7 +356,8 @@ On the Browser, to open `Serverside`'s Visualization
 
 ### Update ascend Funtionality
 
-If ascend throws an error, it will now be in the form of `[err, cmd]` such that you can still pull out the original com, even in the event of a rejection.
+If ascend throws an error, it will now be in the form of `[err, cmd]` such that you can still pull out the 
+original com, even in the event of a rejection.
 
 Example
 
@@ -340,7 +372,8 @@ try {
 
 ### debugger loggging
 
-If URL Parameters are supported by the server beingg used, you can append `?debug` or `&debug` to display the full Viewify command tree in the browser console.
+If URL Parameters are supported by the server beingg used, you can append `?debug` or `&debug` to display the 
+full Viewify command tree in the browser console.
 
 Example
 
@@ -350,11 +383,14 @@ Example
 
 ### Cleanup / Destroy
 
-Sending a `Destroy` command to a View will cause it to remove itself from the DOM and the entity cache, causing it to be garbage collected.
+Sending a `Destroy` command to a View will cause it to remove itself from the DOM and the entity cache, 
+causing it to be garbage collected.
 
-As a result, The `Cleanup` command will be sent to the module, before it is destroyed, in case it needs to perform some actions on exit.
+As a result, The `Cleanup` command will be sent to the module, before it is destroyed, in case it needs to 
+perform some actions on exit.
 
-As well, the parent of the destroyed view will be sent a Render command with an updated `Vlt.views` and `Vlt.viewDivs`
+As well, the parent of the destroyed view will be sent a Render command with an updated `Vlt.views` and 
+`Vlt.viewDivs`
 
 ## 3.2
 
@@ -362,7 +398,8 @@ As well, the parent of the destroyed view will be sent a Render command with an 
 
 ### Drag and Drop
 
-`AttachDragListener` will make an element that you specify draggable. along with it, you can set some other data to be tied to the element / drop event (when it fires).
+`AttachDragListener` will make an element that you specify draggable. along with it, you can set some other 
+data to be tied to the element / drop event (when it fires).
 
 Example:
 
@@ -377,7 +414,8 @@ this.super({
 });
 ```
 
-To create an area where you can drop items, add the `dropArea` class to an element. the View that the Element belongs to will then get a `Drop` Event Command sent to it. the com will look like the following:
+To create an area where you can drop items, add the `dropArea` class to an element. the View that the Element 
+belongs to will then get a `Drop` Event Command sent to it. the com will look like the following:
 
 ``` javascript
 com = {
@@ -402,7 +440,8 @@ com = {
 
 ### Version Specificty
 
-`Viewify` function now accepts a second parameter, `version` as type `string` that is the semantic version number the view was built in compliance with.
+`Viewify` function now accepts a second parameter, `version` as type `string` that is the semantic version 
+number the view was built in compliance with.
 
 Example
 
@@ -418,11 +457,13 @@ Example
 
 ### Classes
 
-Each View's userland div, `this.Vlt.div`, is now given a class name equal to the last token in the dot separated `this.Par.Module`.
+Each View's userland div, `this.Vlt.div`, is now given a class name equal to the last token in the dot 
+separated `this.Par.Module`.
 
 ### IDs
 
-Each View, in its Config Par, Can now declared and `ID` key. If present, the value of the key will be used as the value of the `ID` attribute on `this.Vlt.div`.
+Each View, in its Config Par, Can now declared and `ID` key. If present, the value of the key will be used as 
+the value of the `ID` attribute on `this.Vlt.div`.
 
 ## 3.0
 
@@ -431,7 +472,9 @@ Each View, in its Config Par, Can now declared and `ID` key. If present, the val
 
 ### `this.super`
 
-`this.super(com, fun)` is a way to pass commands to your view's base class. For example, you may define your own setup function, however Viewify's own setup still needs to run. in this case, you would call `this.super` in your setup function.
+`this.super(com, fun)` is a way to pass commands to your view's base class. For example, you may define your 
+own setup function, however Viewify's own setup still needs to run. in this case, you would call `this.super` 
+in your setup function.
 
 Example
 
@@ -452,7 +495,8 @@ Example
 
 ### `this.ascend`
 
-`this.ascend` is an asyncronous version of `this.send` with slightly different parameters. the signature is `this.ascend(command: string, options: object, destination: string): Promise<com: object || throws err: any>` 
+`this.ascend` is an asyncronous version of `this.send` with slightly different parameters. the signature is 
+`this.ascend(command: string, options: object, destination: string): Promise<com: object || throws err: any>` 
 
 Example
 

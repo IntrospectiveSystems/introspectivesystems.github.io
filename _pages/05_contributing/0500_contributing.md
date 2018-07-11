@@ -41,7 +41,8 @@ you can install xGraph using npm, system-specific installation files, or compile
 native executables using npm build.  
 
 ### Install using npm 
-From your command line, navigate to the xGraph repository and run `npm install -g .` will install xgraph globally. This will install xgraph from the current
+From your command line, navigate to the xGraph repository and run `npm install -g .` will install xgraph 
+globally. This will install xgraph from the current
 branch of the repository (`sudo` may be required by permissions if on unix systems).
 
 ### Install using system-specific installation files

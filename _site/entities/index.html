@@ -21,37 +21,45 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
-<body>
-    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
-    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+<body class="bg-light">
+    <div class="row">
+      <div class="col"><header class="site-header" role="banner"><nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar-content">
-      <ul class="navbar-nav ml-auto"><li class="nav-item">
-              <a class="nav-link" href="/basics/">Basics</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/getting-started/">Getting Started</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/platform/">Platform</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/contributing/">Contributing</a>
-            </li></ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item">
+                <a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
     </div></nav>
 
 </header>
-<main aria-label="Content">
-          <div class="row">
-          <div class="col-md-3">
+</div>
+    </div>
+    <main aria-label="Content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 vertical-menu">
               <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/basics/">Basics</a>
                         </li><li class="nav-item"><a class="nav-link" href="/systems/">Systems</a>
                           </li><li class="nav-item"><a class="nav-link" href="/modules/">Modules</a>
                           </li><li class="nav-item active"><a class="nav-link" href="/entities/">Entities</a>
                           </li><li class="nav-item"><a class="nav-link" href="/terms/">Terms and Definitions</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/module-broker/">Module Broker</a>
                           </li></ul>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10 bg-white content">
               <h3 id="a-guide-to-the-xgraph-entity">A Guide to the xGraph Entity</h3>
 
 <p>An <strong>entity</strong> is the base component (function and data) of all xGraph solutions. An entity is a single 
@@ -226,9 +234,10 @@ function Ping() {
 </code></pre></div></div>
 
           </div>
-          </div>
-      </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
+        </div>
+      </main><footer class="site-footer h-card bg-light">
+  <div class="container">
+    <data class="u-url" href="/"></data>
 
     <h2 class="footer-heading">xGraph</h2>
 
@@ -245,7 +254,7 @@ function Ping() {
         <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
       </div>
     </div>
-
+  </div>
 
 </footer>
 </div>

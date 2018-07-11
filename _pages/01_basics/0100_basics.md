@@ -22,7 +22,7 @@ using Nexus.
 initiates the required parts and handles communication between these parts. 
 
 Most of the time developers don’t have to worry about these processes. When developing xGraph systems the 
-**[xGraph Executable Command Line Interface (CLI)](2.1-Getting-started-with-xGraph)** will handle compiling 
+**[xGraph Executable Command Line Interface (CLI)](/getting-started/)** will handle compiling 
 and running systems. 
 
 ## Parts of an xGraph System
@@ -34,7 +34,7 @@ work together, is explained.
 A **system** is made up of at least one module and is run using the xGraph core. A system is defined by a 
 **system structure object** and a **cache**. The system is initially compiled using the system structure 
 object found in a config.json file, and it is later run using the compiled cache. To learn more about xGraph 
-systems, see our [System Guide](1.2-Systems-Guide).
+systems, see our [System Guide](/systems/).
 
 ### Module
 A **module** is a fully encapsulated entity or group of entities. Modules are contained in a single directory, 
@@ -45,7 +45,7 @@ and are composed of several parts. A module includes:
 4. a README.md file for user documentation and a README.html file for developer documentation.
 
 A module is defined by the **module definition**, a JSON object that is used to generate a module. To learn 
-more about the xGraph module, see our [Module Guide](1.3-Module-Guide).
+more about the xGraph module, see our [Module Guide](/modules/).
 
 ### Entity
 An **entity** is the lowest level of the xGraph self-similar architecture. Entities should be built in 
@@ -55,7 +55,7 @@ An xGraph entity is compiled and managed by the xGraph core. An entity is define
 object includes the specific JavaScript file that has the entity’s logic, as well as any parameters the 
 entity expects on instantiation, and the commands that will be sent to the entity on instantiation. This 
 **entity definition** is used in the schema.json of the module. To learn more about the xGraph entity, see 
-our [Entity Guide](1.4-Entity-Guide).
+our [Entity Guide](/entities/).
 
 ### Command
 Each part of an xGraph system will be uniquely identified by a **Pid**. A Pid is a 32 character globally 

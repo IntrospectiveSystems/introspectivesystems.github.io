@@ -197,3 +197,7 @@ table td { border: 1px solid #e8e8e8; }
 
 /* site.theme overrides*/
 .svg-icon { padding-right: 0px; }
+
+.vertical-menu ul { padding: 1.5em 0; margin-left: 0em; }
+
+.content { padding: 1.5em; }

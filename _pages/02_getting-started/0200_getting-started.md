@@ -39,9 +39,9 @@ xgraph deploy
 ```
 Deploy will look in the current working directory to run an xGraph system from a cache. 
 
-See [Building an xGraph System]() for more information on building xGraph systems.
+See [Building an xGraph System](/building-systems/) for more information on building xGraph systems.
 
-See [Building an xGraph Module]() for more information on building xGraph modules. 
+See [Building an xGraph Module](/building-modules/) for more information on building xGraph modules. 
 
 
 ### xgraph help
@@ -108,5 +108,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 
 ### License
-This software is licensesd under the [GNU AFFERO GENERAL PUBLIC LICENSE Version 3](https://www.gnu.org/licenses/agpl-3.0.html).  
-Please contact us at sales@introspectivesystems.com if you are interested in pursuing one of our Enterprise licenses.
+This software is licensesd under the 
+[GNU AFFERO GENERAL PUBLIC LICENSE Version 3](https://www.gnu.org/licenses/agpl-3.0.html).  
+Please contact us at sales@introspectivesystems.com if you are interested in pursuing one of our Enterprise 
+licenses.

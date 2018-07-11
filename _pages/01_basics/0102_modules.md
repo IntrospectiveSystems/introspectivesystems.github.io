@@ -149,7 +149,7 @@ to be run in a system. Inside of a module, each entity is contained in a single 
 
 Each entity must be defined in the module's structure, in the `schema.json` file. This tells xGraph how the 
 entities within a module can communicate with each other. Entities are discussed in greater detail in the 
-[Entity Guide](1.4-Entity-Guide). Next, we will look at the module's structure and the `schema.json` file.
+[Entity Guide](/entities/). Next, we will look at the module's structure and the `schema.json` file.
 
 #### Module Structure (schema.json)
 The module's structure, defined by an object in the `schema.json` file, describes the internal architecture 
@@ -268,10 +268,9 @@ Below is an example of a simple module.json file.
 #### Documentation (README.md and README.html)
 Each module must include both user and developer documentation. A brief description of these files is found 
 below. For more information about module documentation, see the 
-[Module Documentation Requirements](3.1-Module-Documentation-Requirements).
+[Module Documentation Requirements](/module-documentation-requirements/).
 
 The README.md file holds user documentation. This is where things like examples and tutorials can be added. 
 
 The README.html file is mainly used for developer documentation. This file should include information for 
-each entity in a module, and can be generated using doxdox document generator. For information on how to 
-generate documentation, see the [Documentation Generation Guide](3.2-Documentation-Generation-Guide).
+each entity in a module, and can be generated using doxdox document generator.

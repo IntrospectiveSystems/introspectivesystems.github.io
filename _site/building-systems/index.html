@@ -21,28 +21,37 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
-<body>
-    <div class="container"><header class="site-header" role="banner"><nav class="navbar navbar-expand-lg bg-light">
-    <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse" data-target="#navbar-content"
+<body class="bg-light">
+    <div class="row">
+      <div class="col"><header class="site-header" role="banner"><nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
             aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar-content">
-      <ul class="navbar-nav ml-auto"><li class="nav-item">
-              <a class="nav-link" href="/basics/">Basics</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/getting-started/">Getting Started</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/platform/">Platform</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="/contributing/">Contributing</a>
-            </li></ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item">
+                <a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item">
+                <a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
     </div></nav>
 
 </header>
-<main aria-label="Content">
-          <div class="row">
-          <div class="col-md-3">
+</div>
+    </div>
+    <main aria-label="Content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 vertical-menu">
               <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/getting-started/">Getting Started</a>
                         </li><li class="nav-item active"><a class="nav-link" href="/building-systems/">Building Systems</a>
                           </li><li class="nav-item"><a class="nav-link" href="/building-modules/">Building Modules</a>
@@ -50,90 +59,25 @@
                           </li><li class="nav-item"><a class="nav-link" href="/viewify-quick-start/">Viewify Quick Start</a>
                           </li></ul>
           </div>
-          <div class="col-md-9">
-              <h1 id="xgraph-systems">xGraph Systems</h1>
+          <div class="col-md-10 bg-white content">
+              <p>Building an xGraph system from existing modules is easy. You can generate a new system using the xgraph 
+Executable Command Line Interface (CLI).</p>
 
-<p>An xGraph <strong>system</strong> is described as a collection of one or more modules that are instantiated by a single 
-kernel process (Nexus.js in node). This means that an xGraph system is simply a collection of xGraph modules 
-that are run as a single process using the xGraph core functionality.</p>
-
-<p>A <strong>system definition</strong> includes a <strong>system structure</strong> and the <strong>system cache</strong>. For information on how to 
-get started building xGraph systems, see <a href="2.2-Building-an-xGraph-System">Building an xGraph System</a>.</p>
-
-<p>The <strong>system structure</strong> is a JSON object that describes the way a system should be built. The system 
-structure object has two parts: <code class="highlighter-rouge">"Sources"</code>, and <code class="highlighter-rouge">"Modules"</code>.</p>
-
-<p>xGraph systems are easy to compile and run using the <a href="2.1-Get-started-with-xGraph">xGraph Executable</a>.</p>
-
-<p>Here is an example of a simple system structure.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-    "Sources": {
-        "core": "{core}"
-    },
-    "Modules": {
-        "RootView": {
-            "Module": "xGraph.RootView",
-            "Source": "core",
-            "Par": {
-                "Layout": "$3DView"
-            }
-        },
-        "3DView": {
-            "Module":"xGraph.3DView",
-            "Source": "core"
-        },
-        "Deferred": [
-            {
-                "Module": "xGraph.Mouse",
-                "Source": "core"
-            },
-            {
-                "Module": "xGraph.Popup",
-                "Source": "core"
-            },
-            {
-                "Module": "xGraph.Modelx3D",
-                "Source": "core"
-            }
-        ]
-    }
-}
-</code></pre></div></div>
-<p>The first section, the <code class="highlighter-rouge">"Sources"</code> key of the JSON object, variable paths for module sources. This is where 
-xGraph will look for the modules. These can be module brokers, places that serve modules, or a path to a 
-local file space where modules are being developed.</p>
-
-<p>Typically, as in this example, you will want to use a command line parameter to define the exact location of 
-modules. You denote a variable that will be replaced using a command line parameter by surrounding it with 
-curly brackets, as seen in our example:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    "Sources": {
-        "core": "{core}"
-    }
-</code></pre></div></div>
-<p>Here, the text <code class="highlighter-rouge">{core}</code> will replaced with the string given with the <code class="highlighter-rouge">core</code> flag when the system is run. 
-Using the xGraph CLI, this would look like the following command.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xgraph reset --cwd .\Systems\3DViewExample\ --core .\Modules\
+<p>To generate a new system with the name <code class="highlighter-rouge">SystemName</code> use the following command:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xgraph generate system SystemName
 </code></pre></div></div>
 
-<p>The next section, the <code class="highlighter-rouge">"Modules"</code> key, has information about all the modules in the system. First, you will 
-see modules that are explicitly defined, using their module definition. These will be loaded when the system 
-starts up. Details about module definitions can be found in the <a href="1.3-Module-Guide">Module Guide</a>.</p>
+<p>This command will generate a new system with the name <code class="highlighter-rouge">SystemName</code>. If you provide the generate system 
+command a path instead of a simple string, the module will be generated at the path provided.</p>
 
-<p>Next inside of the <code class="highlighter-rouge">"Modules"</code> key is the <code class="highlighter-rouge">"Deferred"</code> array. This array is a list of modules the system 
-needs to run that are not loaded when the system starts up. Typically generated by other modules, the 
-system’s <code class="highlighter-rouge">"Deferred"</code> modules will be loaded into a system’s cache, so the system does not need to access 
-external sources when it is run.</p>
-
-<p>A <strong>system cache</strong> has everything you need to run an xGraph system. That means you can develop a system on 
-any machine, compile the cache, and run it from the cache on another machine. It also means xGraph doesn’t 
-need any external dependencies to run a system, so the system can be run on a machine that does not have an 
-internet connection.</p>
+<p>The directory <code class="highlighter-rouge">SystemName</code> will have a template config.json file in it. Now you can add existing modules to 
+your xGraph system by adding them to the <code class="highlighter-rouge">config.json</code> file.</p>
 
           </div>
-          </div>
-      </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
+        </div>
+      </main><footer class="site-footer h-card bg-light">
+  <div class="container">
+    <data class="u-url" href="/"></data>
 
     <h2 class="footer-heading">xGraph</h2>
 
@@ -150,7 +94,7 @@ internet connection.</p>
         <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
       </div>
     </div>
-
+  </div>
 
 </footer>
 </div>

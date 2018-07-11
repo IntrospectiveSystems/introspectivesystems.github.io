@@ -3,12 +3,16 @@
 
   {%- include head.html -%}
 
-  <body>
-    <div class="container">
-      {%- include header.html -%}
-      <main aria-label="Content">
-          <div class="row">
-          <div class="col-md-3">
+  <body class="bg-light">
+    <div class="row">
+      <div class="col">
+        {%- include header.html -%}
+      </div>
+    </div>
+    <main aria-label="Content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 vertical-menu">
               <ul class="nav flex-column">
                 {%- for path in page_paths -%}
                   {%- assign my_page = site.pages | where: "path", path | first -%}
@@ -16,6 +20,8 @@
                     {%- assign current_tag = "basics" -%}
                   {%- elsif page.tags contains 'getting-started' -%}
                     {%- assign current_tag = "getting-started" -%}
+                  {%- elsif page.tags contains "modules" -%}
+                    {%- assign current_tag = "modules" -%}
                   {% elsif page.tags contains "platform" -%}
                     {%- assign current_tag = "platform" -%}
                   {% elsif page.tags contains "contributing" -%}
@@ -46,10 +52,10 @@
                 {% endfor -%}
               </ul>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-10 bg-white content">
               {{ content }}
           </div>
-          </div>
+        </div>
       </main>
       {%- include footer.html -%}
     </div>
