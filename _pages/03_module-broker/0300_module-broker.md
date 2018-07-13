@@ -4,6 +4,7 @@ title: Module Broker
 permalink: /module-broker/
 tags: ['root', 'modules']
 ---
+# Module Broker
 
 The xGraph module broker provides users with access to all of xGraph's core modules. You can use xGraph core 
 modules without downloading the modules by specifying the xGraph module broker as the source for a core 

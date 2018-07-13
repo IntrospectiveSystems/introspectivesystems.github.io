@@ -5,7 +5,7 @@ permalink: /viewify-quick-start/
 tags: ['getting-started']
 ---
 
-# Getting Started with Views
+# Viewify Quick Start
 
 - [schema.json](#schema)
 - [View Entity](#view-entity)

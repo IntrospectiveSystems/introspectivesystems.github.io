@@ -4,11 +4,13 @@ title: Module Documentation Requirements
 permalink: /module-documentation-requirements/
 tags: ['contributing']
 ---
+# Module Documentation Requirements
+
 This is a guide for creating xGraph module documentation. When building an xGraph module for the module 
 repository, it is important to include the following documentation. This will make it easier for others to 
 find and use your modules.
 
-### Two Types of Documentation
+## Two Types of Documentation
 We require our community to include both user and developer documentation for their modules. User 
 documentation must be included as a README.md file, and developer documentation must be included as a
  README.html file. Next, we will discuss the details for the user and developer documentation.
@@ -129,7 +131,7 @@ To create the full html documentation for the entire module run the following
 doxdox '*.js' --layout bootstrap -o README.html
 ```
 
-### Module Definition
+## Module Definition
 
 Basic Example
 ```javascript

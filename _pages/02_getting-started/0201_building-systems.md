@@ -4,6 +4,8 @@ title: Building Systems
 permalink: /building-systems/
 tags: ['getting-started']
 ---
+# Building Systems
+
 Building an xGraph system from existing modules is easy. You can generate a new system using the xgraph 
 Executable Command Line Interface (CLI). 
 

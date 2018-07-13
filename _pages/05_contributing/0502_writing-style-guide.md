@@ -5,7 +5,7 @@ permalink: /writing-style-guide/
 tags: ['contributing']
 ---
 
-### Writing Style Guidelines
+# Writing Style Guidelines
 Here at Introspective Systems, we work hard to maintain a creative and welcoming community. We do this by 
 making sure we follow some basic writing style guidelines when writing xGraph documentation. You should 
 follow these guidelines when writing xGraph Module documentation.

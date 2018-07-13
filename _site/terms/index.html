@@ -53,46 +53,46 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <p>This document is an introduction to the terminology we will be using while talking about xGraph systems. The 
-following definitions describe components of xGraph systems, as well as supportive definitions that help us 
-talk about what is happening in an xGraph system. So, let’s just jump into it.</p>
+              <h1 id="definitions">Definitions</h1>
 
-<h2 id="the-definitions">The Definitions</h2>
+<p>This is an introduction to the terminology we will be using while talking about xGraph systems. These 
+definitions describe components of xGraph systems, as well as supportive definitions that help us talk 
+about what is happening in an xGraph system. So, let’s just jump into it.</p>
 
-<h3 id="entity">Entity</h3>
+<h2 id="entity">Entity</h2>
 <p>An entity is the base component (function and data) of all xGraph solutions. An entity is a single JavaScript 
 function that is instantiated with the xGraph core. An entity must be encapsulated in a module to be run in 
 an xGraph system.  There is a base definition of the Entity class in the Nexus.js code. All entities can be 
 uniquely described by their pid. For details on xGraph entities, see our <a href="/entities/">Entity Guide</a>.</p>
 
-<h3 id="pid">Pid</h3>
+<h2 id="pid">Pid</h2>
 <p>A 32 character, globally unique ID. Every entity has a <strong>pid</strong> and this pid is unique.</p>
 
-<h3 id="par">Par</h3>
+<h2 id="par">Par</h2>
 <p>The <code class="highlighter-rouge">this.Par</code> object of an entity that is defined during instantiation of that entity. These can be set in 
 code, the module’s schema.json or the system’s config.json. Notably, this is where the entities pid can be 
 found (<code class="highlighter-rouge">this.Par.Pid</code>). The <strong>Par</strong> object can be saved by the <code class="highlighter-rouge">this.save()</code> function into the cache, thus 
 making it persistent.</p>
 
-<h3 id="vault">Vault</h3>
+<h2 id="vault">Vault</h2>
 <p>This <code class="highlighter-rouge">this.Vlt</code> object of an entity that is defined during instatiation of that entity. Data found in this 
 object is temporal and is deleted when the system stops.</p>
 
-<h3 id="module">Module</h3>
+<h2 id="module">Module</h2>
 <p>A <strong>Module</strong> is a collection of entities that work together to perform a service/task. The structure is 
 defined by a schema.json file. Each <strong>module</strong> has a single entity that serves as the Apex of the module. For 
 details on xGraph modules, see our <a href="/modules/">Module Guide</a>.</p>
 
-<h3 id="module-type-or-template-or-class">Module Type (or Template, or Class)</h3>
+<h2 id="module-type-or-template-or-class">Module Type (or Template, or Class)</h2>
 <p>The module definition separate from any instantiations of the module.</p>
 
-<h3 id="apex">Apex</h3>
+<h2 id="apex">Apex</h2>
 <p>The particular entity that was defined by the <strong>Apex</strong> key in the schema.json of the module to be the input 
 and output manager of the module. This means that all messages sent to this module are handled in this 
 entity, and all messages sent from this module are sent from this entity. Only the <strong>Apex</strong> has the 
 capability of sending and receiving messages outside the context of the module.</p>
 
-<h3 id="module-structure-schemajson">Module Structure (schema.json)</h3>
+<h2 id="module-structure-schemajson">Module Structure (schema.json)</h2>
 <p>The template for building a module.  Here is a basic example:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
@@ -111,11 +111,11 @@ capability of sending and receiving messages outside the context of the module.<
 
 </code></pre></div></div>
 
-<h3 id="system">System</h3>
+<h2 id="system">System</h2>
 <p>A collection of one or more Modules that are instantiated by a single kernel process (Nexus.js in node). For 
 details on xGraph systems, see our <a href="/systems/">Systems Guide</a>.</p>
 
-<h3 id="system-structure-object">System Structure Object</h3>
+<h2 id="system-structure-object">System Structure Object</h2>
 <p>The template for building a system, often found in a config.json file.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
@@ -134,41 +134,41 @@ details on xGraph systems, see our <a href="/systems/">Systems Guide</a>.</p>
 }
 </code></pre></div></div>
 
-<h3 id="nexus">Nexus</h3>
+<h2 id="nexus">Nexus</h2>
 <p>The kernel process that starts and gives function to the xGraph system. Nexus can use either a system 
 structure object or a cache to start a system.</p>
 
-<h3 id="cache">Cache</h3>
+<h2 id="cache">Cache</h2>
 <p>The directory where a completely encapsulated system exists once it is instantiated. The <strong>cache</strong> consists 
 of a directory for every module type in the system. Each module type directory contains a module.json 
 description of the module, as well as a directory for each instance of the module. Finally, each module 
 instance directory contains a JSON description of the module instance.</p>
 
-<h3 id="project-or-galaxy-or-system-of-systems">Project (or Galaxy, or System of Systems)</h3>
+<h2 id="project-or-galaxy-or-system-of-systems">Project (or Galaxy, or System of Systems)</h2>
 <p>A <strong>project</strong> is a system or a collection of systems that interact to perform a task.</p>
 
-<h3 id="proxy">Proxy</h3>
+<h2 id="proxy">Proxy</h2>
 <p>A single module that can be instantiated as either a client (requesting) or server (listening) to enable the 
 interconnection of a systems. Communication can be either a query and response from the client to the server, 
 or broadcast from the server to one or more clients.</p>
 
-<h3 id="plexus">Plexus</h3>
+<h2 id="plexus">Plexus</h2>
 <p>A module that acts as a directory where servers can post their host and port (if using tcp/ip communications) 
 and clients can request them. The name and Channel (Chan) define the address. Often, this is in the form of a 
 system that includes a single Proxy module, known as a <strong>Plexus System</strong>.</p>
 
-<h3 id="server">Server</h3>
+<h2 id="server">Server</h2>
 <p>The server module that spins up an xGraph system in a web browser.</p>
 
-<h3 id="viewified-viewifyjs">Viewified (Viewify.js)</h3>
+<h2 id="viewified-viewifyjs">Viewified (Viewify.js)</h2>
 <p>An entity whose dispatch table has been run through the <strong>Viewify.js</strong> script. <strong>Viewify.js</strong> provides any 
 entity with the base code to be a View.</p>
 
-<h3 id="view">View</h3>
+<h2 id="view">View</h2>
 <p>A module who’s Apex entity’s dispatch table has been viewified, or run through the Viewify.js script and 
 contains an actual graphical user interface element that can shown to an end user.</p>
 
-<h3 id="discovery">Discovery</h3>
+<h2 id="discovery">Discovery</h2>
 <p>A method for determining other running systems that is only available between systems through a Plexus System 
 where we register servers and can request their Chan and Name.</p>
 

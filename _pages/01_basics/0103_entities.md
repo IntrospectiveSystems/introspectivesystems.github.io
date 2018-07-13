@@ -4,7 +4,7 @@ title: Entities
 permalink: /entities/
 tags: ['basics']
 ---
-### A Guide to the xGraph Entity
+# Entities
 
 An **entity** is the base component (function and data) of all xGraph solutions. An entity is a single 
 JavaScript function that is instantiated with the xGraph core. An entity must be encapsulated in a module to 
@@ -13,7 +13,7 @@ when the module is generated, the entity's definition is found in the module's `
 entity is generated dynamically by another entity in the module, the entity definition is found in the entity 
 that called the generation.
 
-#### Entity Definition
+## Entity Definition
 Below is an example of an entity definition.
 ```
 "HelloWorld2": {
@@ -32,7 +32,7 @@ parameter can be accessed in the context of the entity by accessing `this.Par.So
 parameters can be added here. 
 
 
-#### JavaScript Function
+## JavaScript Function
 An entity is represented by a single JavaScript class or function in a single JavaScript file. 
 
 The most simple way to create a JavaScript entity is with a JavaScript class. xGraph can interpret a 
@@ -56,7 +56,7 @@ dispatch table.
 		dispatch: LayoutManager.prototype
 	}
 
-#### Commands
+## Commands
 Most of the entities code consists of command functions. Both types of entity will have a number of 
 functions, called xGraph commands. These functions accept two arguments: the command object, `com`, and a 
 callback function, `fun`. Each function must be called by an xGraph command.

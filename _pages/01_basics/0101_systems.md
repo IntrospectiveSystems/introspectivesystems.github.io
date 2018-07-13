@@ -5,7 +5,7 @@ permalink: /systems/
 tags: ['basics']
 ---
 
-# xGraph Systems
+# Systems
 
 An xGraph **system** is described as a collection of one or more modules that are instantiated by a single 
 kernel process (Nexus.js in node). This means that an xGraph system is simply a collection of xGraph modules 

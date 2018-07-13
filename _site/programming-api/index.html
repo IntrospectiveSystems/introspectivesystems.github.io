@@ -50,7 +50,7 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="api">API</h3>
+              <h1 id="programming-api">Programming API</h1>
 
 <ol>
   <li><a href="#functions">Functions</a>
@@ -78,16 +78,16 @@
   </li>
 </ol>
 
-<h4 id="functions">Functions</h4>
+<h2 id="functions">Functions</h2>
 <p>The xGraph platform offers a number of features to support the development of these fractal graph 
 architectures. In addition to the self-similar architecture defined by entities and modules, xGraph’s Nexus 
 provides programmers with a few special functions. These functions provide programmers with the ability to 
 communicate between entities and modules (or build relations), generate xGraph structures dynamically, and 
 save the current state of a system. All these functions exist in the <code class="highlighter-rouge">this</code> context of every entity.</p>
 
-<h5 id="thisgenmodulemoduleobject-callback">this.genModule(moduleObject, callback);</h5>
-<h5 id="-and-">-and-</h5>
-<h5 id="thisgenmodulesmoduleobject-callback">this.genModules(moduleObject, callback);</h5>
+<h3 id="thisgenmodulemoduleobject-callback">this.genModule(moduleObject, callback);</h3>
+<h3 id="-and-">-and-</h3>
+<h3 id="thisgenmodulesmoduleobject-callback">this.genModules(moduleObject, callback);</h3>
 <p>The <code class="highlighter-rouge">genModule</code> function takes a module object and a callback function, starts the modules found in the 
 module object, and then calls the callback function.</p>
 
@@ -122,12 +122,12 @@ Either a single module definition object</p>
     }
 </code></pre></div></div>
 
-<h5 id="thisaddmodulemodulename-modulezip-callback">this.addModule(moduleName, moduleZip, callback);</h5>
+<h3 id="thisaddmodulemodulename-modulezip-callback">this.addModule(moduleName, moduleZip, callback);</h3>
 <p>The <code class="highlighter-rouge">addModule</code> function allows you to add a module to the system by adding the module’s zip to the system’s 
 cache. To use this function, the <code class="highlighter-rouge">--allow-add-module</code> flag must be set when running the system from the CLI. 
 <code class="highlighter-rouge">addModule</code> takes the Zipped module file and inserts it into the system’s cache under the name of the module.</p>
 
-<h5 id="thisgenentityentitydefinition-callback">this.genEntity(entityDefinition, callback);</h5>
+<h3 id="thisgenentityentitydefinition-callback">this.genEntity(entityDefinition, callback);</h3>
 <p>The <code class="highlighter-rouge">genEntity</code> command takes an entity definition object and generates the entity in the module. An entity 
 can only be generated in the module that is making the call. When the function is complete, the callback is 
 returned with the pid of the generated entity in object.Pid.</p>
@@ -153,14 +153,14 @@ let callback = ((err, apx) =&gt; {
 this.genEntity(entity, callback);
 </code></pre></div></div>
 
-<h5 id="thisdeleteentityapex-pid-callback">this.deleteEntity(apex, pid, callback);</h5>
+<h3 id="thisdeleteentityapex-pid-callback">this.deleteEntity(apex, pid, callback);</h3>
 <p>The <code class="highlighter-rouge">deleteEntity</code> function takes a module apex, an entity pid and a callback function and deletes the entity 
 from the module’s memory. If the entity pid is the module’s apex, then all the module’s entities are deleted.</p>
 
-<h5 id="thisgenpid">this.genPid();</h5>
+<h3 id="thisgenpid">this.genPid();</h3>
 <p>The genPid function does not accept any parameters and returns a 32 character hexadecimal pid.</p>
 
-<h5 id="thissendcommand-pid-callback">this.send(command, pid, callback);</h5>
+<h3 id="thissendcommand-pid-callback">this.send(command, pid, callback);</h3>
 <p>The special function that you will use most is the <code class="highlighter-rouge">send</code> function. <code class="highlighter-rouge">send</code> requires three parameters: a 
 command object, a destination pid, and a callback function. Send then sends the command object and the 
 callback function to the xGraph part (entity or module, depending on the fractal layer) specified in the Pid.</p>
@@ -203,7 +203,7 @@ or a module’s structure object, a schema.json file.</p>
     }
 </code></pre></div></div>
 
-<h5 id="thissavecallback">this.save(callback);</h5>
+<h3 id="thissavecallback">this.save(callback);</h3>
 <p>The <code class="highlighter-rouge">save</code> function takes only a callback function. The function saves the state of this entity, the entity 
 that called the function, including its current <code class="highlighter-rouge">Par</code> and <code class="highlighter-rouge">Vlt</code>, to the cache. If this entity is not an Apex, 
 the save message is sent to the Apex of this entity’s module. If it is an Apex, save the entity’s 
@@ -220,10 +220,10 @@ example of an entity that saves itself on the <code class="highlighter-rouge">St
 	}
 </code></pre></div></div>
 
-<h5 id="thisgetfilemodule-filename-callback">this.getFile(module, filename, callback);</h5>
+<h3 id="thisgetfilemodule-filename-callback">this.getFile(module, filename, callback);</h3>
 <p>Get a file from the module.json module definition.</p>
 
-<h5 id="thisrequiremodule">this.require(‘module’);</h5>
+<h3 id="thisrequiremodule">this.require(‘module’);</h3>
 <p>The <code class="highlighter-rouge">require</code> function handles external dependencies in xGraph. Given a module name, <code class="highlighter-rouge">require</code> loads the 
 given module, returning the module object. Often, you will want to save the module object in the entity’s 
 Vault, <code class="highlighter-rouge">this.Vlt</code>.</p>
@@ -241,32 +241,32 @@ if (sqlite3 == null || sqlite3 == undefined) {
 Vlt.Sqlite3 = sqlite3;
 </code></pre></div></div>
 
-<h5 id="thisexitcode">this.exit(code);</h5>
+<h3 id="thisexitcode">this.exit(code);</h3>
 <p>The <code class="highlighter-rouge">exit</code> function instructs nexus to exit with the code provided. Nexus will then stop all running xGraph 
 processes related to the system.</p>
 
-<h4 id="logs">Logs</h4>
+<h2 id="logs">Logs</h2>
 <p>xGraph offers a suit of logging functions that enable logs to be printed or saved without losing information 
 on the structure of your xGraph system. There are a variety of functions available to print logs, each with 
 its own special functionality. Next we will look at the different log functions and how they might be used.</p>
 
-<h5 id="info---logistring">Info - log.i(string);</h5>
+<h3 id="info---logistring">Info - log.i(string);</h3>
 <p><code class="highlighter-rouge">log.i</code> takes a string and prints it. It is meant for printing general statements and logs. These will be 
 printed and will be printed in turquoise.</p>
 
-<h5 id="warning---logwstring">Warning - log.w(string);</h5>
+<h3 id="warning---logwstring">Warning - log.w(string);</h3>
 <p><code class="highlighter-rouge">log.w</code> takes a string and prints it. It is meant for printing warning statements and logs. These will 
 typically be printed in white.</p>
 
-<h5 id="error---logestring">Error - log.e(string);</h5>
+<h3 id="error---logestring">Error - log.e(string);</h3>
 <p><code class="highlighter-rouge">log.e</code> takes a string and prints it. It is meant for printing error statements and logs. These will 
 typically be printed in red.</p>
 
-<h5 id="debug---logdstring">Debug - log.d(string);</h5>
+<h3 id="debug---logdstring">Debug - log.d(string);</h3>
 <p><code class="highlighter-rouge">log.d</code> takes a string and prints it. It is meant for printing debug statements and logs. These will 
 typically be printed in fuchsia.</p>
 
-<h5 id="verbose---logvstring">Verbose - log.v(string);</h5>
+<h3 id="verbose---logvstring">Verbose - log.v(string);</h3>
 <p><code class="highlighter-rouge">log.v</code> takes a string and prints it. It is meant for printing verbose statements, or statements that give 
 specific or detailed information. These will typically be printed in gray.</p>
 

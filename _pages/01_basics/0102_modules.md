@@ -4,7 +4,7 @@ title: Modules
 permalink: /modules/
 tags: ['basics']
 ---
-### xGraph Modules
+# Modules
 
 An xGraph **module** is a collection of entities that work together to perform a service or task. Each module 
 includes:
@@ -16,7 +16,7 @@ includes:
 First we will explain how to use a module in an xGraph system. Next, we will look at the parts of a module in 
 detail.
 
-#### Using A Module
+## Using A Module
 A module can be included in a system in the system's structure, or generated later using the `genModule` 
 function. Module instances that are instantiated when the system is run are included in the `Modules` system, 
 while modules that will be included later using `genModule` can be pre-built by adding it to the the system's 
@@ -139,11 +139,11 @@ the information passed through Validate's `Par`.
 ```
 
 
-#### Apex Entity
+## Apex Entity
 The module's **apex** is the entity that will handle incoming messages. This entity is identified as the apex 
 in the module's structure. 
 
-#### Other Entities
+## Other Entities
 An **entity** is the lowest fractal layer in an xGraph system. All entities must be encapsulated in a module 
 to be run in a system. Inside of a module, each entity is contained in a single JavaScript file. 
 
@@ -175,7 +175,7 @@ the Apex entity. A simple example where the apex entity references the `"OtherEn
 }
 ```
 
-#### Module Interface (module.json)
+## Module Interface (module.json)
 The `"module.json"` file determines the **module's interface**. This object has several keys. The first set 
 of keys reference information about the module's identity. The next set keys reference the input and output 
 commands that the module can send and receive.
@@ -265,7 +265,7 @@ Below is an example of a simple module.json file.
 }
 ```
 
-#### Documentation (README.md and README.html)
+## Documentation (README.md and README.html)
 Each module must include both user and developer documentation. A brief description of these files is found 
 below. For more information about module documentation, see the 
 [Module Documentation Requirements](/module-documentation-requirements/).

@@ -11,7 +11,7 @@ instantiating and communication between xGraph systems. The xGraph CLI makes it
 easy to interact with xGraph systems. You can easily install xGraph using the 
 npm package installer.
 
-## Getting Started with npm
+## npm install
 To install xGraph directly form npm, you will need the [npm package manager](https://www.npmjs.com/). 
 Once you have installed npm, you can install xGraph using the package manager.
 
@@ -27,13 +27,13 @@ the `sudo` prefix.
 sudo npm install -g xgraph
 ```
 
-## xGraph Command Line Interface (CLI)
+## xgraph Command Line Interface (CLI)
 The xGraph command line interface accelerates the building and running of xGraph 
 Systems. Using the xGraph CLI, you can generate new modules and systems, compile 
 systems from a system structure object, and run systems from a system cache. 
 You can use the xGraph executable CLI to run existing systems from a cache. To do this, use the command
 
-### xgraph deploy
+## xgraph deploy
 ```
 xgraph deploy 
 ```
@@ -44,7 +44,7 @@ See [Building an xGraph System](/building-systems/) for more information on buil
 See [Building an xGraph Module](/building-modules/) for more information on building xGraph modules. 
 
 
-### xgraph help
+## xgraph help
 xGraph uses the following API commands, available in the xGraph CLI using `xgraph help`
 ```
 Compile and Run xGraph systems with a few simple commands.
@@ -97,17 +97,17 @@ Examples:
         xgraph generate module MyFirstModule
 ```
 
-### Contributing
+## Contributing
 
 Please read CONTRIBUTING.md for details on our code of
 conduct, and the process for submitting pull requests to us.
 
-### Versioning
+## Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
 
 
-### License
+## License
 This software is licensesd under the 
 [GNU AFFERO GENERAL PUBLIC LICENSE Version 3](https://www.gnu.org/licenses/agpl-3.0.html).  
 Please contact us at sales@introspectivesystems.com if you are interested in pursuing one of our Enterprise 

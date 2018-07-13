@@ -50,16 +50,16 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="documentation">Documentation</h1>
+              <h1 id="platform">Platform</h1>
 
 <p>Once you’ve set up your new module, you’ll want to add some programming logic. The programming logic for a 
 module can be distributed throughout entities and commands. This enables the fractal graph architecture of 
 the xGraph platform.</p>
 
-<h3 id="the-basics">The Basics</h3>
+<h2 id="the-basics">The Basics</h2>
 <p>First, lets cover some basics.</p>
 
-<h4 id="fractal-architecture">Fractal Architecture</h4>
+<h3 id="fractal-architecture">Fractal Architecture</h3>
 <p>xGraph modules are structured in a way that enables a base level for our architecture of self-similar layers. 
 Each module is comprised of entities, which each consist of a single JavaScript function (or class). The 
 entity is the smallest part of an xGraph system.</p>
@@ -69,20 +69,20 @@ the graph. And in a system of systems, a system can be represented by a single n
 fractal nature of xGraph, and we could continue on this way to a system of systems of systems, and so on and 
 so forth.</p>
 
-<h4 id="apex-entity">Apex Entity</h4>
+<h3 id="apex-entity">Apex Entity</h3>
 <p>Each module has a special entity called the Apex. This entity is identified as the apex in the module’s 
 structure file, <code class="highlighter-rouge">schema.json</code>. The Apex of a module handles all incoming commands, and receives the parameters 
 defined in the module definition.</p>
 
-<h4 id="module-parameters-thispar">Module Parameters (this.Par)</h4>
+<h3 id="module-parameters-thispar">Module Parameters (this.Par)</h3>
 <p>Module parameters included in the module definition will be available in the parameter object of the modules 
 Apex entity, <code class="highlighter-rouge">this.Par</code>.</p>
 
-<h4 id="entity-vault-thisvlt">Entity Vault (this.Vlt)</h4>
+<h3 id="entity-vault-thisvlt">Entity Vault (this.Vlt)</h3>
 <p>Global entity variables must be saved in the vault so that they can be shared between commands. Variables can 
 be saved as keys in the vault object and accessed through <code class="highlighter-rouge">this.Vlt</code>.</p>
 
-<h4 id="commands">Commands</h4>
+<h3 id="commands">Commands</h3>
 <p>In an xGraph module, each entity must be contained in a single JavaScript file. Each entity has a set of 
 commands that it is capable of responding to. xGraph facilitates the communication between nodes using 
 command messages.</p>
@@ -96,7 +96,7 @@ parameters: com, the command function, and fun, the callback function. The comma
 to identify relations between nodes, as well as for information passing purposes. The callback function is 
 used to return information and program control to the calling function.</p>
 
-<h4 id="additional-notes">Additional Notes</h4>
+<h3 id="additional-notes">Additional Notes</h3>
 <p>Callbacks are often used in asynchronous programming. The xGraph platform is built on Node.js, an 
 asynchronous language that uses callbacks. Because xGraph is a platform built on Node.js, most JavaScript 
 features and libraries will work with the xGraph platform.</p>

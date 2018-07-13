@@ -53,7 +53,7 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="a-guide-to-the-xgraph-entity">A Guide to the xGraph Entity</h3>
+              <h1 id="entities">Entities</h1>
 
 <p>An <strong>entity</strong> is the base component (function and data) of all xGraph solutions. An entity is a single 
 JavaScript function that is instantiated with the xGraph core. An entity must be encapsulated in a module to 
@@ -62,7 +62,7 @@ when the module is generated, the entityâ€™s definition is found in the moduleâ€
 entity is generated dynamically by another entity in the module, the entity definition is found in the entity 
 that called the generation.</p>
 
-<h4 id="entity-definition">Entity Definition</h4>
+<h2 id="entity-definition">Entity Definition</h2>
 <p>Below is an example of an entity definition.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"HelloWorld2": {
     "Entity": "HelloWorld2.js",
@@ -79,7 +79,7 @@ listed, you can add any number of entity parameters as key-value pairs.</p>
 parameter can be accessed in the context of the entity by accessing <code class="highlighter-rouge">this.Par.SomePar</code>. Any number of 
 parameters can be added here.</p>
 
-<h4 id="javascript-function">JavaScript Function</h4>
+<h2 id="javascript-function">JavaScript Function</h2>
 <p>An entity is represented by a single JavaScript class or function in a single JavaScript file.</p>
 
 <p>The most simple way to create a JavaScript entity is with a JavaScript class. xGraph can interpret a 
@@ -103,7 +103,7 @@ dispatch table.</p>
 }
 </code></pre></div></div>
 
-<h4 id="commands">Commands</h4>
+<h2 id="commands">Commands</h2>
 <p>Most of the entities code consists of command functions. Both types of entity will have a number of 
 functions, called xGraph commands. These functions accept two arguments: the command object, <code class="highlighter-rouge">com</code>, and a 
 callback function, <code class="highlighter-rouge">fun</code>. Each function must be called by an xGraph command.</p>

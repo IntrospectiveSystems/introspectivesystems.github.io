@@ -53,7 +53,7 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="xgraph-modules">xGraph Modules</h3>
+              <h1 id="modules">Modules</h1>
 
 <p>An xGraph <strong>module</strong> is a collection of entities that work together to perform a service or task. Each module 
 includes:</p>
@@ -67,7 +67,7 @@ includes:</p>
 <p>First we will explain how to use a module in an xGraph system. Next, we will look at the parts of a module in 
 detail.</p>
 
-<h4 id="using-a-module">Using A Module</h4>
+<h2 id="using-a-module">Using A Module</h2>
 <p>A module can be included in a system in the system’s structure, or generated later using the <code class="highlighter-rouge">genModule</code> 
 function. Module instances that are instantiated when the system is run are included in the <code class="highlighter-rouge">Modules</code> system, 
 while modules that will be included later using <code class="highlighter-rouge">genModule</code> can be pre-built by adding it to the the system’s 
@@ -185,11 +185,11 @@ the information passed through Validate’s <code class="highlighter-rouge">Par<
     }
 </code></pre></div></div>
 
-<h4 id="apex-entity">Apex Entity</h4>
+<h2 id="apex-entity">Apex Entity</h2>
 <p>The module’s <strong>apex</strong> is the entity that will handle incoming messages. This entity is identified as the apex 
 in the module’s structure.</p>
 
-<h4 id="other-entities">Other Entities</h4>
+<h2 id="other-entities">Other Entities</h2>
 <p>An <strong>entity</strong> is the lowest fractal layer in an xGraph system. All entities must be encapsulated in a module 
 to be run in a system. Inside of a module, each entity is contained in a single JavaScript file.</p>
 
@@ -220,7 +220,7 @@ the Apex entity. A simple example where the apex entity references the <code cla
 }
 </code></pre></div></div>
 
-<h4 id="module-interface-modulejson">Module Interface (module.json)</h4>
+<h2 id="module-interface-modulejson">Module Interface (module.json)</h2>
 <p>The <code class="highlighter-rouge">"module.json"</code> file determines the <strong>module’s interface</strong>. This object has several keys. The first set 
 of keys reference information about the module’s identity. The next set keys reference the input and output 
 commands that the module can send and receive.</p>
@@ -311,7 +311,7 @@ and arguments referenced in <code class="highlighter-rouge">"optional"</code> ar
 }
 </code></pre></div></div>
 
-<h4 id="documentation-readmemd-and-readmehtml">Documentation (README.md and README.html)</h4>
+<h2 id="documentation-readmemd-and-readmehtml">Documentation (README.md and README.html)</h2>
 <p>Each module must include both user and developer documentation. A brief description of these files is found 
 below. For more information about module documentation, see the 
 <a href="/module-documentation-requirements/">Module Documentation Requirements</a>.</p>

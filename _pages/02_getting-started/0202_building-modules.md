@@ -5,7 +5,7 @@ permalink: /building-modules/
 tags: ['getting-started']
 ---
 
-# xGraph Modules
+# Building Modules
 
 xGraph fosters an open source community and we encourage developers to build their own xGraph modules. 
 Additionally, if you are building a specialized system, you may want to build your own xGraph modules. 
