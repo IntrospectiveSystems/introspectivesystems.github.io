@@ -3,30 +3,18 @@
 
   {%- include head.html -%}
 
-  <body class="bg-light">
-    <div class="row">
-      <div class="col">
-        {%- include header.html -%}
-      </div>
-    </div>
-    <main aria-label="Content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 vertical-menu">
+  <body class="bg-is-gray">
+    <div class="page">
+
+          {%- include header.html -%}
+
+      <main class="main" aria-label="Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 vertical-menu bg-light">
               <ul class="nav flex-column">
                 {%- for path in page_paths -%}
                   {%- assign my_page = site.pages | where: "path", path | first -%}
-                  {%- if page.tags contains 'basics' -%}
-                    {%- assign current_tag = "basics" -%}
-                  {%- elsif page.tags contains 'getting-started' -%}
-                    {%- assign current_tag = "getting-started" -%}
-                  {%- elsif page.tags contains "modules" -%}
-                    {%- assign current_tag = "modules" -%}
-                  {% elsif page.tags contains "platform" -%}
-                    {%- assign current_tag = "platform" -%}
-                  {% elsif page.tags contains "contributing" -%}
-                    {% assign current_tag = "contributing" -%}
-                  {%- endif -%}
 
                   {%- if my_page.tags contains current_tag -%}
                     {%- if my_page.tags contains "root" -%}
@@ -51,13 +39,14 @@
                   {%- endif -%}
                 {% endfor -%}
               </ul>
-          </div>
-          <div class="col-md-10 bg-white content">
+            </div>
+            <div class="col-md-9 bg-white content">
               {{ content }}
+            </div>
           </div>
-        </div>
-      </main>
-      {%- include footer.html -%}
+        </main>
+        {%- include footer.html -%}
+      </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

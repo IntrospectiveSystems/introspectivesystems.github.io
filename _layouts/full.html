@@ -3,21 +3,20 @@
 
   {%- include head.html -%}
 
-  <body class="bg-light">
-    <div class="row">
-      <div class="col">
+  <body class="bg-is-gray">
+    <div class="page">
         {%- include header.html -%}
-      </div>
-    </div>
-    <main aria-label="Content">
-      <div class="container">
-        <div class="row">
-          <div class="col bg-white content">
+
+      <main class="main" aria-label="Content">
+        <div class="container">
+          <div class="row">
+            <div class="col bg-white content">
               {{ content }}
+            </div>
           </div>
-        </div>
-      </main>
-      {%- include footer.html -%}
+        </main>
+        {%- include footer.html -%}
+      </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
