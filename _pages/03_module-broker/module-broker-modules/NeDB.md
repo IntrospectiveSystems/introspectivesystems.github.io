@@ -4,7 +4,7 @@ title: NeDB
 permalink: /NeDB/
 tags: ['modules']
 ---
-### NeDB
+# NeDB
 
 Version 1.0.0
 
@@ -14,9 +14,9 @@ Introspective Systems, LLC.
 
 This module is a wrapper for the npm package [NeDB](https://github.com/louischatriot/nedb).
 
-#### Module Definition Parameters
+## Module Definition Parameters
 
-##### `Filename`
+### `Filename`
 
 NeDB only requires one parameter in its module definition, `"Filename"`,
 which is the name of the database file. The database will be loaded from
@@ -36,7 +36,7 @@ Example
 }
 ```
 
-##### `Reset`
+### `Reset`
 
 Optionally, if you would like the database to reset when the system is
 restarted, you can Provide it a parameter of `"Reset": true`.
@@ -55,9 +55,9 @@ Example
 }
 ```
 
-#### Input Commands
+## Input Commands
 
-##### Insert
+### Insert
 
 To insert a document into the database, send an `'Insert'` command with
 a `com.Document` object.
@@ -82,7 +82,7 @@ this.send({
 });
 ```
 
-##### Find
+### Find
 
 The `'Find'` command is used to retrieve documents. The command object
 must include a query object, `com.Where`.

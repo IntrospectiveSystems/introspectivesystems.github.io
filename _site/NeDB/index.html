@@ -74,7 +74,7 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="nedb">NeDB</h3>
+              <h1 id="nedb">NeDB</h1>
 
 <p>Version 1.0.0</p>
 
@@ -84,9 +84,9 @@
 
 <p>This module is a wrapper for the npm package <a href="https://github.com/louischatriot/nedb">NeDB</a>.</p>
 
-<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
 
-<h5 id="filename"><code class="highlighter-rouge">Filename</code></h5>
+<h3 id="filename"><code class="highlighter-rouge">Filename</code></h3>
 
 <p>NeDB only requires one parameter in its module definition, <code class="highlighter-rouge">"Filename"</code>,
 which is the name of the database file. The database will be loaded from
@@ -105,7 +105,7 @@ database.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h5 id="reset"><code class="highlighter-rouge">Reset</code></h5>
+<h3 id="reset"><code class="highlighter-rouge">Reset</code></h3>
 
 <p>Optionally, if you would like the database to reset when the system is
 restarted, you can Provide it a parameter of <code class="highlighter-rouge">"Reset": true</code>.</p>
@@ -123,9 +123,9 @@ restarted, you can Provide it a parameter of <code class="highlighter-rouge">"Re
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h4 id="input-commands">Input Commands</h4>
+<h2 id="input-commands">Input Commands</h2>
 
-<h5 id="insert">Insert</h5>
+<h3 id="insert">Insert</h3>
 
 <p>To insert a document into the database, send an <code class="highlighter-rouge">'Insert'</code> command with
 a <code class="highlighter-rouge">com.Document</code> object.</p>
@@ -149,7 +149,7 @@ referenced at <code class="highlighter-rouge">_id</code>. <code class="highlight
 <span class="p">});</span>
 </code></pre></div></div>
 
-<h5 id="find">Find</h5>
+<h3 id="find">Find</h3>
 
 <p>The <code class="highlighter-rouge">'Find'</code> command is used to retrieve documents. The command object
 must include a query object, <code class="highlighter-rouge">com.Where</code>.</p>

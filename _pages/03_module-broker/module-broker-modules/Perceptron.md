@@ -12,7 +12,6 @@ Introspective Systems, LLC.
 
 
 ---
-#### Perceptron
 
 The Perceptron entity is the Apex and only entity of the Perceptron Module. This entity requres its Setup function invoked during the Setup phase of Nexus startup.
 
@@ -20,7 +19,7 @@ The main capability of this entity is to initialize and work with a neataptic.js
 
 ---
 
-### Module Definition Parameters
+## Module Definition Parameters
 
 Parameters are defined in the module definition and stored in the Par attribute
 of the Entities this attribute.
@@ -52,13 +51,13 @@ An example of how this looks in the module definition of a config.json
 
 ---
 
-### Output Commands
+## Output Commands
 
 None
 
 ---
 
-### Input Commands
+## Input Commands
 The Input Commands are all the commands that Perceptron can
 receive.
 

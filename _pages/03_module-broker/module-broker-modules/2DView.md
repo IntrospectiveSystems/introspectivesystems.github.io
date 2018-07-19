@@ -13,7 +13,6 @@ Introspective Systems, LLC.
 
 
 ---
-## 2DView
 
 2DView adds and renders a Pixi.js stage on the `div` provided by the
 Viewify class. Currently, only Pixi primitives can be added to the

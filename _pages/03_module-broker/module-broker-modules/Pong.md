@@ -4,10 +4,9 @@ title: Pong
 permalink: /Pong/
 tags: ['modules']
 ---
-# [Pong Module]:
+# Pong 
 
 ---
-#### Description
 
 This is the Pong module. This module works with the Ping module as an
 example of how multiple modules (Ping and Pong) communicate inside a
@@ -21,7 +20,7 @@ a `Pong` command to the Pong module.
 
 ---
 
-### Module Definition Parameters
+## Module Definition Parameters
 
 Below, the Parameters that Ping expects are defined.
 
@@ -29,29 +28,29 @@ Below, the Parameters that Ping expects are defined.
 
 ---
 
-### Output Commands
+## Output Commands
 
 All the command that HelloWorld can send to other modules.
 
-#### Cmd: 'Pong'
+### Cmd: 'Pong'
 The `Pong` command is sent to the module referenced in `this.Par.Ping`,
 ideally the Pong module.
 
-###### Command Object
+#### Command Object
 - **object.Cmd**: "Pong" (The command.)
 
-###### Reference
+#### Reference
 `this.Par.Ping`
 
 ---
 
-### Input Commands
+## Input Commands
 The Input Commands are all the command that HelloWorld can
 receive.
 
-##### Ping(com, fun)
+### Ping(com, fun)
 When Ping is received, Pong sends a `Pong` command to the module
 referenced in `this.Par.Ping`.
 
-###### Parameters
+#### Parameters
 *(Pong does not expect any Parameters with a `Pong` command.)*

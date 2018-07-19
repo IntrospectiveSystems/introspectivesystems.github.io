@@ -23,7 +23,7 @@ initialized.
 
 ---
 
-### How To Use
+## How To Use
 
 The Module definition to use this module is:
 
@@ -55,9 +55,8 @@ The Module definition to use this module is:
 
 ---
 
-### Module Interface
 
-#### Module Definition Parameters
+## Module Definition Parameters
 
 The following module definition parameters can be sent to WebViewer on
 instantiation. WebViewer accepts five module definition parameters, but
@@ -76,26 +75,26 @@ some of these are optional.
 - **Par.Port** : The TCP Port that the Server will listen on. Defaults
                     to 8080.
 
-#### Output Commands
+## Output Commands
 *(WebViewer does not send any commands.)*
 
 
-#### Input Commands
+## Input Commands
 WebViewer is capable of handling any incoming command. The commands that
 WebViewer receives will be forwarded to the module identified in com.Forward.
 For more details see the entry for Broadcast below.
 
-##### Broadcast(com, fun)
+### Broadcast(com, fun)
 Broadcasts to all appropriately subscribed browser side modules. Only
 one message is sent per socket (browser xGraph instance) per Broadcast.
 
-###### Parameters
+#### Parameters
 - **com** (*required*): The command object.
 - **com.Follow** (*required*): the string which identifies to which
                                 modules to broadcast to this is stored
                                 as the key of `Vlt.Sockets[idx].User.Publish`
 - **fun** (*required*): The callback function.
 
-###### Returns
+#### Returns
 *None*
 

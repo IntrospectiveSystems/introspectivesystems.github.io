@@ -12,16 +12,14 @@ Introspective Systems, LLC.
 
 
 ---
-#### WebProxy
 
 The WebProxy Entity is the Apex and only Entity of the WebProxy Module.
 
 This Module should be deployed browser-side and is used to communicate with Modules on a system running in a server side arrangement.
 
-
 ---
 
-### Module Definition Parameters
+## Module Definition Parameters
 
 Parameters are defined in the module definition and stored in the Par attribute
 of the Entity's _this_ attribute.
@@ -45,13 +43,13 @@ An example of how this looks in the module definition of a config.json
 
 ---
 
-### Output Commands
+## Output Commands
 
 None
 
 
 ---
 
-### Input Commands
+## Input Commands
 
 Any - All messages are simply redirected

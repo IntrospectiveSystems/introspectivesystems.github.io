@@ -15,7 +15,8 @@ Introspective Systems, LLC.
 
 ## Getting Started
 
-Menubar takes only one Parameter, optionally: `Buttons`. Without the Parameter, nothing will break, however, nothing will be shown in the bar.
+Menubar takes only one Parameter, optionally: `Buttons`. Without the Parameter, nothing will break, however, 
+nothing will be shown in the bar.
 
 `Buttons` is an Array of objects with keys: `Command`, `To`, `Group`, and `Option`.
 
@@ -50,9 +51,11 @@ Example
 
 ## Connecting a Menubar to other Views
 
-Despite a Menubar just being a ribbon, as a view, its takes up the entire space of its parent. As a result of this, the area under the Menubar is considered its children. This is reflected in the Layout Pars.
+Despite a Menubar just being a ribbon, as a view, its takes up the entire space of its parent. As a result of 
+this, the area under the Menubar is considered its children. This is reflected in the Layout Pars.
 
-For example, lets say we want a page with an Ace Text editor and a menu bar. To achieve this we would do the following
+For example, lets say we want a page with an Ace Text editor and a menu bar. To achieve this we would do the 
+following
 
 ``` json
 {

@@ -81,8 +81,6 @@
 <p>Introspective Systems</p>
 
 <hr />
-<h2 id="description">Description</h2>
-
 <p>This is the BankAccount Module. This module, together with the
 BankAccount and BankPatron systems, is an example of how an xGraph system
 can work with another system. The BankAccount module acts as an account,
@@ -108,9 +106,9 @@ account, or withdrawal from the account, by acting on the “Check Balance,
 
 <hr />
 
-<h1 id="input-commands">Input Commands</h1>
+<h2 id="input-commands">Input Commands</h2>
 
-<h2 id="cmd-start">Cmd: “Start”</h2>
+<h3 id="cmd-start">Cmd: “Start”</h3>
 <p>The Start is sent to the BankAccount module when BankAccount is run in
 an xGraph system. Start checks to see if there was a Balance parameter
 defined for this instance. If there is no starting balance, instantiate
@@ -122,7 +120,7 @@ defined for this instance. If there is no starting balance, instantiate
   <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
 </ul>
 
-<h2 id="cmd-checkbalance">Cmd: “CheckBalance”</h2>
+<h3 id="cmd-checkbalance">Cmd: “CheckBalance”</h3>
 <p>The <code class="highlighter-rouge">CheckBalance</code> command has no parameters and returns the current
 account balance.</p>
 
@@ -137,7 +135,7 @@ account balance.</p>
   <li><strong>com.Message</strong>: A message with the current account balance.</li>
 </ul>
 
-<h2 id="cmd-deposit">Cmd: “Deposit”</h2>
+<h3 id="cmd-deposit">Cmd: “Deposit”</h3>
 <p>The <code class="highlighter-rouge">Deposit</code> command takes an amount to be deposited and adds it
 in the account balance.</p>
 
@@ -149,7 +147,7 @@ in the account balance.</p>
   <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
 </ul>
 
-<h2 id="cmd-withdrawal">Cmd: “Withdrawal”</h2>
+<h3 id="cmd-withdrawal">Cmd: “Withdrawal”</h3>
 <p>The <code class="highlighter-rouge">Withdrawal</code> command takes an amount to be withdrawn and removes it
 from the account balance.</p>
 

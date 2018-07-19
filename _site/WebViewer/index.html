@@ -93,7 +93,7 @@ initialized.</p>
 
 <hr />
 
-<h3 id="how-to-use">How To Use</h3>
+<h2 id="how-to-use">How To Use</h2>
 
 <p>The Module definition to use this module is:</p>
 
@@ -126,9 +126,7 @@ initialized.</p>
 
 <hr />
 
-<h3 id="module-interface">Module Interface</h3>
-
-<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
 
 <p>The following module definition parameters can be sent to WebViewer on
 instantiation. WebViewer accepts five module definition parameters, but
@@ -149,19 +147,19 @@ some of these are optional.</p>
                   to 8080.</li>
 </ul>
 
-<h4 id="output-commands">Output Commands</h4>
+<h2 id="output-commands">Output Commands</h2>
 <p><em>(WebViewer does not send any commands.)</em></p>
 
-<h4 id="input-commands">Input Commands</h4>
+<h2 id="input-commands">Input Commands</h2>
 <p>WebViewer is capable of handling any incoming command. The commands that
 WebViewer receives will be forwarded to the module identified in com.Forward.
 For more details see the entry for Broadcast below.</p>
 
-<h5 id="broadcastcom-fun">Broadcast(com, fun)</h5>
+<h3 id="broadcastcom-fun">Broadcast(com, fun)</h3>
 <p>Broadcasts to all appropriately subscribed browser side modules. Only
 one message is sent per socket (browser xGraph instance) per Broadcast.</p>
 
-<h6 id="parameters">Parameters</h6>
+<h4 id="parameters">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>com.Follow</strong> (<em>required</em>): the string which identifies to which
@@ -170,7 +168,7 @@ one message is sent per socket (browser xGraph instance) per Broadcast.</p>
   <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
 </ul>
 
-<h6 id="returns">Returns</h6>
+<h4 id="returns">Returns</h4>
 <p><em>None</em></p>
 
 

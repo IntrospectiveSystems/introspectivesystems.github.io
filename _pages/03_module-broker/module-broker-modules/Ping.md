@@ -4,14 +4,13 @@ title: Ping
 permalink: /Ping/
 tags: ['modules']
 ---
-### Ping
+# Ping
 
 v1.0
 
 Introspective Systems
 
 ---
-#### Description
 
 This is the Ping module. This module works with the Pong module as an
 example of how multiple modules (Ping and Pong) communicate inside a
@@ -27,7 +26,7 @@ another `Ping` command to the Pong module.
 
 ---
 
-### Module Definition Parameters
+## Module Definition Parameters
 
 Below, the Parameters that Ping expects are defined.
 
@@ -35,29 +34,29 @@ Below, the Parameters that Ping expects are defined.
 
 ---
 
-### Output Commands
+## Output Commands
 
 All the command that HelloWorld can send to other modules.
 
-#### Cmd: 'Ping'
+### Cmd: 'Ping'
 The `Ping` command is sent to the module referenced in `this.Par.Pong`,
 ideally the Pong module.
 
-###### Command Object
+#### Command Object
 - **object.Cmd**: "Ping" (The command.)
 
-###### Reference
+#### Reference
 `this.Par.Pong`
 
 ---
 
-### Input Commands
+## Input Commands
 The Input Commands are all the command that HelloWorld can
 receive.
 
-##### Pong(com, fun)
+### Pong(com, fun)
 When Pong is received, Ping sends a `Ping` command to the module
 referenced in `this.Par.Pong`.
 
-###### Parameters
+#### Parameters
 *(Pong does not expect any Parameters with a `Pong` command.)*

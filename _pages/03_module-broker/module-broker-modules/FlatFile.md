@@ -18,13 +18,13 @@ overwritten on new Put commands.
 
 ---
 
-### Module Interface
+## Module Interface
 
-#### Module Definition Parameters
+### Module Definition Parameters
 
 **Database**: _String_ - Full filename and path to load and store data. Defaults to 'Database.db'.
 
-#### Input Commands
+### Input Commands
 
 **Get** -  Get a single record value by key, return in com.Info[key].
 ```json
@@ -54,10 +54,11 @@ overwritten on new Put commands.
 }
 ```
 
-**List** - List all keys stored in the database, returns as array in com.Info. *Requires no additional parameters*
+**List** - List all keys stored in the database, returns as array in com.Info. 
+*Requires no additional parameters*
 
 
 
-#### Output Commands
+### Output Commands
 
 *None*

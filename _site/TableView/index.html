@@ -90,7 +90,9 @@
 
 <p><code class="highlighter-rouge">Source</code> is the module that TableView will send <code class="highlighter-rouge">GetData</code> to, to obtain the data that will go in the rows.</p>
 
-<p><code class="highlighter-rouge">Columns</code> is an array of objects of <code class="highlighter-rouge">Name</code> and <code class="highlighter-rouge">Key</code> values that tell the table what columns it should be pulling out of the response from <code class="highlighter-rouge">Source</code>. <code class="highlighter-rouge">Key</code> is the name of the Data in com, and <code class="highlighter-rouge">Name</code> is the name to be shown in the table headers.</p>
+<p><code class="highlighter-rouge">Columns</code> is an array of objects of <code class="highlighter-rouge">Name</code> and <code class="highlighter-rouge">Key</code> values that tell the table what columns it should be 
+pulling out of the response from <code class="highlighter-rouge">Source</code>. <code class="highlighter-rouge">Key</code> is the name of the Data in com, and <code class="highlighter-rouge">Name</code> is the name to be 
+shown in the table headers.</p>
 
 <p>Example</p>
 
@@ -122,7 +124,9 @@
 
 <h2 id="evoke">Evoke</h2>
 
-<p>If your rows are references to modules in the system, you can use the <code class="highlighter-rouge">Evoke</code> Par. When set, it will add a column to the right, and each row will have its Value. So if the Evoke was to View that module, you would set <code class="highlighter-rouge">"Evoke": "View"</code>.</p>
+<p>If your rows are references to modules in the system, you can use the <code class="highlighter-rouge">Evoke</code> Par. When set, it will add a 
+column to the right, and each row will have its Value. So if the Evoke was to View that module, you would 
+set <code class="highlighter-rouge">"Evoke": "View"</code>.</p>
 
 <p>Note: this will only work if the Data you are requesting from <code class="highlighter-rouge">Source</code> returns a <code class="highlighter-rouge">Pid</code> for each row.</p>
 

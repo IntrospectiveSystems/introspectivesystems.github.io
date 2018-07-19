@@ -81,15 +81,16 @@
 <p>Introspective Systems, LLC.</p>
 
 <hr />
-<h4 id="mouse-1">Mouse</h4>
 
 <p>The Mouse entity is the Apex and only entity of the Mouse Module.</p>
 
-<p>The main capability of this entity is to add a mouse (&amp;keydown) listener to the canvas that is provided when the SetDomElement command is called. Currently MouseEnter, MouseLeave, Wheel, LeftMouseDown, RightMouseDown, LeftMouseUp, RightMouseUp, and KeyDown events are captured.</p>
+<p>The main capability of this entity is to add a mouse (&amp;keydown) listener to the canvas that is provided when 
+the SetDomElement command is called. Currently MouseEnter, MouseLeave, Wheel, LeftMouseDown, RightMouseDown, 
+LeftMouseUp, RightMouseUp, and KeyDown events are captured.</p>
 
 <hr />
 
-<h3 id="module-definition-parameters">Module Definition Parameters</h3>
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
 
 <p>Parameters are defined in the module definition and stored in the Par attribute 
 of the Entities this attribute.
@@ -97,7 +98,8 @@ The Parameters that Mouse expects to be defined include.</p>
 
 <p>One Par must be set in the module definition.</p>
 
-<p><code class="highlighter-rouge">{"Handler" : "xGraphPid"}</code>  - where xGraphPid shall be replaced by the pid of the View Module that is the destination of Mouse module DispatchEvent commands.</p>
+<p><code class="highlighter-rouge">{"Handler" : "xGraphPid"}</code>  - where xGraphPid shall be replaced by the pid of the View Module that is the 
+destination of Mouse module DispatchEvent commands.</p>
 
 <p>An example of how this looks in the module definition of a config.json</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
@@ -110,18 +112,20 @@ The Parameters that Mouse expects to be defined include.</p>
 
 <hr />
 
-<h3 id="output-commands">Output Commands</h3>
+<h2 id="output-commands">Output Commands</h2>
 
 <p>The Output Commands are all the commands that Mouse can send to
 other modules.</p>
 
 <p>The only message sent from the Mouse module is to Par.Handler and is of the form:</p>
 
-<p><code class="highlighter-rouge">{ Cmd: "DispatchEvent", info: "Object , mouse: "Object }</code> – where info is set as the information about the event (ex. LeftMouseDown), and mouse is set to the current state of the mouse (ex. Mode:”idle”, inPanel: true).</p>
+<p><code class="highlighter-rouge">{ Cmd: "DispatchEvent", info: "Object , mouse: "Object }</code> – where info is set as the information about the 
+event (ex. LeftMouseDown), and mouse is set to the current state of the mouse (ex. Mode:”idle”, inPanel: 
+true).</p>
 
 <hr />
 
-<h3 id="input-commands">Input Commands</h3>
+<h2 id="input-commands">Input Commands</h2>
 <p>The Input Commands are all the commands that Mouse can
 receive.</p>
 

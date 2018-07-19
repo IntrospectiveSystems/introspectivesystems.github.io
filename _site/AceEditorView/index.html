@@ -81,15 +81,15 @@
 <p>Introspective Systems, LLC.</p>
 
 <hr />
-<h4 id="aceeditorview-1">AceEditorView</h4>
 
-<p>The AceEditorView entity is the Apex and only entity of the AceEditorView Module. This entity requres its Setup function invoked during the Setup phase of Nexus startup.</p>
+<p>The AceEditorView entity is the Apex and only entity of the AceEditorView Module. This entity requres its 
+Setup function invoked during the Setup phase of Nexus startup.</p>
 
 <p>The main capability of this entity is to add and render an Ace Editor Session to the div of the Module.</p>
 
 <hr />
 
-<h3 id="module-definition-parameters">Module Definition Parameters</h3>
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
 
 <p>Parameters are defined in the module definition and stored in the Par attribute
 of the Entities this attribute.
@@ -99,8 +99,10 @@ that AceEditorView expects to be defined.</p>
 <p>Two Pars can be set in the module definition, but they are all optional.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">"Controller": "xGraphPid"</code>  - where xGraphPid should be replaced by the pid of the Module acting as this Modules controller.</li>
-  <li><code class="highlighter-rouge">"EvokeView": "xGraphModuleAddress"</code>  - where xGraphModuleAddress should be replaced by the address of the view that should be popped up when evoked.</li>
+  <li><code class="highlighter-rouge">"Controller": "xGraphPid"</code>  - where xGraphPid should be replaced by the pid of the Module acting as this 
+                                  Modules controller.</li>
+  <li><code class="highlighter-rouge">"EvokeView": "xGraphModuleAddress"</code>  - where xGraphModuleAddress should be replaced by the address of the 
+                                          view that should be popped up when evoked.</li>
 </ul>
 
 <p>An example of how this looks in the module definition of a config.json</p>

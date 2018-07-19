@@ -20,14 +20,14 @@ command to the BankAccount system.
 
 ---
 
-# Module Definition Parameters
+## Module Definition Parameters
 
 - **Par.BankAccount** (*required*): The Pid, the CheckBalance, Deposit,
                                     and Withdraw commands.
 
 ---
 
-# Output Commands
+## Output Commands
 The following Commands can be sent by BankPatron.
 
 ### Cmd: 'BankPatronWaiting'

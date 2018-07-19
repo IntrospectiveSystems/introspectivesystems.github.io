@@ -11,8 +11,6 @@ v1.1
 Introspective Systems
 
 ---
-## Description
-
 This is the BankAccount Module. This module, together with the
 BankAccount and BankPatron systems, is an example of how an xGraph system
 can work with another system. The BankAccount module acts as an account,
@@ -37,9 +35,9 @@ Below, the parameters that BankAccount expects are defined.
 
 ---
 
-# Input Commands
+## Input Commands
 
-## Cmd: "Start"
+### Cmd: "Start"
 The Start is sent to the BankAccount module when BankAccount is run in
 an xGraph system. Start checks to see if there was a Balance parameter
 defined for this instance. If there is no starting balance, instantiate
@@ -50,7 +48,7 @@ defined for this instance. If there is no starting balance, instantiate
 - **fun** (*required*): The callback function.
 
 
-## Cmd: "CheckBalance"
+### Cmd: "CheckBalance"
 The `CheckBalance` command has no parameters and returns the current
 account balance.
 
@@ -62,7 +60,7 @@ account balance.
 - **com.Message**: A message with the current account balance.
 
 
-## Cmd: "Deposit"
+### Cmd: "Deposit"
 The `Deposit` command takes an amount to be deposited and adds it
 in the account balance.
 
@@ -73,7 +71,7 @@ in the account balance.
 - **fun** (*required*): The callback function.
 
 
-## Cmd: "Withdrawal"
+### Cmd: "Withdrawal"
 The `Withdrawal` command takes an amount to be withdrawn and removes it
 from the account balance.
 

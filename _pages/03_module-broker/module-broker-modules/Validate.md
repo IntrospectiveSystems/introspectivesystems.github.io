@@ -4,7 +4,7 @@ title: Validate
 permalink: /Validate/
 tags: ['modules']
 ---
-### Validate
+# Validate
 
 v1.0.0
 
@@ -12,7 +12,7 @@ Introspective Systems, LLC.
 
 
 ---
-#### Validate
+## Validate
 
 Validate is a module that runs tests on other modules. The tests for a
 module are described in a test.json file, which should be included with
@@ -21,7 +21,7 @@ perform the tests that are laid out it the test.json file.
 
 ---
 
-#### How To Use Validate
+## How To Use Validate
 
 To test a module using Validate, you need to supply Validate with a list
 of tests in the form of a JSON object. These tests should be included in
@@ -123,7 +123,7 @@ To Check for array length and values  use
 
 ---
 
-#### Module Definition Parameters
+## Module Definition Parameters
 
 Parameters are defined in the module definition and stored in the Par attribute 
 of the Entities this attribute.
@@ -153,14 +153,14 @@ it's code is compiled.
 
 ---
 
-### Output Commands
+## Output Commands
 The Output Commands are all of the commands that Validate can send.
 
 *(Validate does not send any commands.)*
 
 ---
 
-### Input Commands
+## Input Commands
 The Input Commands are all of the commands that Plexus can receive.
 
 *(Validate does not send any commands.)*

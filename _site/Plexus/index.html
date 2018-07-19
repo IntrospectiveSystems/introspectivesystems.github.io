@@ -81,7 +81,6 @@
 <p>Introspective Systems, LLC.</p>
 
 <hr />
-<h4 id="plexus-1">Plexus</h4>
 
 <p>Plexus is a dynamic router that routes connections, and assigns the
 port to servers requesting publication. Plexus registers a server with a
@@ -90,7 +89,7 @@ connection requests by channel name.</p>
 
 <hr />
 
-<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
 
 <p>Plexus has the following module definition parameters.</p>
 
@@ -99,7 +98,7 @@ config.json file.)</em></strong></p>
 
 <hr />
 
-<h4 id="output-commands">Output Commands</h4>
+<h2 id="output-commands">Output Commands</h2>
 
 <p>The Output Commands are all the command that Plexus can send to
 other modules.</p>
@@ -108,15 +107,15 @@ other modules.</p>
 
 <hr />
 
-<h4 id="input-commands">Input Commands</h4>
+<h2 id="input-commands">Input Commands</h2>
 <p>The Input Commands are all the commands that Plexus can
 receive.</p>
 
-<h5 id="setupcom-fun">Setup(com, fun)</h5>
+<h3 id="setupcom-fun">Setup(com, fun)</h3>
 
 <p>Setup the required vault variables</p>
 
-<h6 id="parameters">Parameters</h6>
+<h4 id="parameters">Parameters</h4>
 
 <table>
   <thead>
@@ -143,17 +142,17 @@ receive.</p>
   </tbody>
 </table>
 
-<h6 id="returns">Returns</h6>
+<h4 id="returns">Returns</h4>
 
 <ul>
   <li><code class="highlighter-rouge">com</code></li>
 </ul>
 
-<h5 id="publishcom-fun">Publish(com, fun)</h5>
+<h3 id="publishcom-fun">Publish(com, fun)</h3>
 
 <p>Publish a Proxy (server) to the Plexus</p>
 
-<h6 id="parameters-1">Parameters</h6>
+<h4 id="parameters-1">Parameters</h4>
 
 <table>
   <thead>
@@ -192,17 +191,17 @@ receive.</p>
   </tbody>
 </table>
 
-<h6 id="returns-1">Returns</h6>
+<h4 id="returns-1">Returns</h4>
 
 <ul>
   <li><code class="highlighter-rouge">com.Port</code>  the port that the server shall listen at</li>
 </ul>
 
-<h5 id="subscribecom-fun">Subscribe(com, fun)</h5>
+<h3 id="subscribecom-fun">Subscribe(com, fun)</h3>
 
 <p>A Proxy (client) can request the data of a Proxy server</p>
 
-<h6 id="parameters-2">Parameters</h6>
+<h4 id="parameters-2">Parameters</h4>
 
 <table>
   <thead>
@@ -235,7 +234,7 @@ receive.</p>
   </tbody>
 </table>
 
-<h6 id="returns-2">Returns</h6>
+<h4 id="returns-2">Returns</h4>
 
 <ul>
   <li><code class="highlighter-rouge">com.Host</code>  The host for the client to connect on</li>

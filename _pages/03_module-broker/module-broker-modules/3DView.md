@@ -11,12 +11,10 @@ v1.0.0
 
 Introspective Systems, LLC.
 
-
 ---
-## 3DView
 
-The 3DView Module adds and renders a [three.js scene](https://threejs.org/docs/index.html#api/scenes/Scene) on the div 
-provided by the Viewify class (referenced in `this.Vlt.div`). Currently only three.js primitives 
+The 3DView Module adds and renders a [three.js scene](https://threejs.org/docs/index.html#api/scenes/Scene) 
+on the div provided by the Viewify class (referenced in `this.Vlt.div`). Currently only three.js primitives 
 and generated [three.js Object3D](https://threejs.org/docs/index.html#api/core/Object3D) models 
 can be added to the scene and rendered. 
 

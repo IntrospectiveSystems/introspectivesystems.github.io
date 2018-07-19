@@ -4,7 +4,7 @@ title: RootView
 permalink: /RootView/
 tags: ['modules']
 ---
-### RootView
+# RootView
 
 Version 1.0.0
 
@@ -20,7 +20,7 @@ RootView builds and renders a page by reading and building the view
 modules specified in the `"Layout"` parameter. RootView only works with
 view modules, or any module who's Apex entity is a Viewify subclass.
 
-#### Loading a single view
+## Loading a single view
 
 You can create a user interface with a single, customized, full screen
 view by loading a custom built view in RootView using the `Layout`
@@ -37,7 +37,7 @@ view module defined by `$MyView`.
 ```
 
 
-#### Loading multiple view modules
+## Loading multiple view modules
 
 If you want to build a user interface using more than one view, then you
 need to use a container view, such as [PanelView](./PanelView), to split
@@ -83,12 +83,12 @@ you want.
 }
 ```
 
-### Module Interface
+## Module Interface
 
 Below you can find all the details on how to interact with the RootView
 module.
 
-#### Module Definition Parameters
+### Module Definition Parameters
 
 The following parameters are passed to the RootView module on
 instantiation.
@@ -102,5 +102,5 @@ direct child.
 
 ---
 
-#### Output Commands
+### Output Commands
 

@@ -74,7 +74,7 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="sqlite">SQLite</h3>
+              <h1 id="sqlite">SQLite</h1>
 
 <p>v1.1.0</p>
 
@@ -85,9 +85,7 @@
 <p>SQLite is an adapter that allows xGraph to communicate with SQLite
 databases. SQLite wraps the Sqlite3 node.js module.</p>
 
-<h3 id="module-interface">Module Interface</h3>
-
-<h4 id="module-definition-parameters-thispar">Module Definition Parameters (<code class="highlighter-rouge">this.Par</code>)</h4>
+<h2 id="module-definition-parameters-thispar">Module Definition Parameters (<code class="highlighter-rouge">this.Par</code>)</h2>
 
 <p>Parameters are defined in the module definition and stored in this.Par.
 Below, the Parameters that SQLite expects are defined.</p>
@@ -99,46 +97,46 @@ Below, the Parameters that SQLite expects are defined.</p>
 
 <hr />
 
-<h4 id="output-commands">Output Commands</h4>
+<h2 id="output-commands">Output Commands</h2>
 <p>The Output Commands are all the command that SQLite can send.</p>
 
 <p><em>(SQLite does not send any commands.)</em></p>
 
 <hr />
 
-<h4 id="input-commands">Input Commands</h4>
+<h2 id="input-commands">Input Commands</h2>
 <p>The Input Commands are all the command that SQLite can
 receive.</p>
 
-<h5 id="setupcom-fun">Setup(com, fun)</h5>
+<h3 id="setupcom-fun">Setup(com, fun)</h3>
 <p>Setup is called when the SQLite module is first generated. The Setup
 command sets up the connection to the SQLite3 node module.</p>
 
-<h6 id="parameters">Parameters</h6>
+<h4 id="parameters">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
 </ul>
 
-<h6 id="returns">Returns</h6>
+<h4 id="returns">Returns</h4>
 <p><em>None</em></p>
 
-<h5 id="startcom-fun">Start(com, fun)</h5>
+<h3 id="startcom-fun">Start(com, fun)</h3>
 <p>Setup is called when the SQLite module is first generated. The Setup
 command sets up the connection to the SQLite3 node module.</p>
 
-<h6 id="parameters-1">Parameters</h6>
+<h4 id="parameters-1">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
 </ul>
 
-<h6 id="returns-1">Returns</h6>
+<h4 id="returns-1">Returns</h4>
 <p><em>None</em></p>
 
-<h5 id="configurecom-fun">Configure(com, fun)</h5>
+<h3 id="configurecom-fun">Configure(com, fun)</h3>
 <p>Configure sets a configuration option for the database. A valid Option
 and Value must be provided.</p>
 
-<h6 id="parameters-2">Parameters</h6>
+<h4 id="parameters-2">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li>
@@ -156,25 +154,25 @@ and Value must be provided.</p>
       is a function. For busyTimeout, com.Value is a an integer.</li>
 </ul>
 
-<h6 id="returns-2">Returns</h6>
+<h4 id="returns-2">Returns</h4>
 <p><em>None</em></p>
 
-<h5 id="closecom-fun">Close(com, fun)</h5>
+<h3 id="closecom-fun">Close(com, fun)</h3>
 <p>The Close command closes the database.</p>
 
-<h6 id="parameters-3">Parameters</h6>
+<h4 id="parameters-3">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
 </ul>
 
-<h6 id="returns-3">Returns</h6>
+<h4 id="returns-3">Returns</h4>
 <p><em>None</em></p>
 
-<h5 id="runcom-fun">Run(com, fun)</h5>
+<h3 id="runcom-fun">Run(com, fun)</h3>
 <p>Run runs the provided SQL query with the provided parameters. It does not
 retrieve any result data.</p>
 
-<h6 id="parameters-4">Parameters</h6>
+<h4 id="parameters-4">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
@@ -183,13 +181,13 @@ retrieve any result data.</p>
   <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
 </ul>
 
-<h6 id="returns-4">Returns</h6>
+<h4 id="returns-4">Returns</h4>
 <p><em>None</em></p>
 
-<h5 id="getcom-fun">Get(com, fun)</h5>
+<h3 id="getcom-fun">Get(com, fun)</h3>
 <p>Get runs the SQL query with the specified parameters and returns the first result row.</p>
 
-<h6 id="parameters-5">Parameters</h6>
+<h4 id="parameters-5">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
@@ -198,15 +196,15 @@ retrieve any result data.</p>
   <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
 </ul>
 
-<h6 id="returns-5">Returns</h6>
+<h4 id="returns-5">Returns</h4>
 <ul>
   <li><strong>com.Row</strong>: The first row returned by the Sql query.</li>
 </ul>
 
-<h5 id="allcom-fun">All(com, fun)</h5>
+<h3 id="allcom-fun">All(com, fun)</h3>
 <p>The All command runs the SQL query with the specified parameters and returns all result rows.</p>
 
-<h6 id="parameters-6">Parameters</h6>
+<h4 id="parameters-6">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
@@ -215,16 +213,16 @@ retrieve any result data.</p>
   <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
 </ul>
 
-<h6 id="returns-6">Returns</h6>
+<h4 id="returns-6">Returns</h4>
 <ul>
   <li><strong>com.Rows</strong>: The all rows returned by the Sql query.</li>
 </ul>
 
-<h5 id="eachcom-fun">Each(com, fun)</h5>
+<h3 id="eachcom-fun">Each(com, fun)</h3>
 <p>The Each command runs the SQL query with the specified parameters and
 calls the callback once for each result row.</p>
 
-<h6 id="parameters-7">Parameters</h6>
+<h4 id="parameters-7">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
@@ -235,21 +233,21 @@ calls the callback once for each result row.</p>
                       once for each row returned.</li>
 </ul>
 
-<h6 id="returns-7">Returns</h6>
+<h4 id="returns-7">Returns</h4>
 <p><em>None</em></p>
 
-<h5 id="execcom-fun">Exec(com, fun)</h5>
+<h3 id="execcom-fun">Exec(com, fun)</h3>
 <p>The Exec command runs all SQL queries in the supplied string. No result
 rows are retrieved. If a query fails, no subsequent statements will be
 executed. statements will be executed.</p>
 
-<h6 id="parameters-8">Parameters</h6>
+<h4 id="parameters-8">Parameters</h4>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run.</li>
 </ul>
 
-<h6 id="returns-8">Returns</h6>
+<h4 id="returns-8">Returns</h4>
 <p><em>None</em></p>
 
             </div>

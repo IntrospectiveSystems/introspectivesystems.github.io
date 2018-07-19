@@ -74,14 +74,13 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="ping">Ping</h3>
+              <h1 id="ping">Ping</h1>
 
 <p>v1.0</p>
 
 <p>Introspective Systems</p>
 
 <hr />
-<h4 id="description">Description</h4>
 
 <p>This is the Ping module. This module works with the Pong module as an
 example of how multiple modules (Ping and Pong) communicate inside a
@@ -97,7 +96,7 @@ another <code class="highlighter-rouge">Ping</code> command to the Pong module.<
 
 <hr />
 
-<h3 id="module-definition-parameters">Module Definition Parameters</h3>
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
 
 <p>Below, the Parameters that Ping expects are defined.</p>
 
@@ -107,33 +106,33 @@ another <code class="highlighter-rouge">Ping</code> command to the Pong module.<
 
 <hr />
 
-<h3 id="output-commands">Output Commands</h3>
+<h2 id="output-commands">Output Commands</h2>
 
 <p>All the command that HelloWorld can send to other modules.</p>
 
-<h4 id="cmd-ping">Cmd: ‘Ping’</h4>
+<h3 id="cmd-ping">Cmd: ‘Ping’</h3>
 <p>The <code class="highlighter-rouge">Ping</code> command is sent to the module referenced in <code class="highlighter-rouge">this.Par.Pong</code>,
 ideally the Pong module.</p>
 
-<h6 id="command-object">Command Object</h6>
+<h4 id="command-object">Command Object</h4>
 <ul>
   <li><strong>object.Cmd</strong>: “Ping” (The command.)</li>
 </ul>
 
-<h6 id="reference">Reference</h6>
+<h4 id="reference">Reference</h4>
 <p><code class="highlighter-rouge">this.Par.Pong</code></p>
 
 <hr />
 
-<h3 id="input-commands">Input Commands</h3>
+<h2 id="input-commands">Input Commands</h2>
 <p>The Input Commands are all the command that HelloWorld can
 receive.</p>
 
-<h5 id="pongcom-fun">Pong(com, fun)</h5>
+<h3 id="pongcom-fun">Pong(com, fun)</h3>
 <p>When Pong is received, Ping sends a <code class="highlighter-rouge">Ping</code> command to the module
 referenced in <code class="highlighter-rouge">this.Par.Pong</code>.</p>
 
-<h6 id="parameters">Parameters</h6>
+<h4 id="parameters">Parameters</h4>
 <p><em>(Pong does not expect any Parameters with a <code class="highlighter-rouge">Pong</code> command.)</em></p>
 
             </div>

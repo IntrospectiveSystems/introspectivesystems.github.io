@@ -4,7 +4,7 @@ title: Proxy
 permalink: /Proxy/
 tags: ['modules']
 ---
-### Proxy v1.1.3
+# Proxy v1.1.3
 
 _Introspective Systems, LLC_
 
@@ -22,7 +22,7 @@ See the Examples in Examples/MultipleSystemsWithPlexus
 
 ---
 
-#### Roles
+## Roles
 Proxy's role must be assigned in it's module definition. The Proxy's
 role is set in the `Role` parameter of it's module definition.
 
@@ -89,7 +89,7 @@ here as a client.
     }
 }
 ```
-#### Module Definition Parameters
+## Module Definition Parameters
 
 **Role**: _String_ - Either 'Client' or 'Server'. Determines the
                         Proxy's operation mode.
@@ -123,12 +123,12 @@ here as a client.
                         of the given socket connection. This can be specified for directed messages with
                         callbacks. Broadcast == false is currently an untested feature. 
 
-#### Input Commands
+## Input Commands
 
 Proxy will route any dispatched command other than Start or Setup to
 the socket connection.
 
-#### Output Commands
+## Output Commands
 
 Proxy will route any command received through the socket connection to
 the module defined in Par.

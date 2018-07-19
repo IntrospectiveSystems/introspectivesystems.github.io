@@ -5,14 +5,14 @@ permalink: /HelloWorld/
 tags: ['modules']
 ---
 
-### Hello World
+# Hello World
 
 v1.0
 
 Introspective Systems, LLC.
 
 ---
-#### Hello!
+## Hello!
 
 This is the HelloWorld Module. This module is an example of how
 multiple *entities* that communicate inside a *module*.
@@ -37,7 +37,7 @@ document. This is simply an example of how modules work.
 
 ---
 
-#### Loading a Module in a System
+## Loading a Module in a System
 
 This module is simple to use. Add the module to a system, run the system,
 and you will see xGraph mirror what you say. An example of this can be
@@ -102,14 +102,14 @@ Run the system, and you will see the module at work!
 
 ---
 
-### Module Interface
+## Module Interface
 
 The next section is the API documentation for this module. This
 documentation should be built for xGraph users, who are not necessarily
 developer. More information on xGraph module documentation requirements
 can be found on the xGraph Wiki.
 
-#### Module Definition Parameters
+### Module Definition Parameters
 
 Parameters are defined in the module definition and stored in this.Par.
 Some are required, while some may be optional. Below, the Parameters
@@ -120,7 +120,7 @@ startup. If it exists, HelloWorld will print the value of SomePar.
 
 ---
 
-#### Output Commands
+### Output Commands
 
 The Output Commands are all the command that HelloWorld can send to
 other modules.
@@ -130,17 +130,17 @@ config.json file.)***
 
 ---
 
-#### Input Commands
+### Input Commands
 The Input Commands are all the command that HelloWorld can
 receive.
 
-##### Start(com, fun)
+#### Start(com, fun)
 Start is called when HelloWorld is first generated. Start sets up a
 listener for standard in. When text is received, the console repeats
 the input and sends a message to the other entity. This entity
 increments a value, and returns it to the first entity, where the value
 is printed.
 
-###### Parameters
+##### Parameters
 - **com** (*required*): The command object.
 - **fun** (*required*): The callback function.

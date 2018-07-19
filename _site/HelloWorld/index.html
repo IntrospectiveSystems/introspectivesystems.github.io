@@ -74,14 +74,14 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h3 id="hello-world">Hello World</h3>
+              <h1 id="hello-world">Hello World</h1>
 
 <p>v1.0</p>
 
 <p>Introspective Systems, LLC.</p>
 
 <hr />
-<h4 id="hello">Hello!</h4>
+<h2 id="hello">Hello!</h2>
 
 <p>This is the HelloWorld Module. This module is an example of how
 multiple <em>entities</em> that communicate inside a <em>module</em>.</p>
@@ -105,7 +105,7 @@ document. This is simply an example of how modules work.</p>
 
 <hr />
 
-<h4 id="loading-a-module-in-a-system">Loading a Module in a System</h4>
+<h2 id="loading-a-module-in-a-system">Loading a Module in a System</h2>
 
 <p>This module is simple to use. Add the module to a system, run the system,
 and you will see xGraph mirror what you say. An example of this can be
@@ -168,14 +168,14 @@ Run the system, and you will see the module at work!</p>
 
 <hr />
 
-<h3 id="module-interface">Module Interface</h3>
+<h2 id="module-interface">Module Interface</h2>
 
 <p>The next section is the API documentation for this module. This
 documentation should be built for xGraph users, who are not necessarily
 developer. More information on xGraph module documentation requirements
 can be found on the xGraph Wiki.</p>
 
-<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+<h3 id="module-definition-parameters">Module Definition Parameters</h3>
 
 <p>Parameters are defined in the module definition and stored in this.Par.
 Some are required, while some may be optional. Below, the Parameters
@@ -188,7 +188,7 @@ startup. If it exists, HelloWorld will print the value of SomePar.</li>
 
 <hr />
 
-<h4 id="output-commands">Output Commands</h4>
+<h3 id="output-commands">Output Commands</h3>
 
 <p>The Output Commands are all the command that HelloWorld can send to
 other modules.</p>
@@ -198,18 +198,18 @@ config.json file.)</em></strong></p>
 
 <hr />
 
-<h4 id="input-commands">Input Commands</h4>
+<h3 id="input-commands">Input Commands</h3>
 <p>The Input Commands are all the command that HelloWorld can
 receive.</p>
 
-<h5 id="startcom-fun">Start(com, fun)</h5>
+<h4 id="startcom-fun">Start(com, fun)</h4>
 <p>Start is called when HelloWorld is first generated. Start sets up a
 listener for standard in. When text is received, the console repeats
 the input and sends a message to the other entity. This entity
 increments a value, and returns it to the first entity, where the value
 is printed.</p>
 
-<h6 id="parameters">Parameters</h6>
+<h5 id="parameters">Parameters</h5>
 <ul>
   <li><strong>com</strong> (<em>required</em>): The command object.</li>
   <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
