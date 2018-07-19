@@ -78,6 +78,16 @@ nav, .nav {
   text-decoration: underline;
 }
 
+.navbar-co-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
 /** hash tag link position fix **/
 .content h2::before, .content h3::before {
   display: block;
