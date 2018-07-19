@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>2DView | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="2DView" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/2DView/" />
+<meta property="og:url" content="http://localhost:4000/2DView/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/2DView/","headline":"2DView","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body class="bg-is-gray">
+    <div class="page"><header class="" role="banner"><nav class="navbar navbar-expand-md bg-light-green main-nav fixed-top">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item"><a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item active"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item"><a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item"><a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
+    </div></nav>
+
+</header>
+<main class="main" aria-label="Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 vertical-menu bg-light">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+                        </li><li class="nav-item active"><a class="nav-link" href="/2DView/">2DView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Mouse/">Mouse</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/NeDB/">NeDB</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/PanelView/">PanelView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Perceptron/">Perceptron</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Ping/">Ping</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Plexus/">Plexus</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Pong/">Pong</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/RootView/">RootView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/SQLite/">SQLite</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/ServerProxy/">ServerProxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/TableView/">TableView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Validate/">Validate</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/WebProxy/">WebProxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/WebViewer/">WebViewer</a>
+                          </li></ul>
+            </div>
+            <div class="col-md-9 bg-white content">
+              <h1 id="2dview">2DView</h1>
+
+<p>v1.0.0</p>
+
+<p>Introspective Systems, LLC.</p>
+
+<hr />
+<h2 id="2dview-1">2DView</h2>
+
+<p>2DView adds and renders a Pixi.js stage on the <code class="highlighter-rouge">div</code> provided by the
+Viewify class. Currently, only Pixi primitives can be added to the
+scene/rendered.</p>
+
+<hr />
+
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
+
+<p>Module Definition Parameters are specified in the module definition and
+stored in the <code class="highlighter-rouge">Par</code> key of the Entity’s <code class="highlighter-rouge">this</code> context, <code class="highlighter-rouge">this.Par</code>.</p>
+
+<p>Seven Parameters can be specified in the module definition, but they are all optional.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">{"Server" : "xGraphPid"}</code>: where xGraphPid is the pid of the Server Module.</li>
+  <li><code class="highlighter-rouge">{"Controller": "xGraphPid"}</code>: where xGraphPid is the pid of the Module
+                                  acting as 2DViews controller.</li>
+  <li><code class="highlighter-rouge">{"EvokeView": "xGraphModuleAddress"}</code>: where xGraphModuleAddress is
+                                          the address of the view that
+                                          will be popped up when evoked.</li>
+  <li><code class="highlighter-rouge">{"Source": "xGraphPid"}</code>: where xGraphPid is a reference to a source
+                              of data.</li>
+  <li><code class="highlighter-rouge">{"DataChannels": [{"Channel": "string","Flow": "Push || other","Handler": "functionString"}]}</code>:
+                          where <code class="highlighter-rouge">"Channel"</code> is the channels name, <code class="highlighter-rouge">"Flow"</code>
+                          is the data flow, when Flow is set to Push <code class="highlighter-rouge">"Handler"</code> is a reference
+                          to the the name of the command that the updated
+                          data should be sent to.</li>
+  <li><code class="highlighter-rouge">{"Hidden": "boolean"}</code>: where boolean either true or false</li>
+  <li><code class="highlighter-rouge">{"BackgroundColor": "string"}</code>: where string is a hex color string (i.e. <code class="highlighter-rouge">"0xababab"</code>).</li>
+</ul>
+
+<p>An example of how this looks in the module definition of a config.json</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"2DView"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.2DView"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Controller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$ControllerProxy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$ServerProxy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"EvokeView"</span><span class="p">:</span><span class="s2">"xGraph.3DView"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="output-commands">Output Commands</h2>
+
+<p>The Output Commands are all the command that 2DView can send to
+other modules.</p>
+
+<p>If a <code class="highlighter-rouge">"Controller"</code> is included in the module definition, the 2DView will
+send two functions to its Controller module, referenced at <code class="highlighter-rouge">Par.Controller</code>:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">{"Cmd":"Register", "Pid":"xGraphPid"}</code>: where xGraphPid is the pid of 2DView.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">{"Cmd":"SaveImage", "Image":"String", "Name":"String"}</code>: where the
+          <code class="highlighter-rouge">"Image"</code> is a base64 string containing the string of the image
+          to be saved (a png) and the name is a string containing the
+          number of the image saved.</p>
+  </li>
+</ul>
+
+<p>If <code class="highlighter-rouge">"Server"</code> is included in the module definition, the 2DView will send
+one function to the its Server module, referenced at <code class="highlighter-rouge">Par.Server</code> module:</p>
+
+<p><code class="highlighter-rouge">{"Cmd":"Subscribe", "Pid":"xGraphPid", "Link":"String"}</code>: where xGraphPid
+        is the pid of the module, and string is a string that matches the
+        Key of the module that is the destionation of the command, which is
+        located in the ApexList of the Server Module.</p>
+
+<p>If included in the Par, the 2DView will send one function to the Par.Source module:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Cmd":"GetData", 
+    "Pid":"xGraphPid", 
+    "DataChannels":[{"Channel": "string","Flow": "Push || other","Handler": "functionString"}]}
+</code></pre></div></div>
+
+<p>where xGraphPid is the pid of the module, string is the name of
+the channel, the data flow is specified by “Flow”, and functionString
+references the name of the command that the updated data is sent
+to when Flow is set to Push.</p>
+
+<hr />
+
+<h2 id="input-commands">Input Commands</h2>
+<p>The Input Commands are all the commands that 2DView can receive.</p>
+
+<h3 id="drawobjects">DrawObjects</h3>
+<p>The DrawObjects command sets objects in the 2DView stage.</p>
+
+<p>Example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DrawObjects"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">idx</span><span class="p">,</span><span class="w">
+      </span><span class="err">geometry</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"geom"</span><span class="p">,</span><span class="w">
+        </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Circle"</span><span class="p">,</span><span class="w">
+        </span><span class="err">arguments</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">fill</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"fill"</span><span class="p">,</span><span class="w">
+        </span><span class="err">color</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">xFFFFFF</span><span class="p">,</span><span class="w">
+        </span><span class="err">alpha</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">tint</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">xFFFFFF</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="p">,</span><span class="w">
+      </span><span class="err">position</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">this.Vlt.View.Renderer.width</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="p">,</span><span class="w">
+        </span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="err">this.Vlt.View.Renderer.height</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">scale</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="p">,</span><span class="w">
+        </span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">responseHandler</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">Cmd</span><span class="p">:</span><span class="w"> </span><span class="s2">"EvokeExample"</span><span class="p">,</span><span class="w">
+        </span><span class="err">Handler</span><span class="p">:</span><span class="w"> </span><span class="err">this.Par.Pid</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="imagecapture">ImageCapture</h3>
+<p>The ImageCapture command gets a base64 string of the current canvas.</p>
+
+<p>Example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImageCapture"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="getcanvas">GetCanvas</h3>
+<p>The GetCanvas command returns the canvas of the 2DView module.</p>
+
+<p>Example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GetCanvas"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="evokeexample">“EvokeExample”</h3>
+<p>The EvokeExample command sends an example evoke message.</p>
+
+<p>Example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EvokeExample"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mouse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integer"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integer"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+            </div>
+          </div>
+        </main><footer class="site-footer h-card bg-dark text-light-green">
+  <div class="container">
+
+
+    <h2 class="footer-heading"><a class="u-url text-green" href="/">xGraph</a></h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+</div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

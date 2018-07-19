@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>HelloWorld | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="HelloWorld" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/HelloWorld/" />
+<meta property="og:url" content="http://localhost:4000/HelloWorld/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/HelloWorld/","headline":"HelloWorld","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,14 +45,14 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
                           </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Mouse/">Mouse</a>
                           </li><li class="nav-item"><a class="nav-link" href="/NeDB/">NeDB</a>
@@ -73,30 +73,146 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h3 id="hello-world">Hello World</h3>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.0</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>Introspective Systems, LLC.</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<hr />
+<h4 id="hello">Hello!</h4>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>This is the HelloWorld Module. This module is an example of how
+multiple <em>entities</em> that communicate inside a <em>module</em>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
+<p>This <em>module</em> has the <em>entities</em> <strong>HelloWorld.js</strong> and
+<strong>HelloWorld2.js</strong>, both of which communicate messages with the help
+of the ‘send’ function of Nexus.</p>
+
+<p>The <strong>schema.json</strong> tells xGraph how the module is structured internally.</p>
+
+<p>When run in a system, the hello world module waits for text input from
+standard in, then repeats what the user typed. The first entity,
+HelloWorld, sends a command to the second entity, HelloWorld2, and
+HelloWorld2 iterates a value. Finally, the command is returned to the
+callback function in HelloWorld.</p>
+
+<p>This is a typical flow for message passing between entities inside a
+module. However, a module is usually fully encapsulated, so we are not
+usually concerned with the communications between entities in this
+document. This is simply an example of how modules work.</p>
+
+<hr />
+
+<h4 id="loading-a-module-in-a-system">Loading a Module in a System</h4>
+
+<p>This module is simple to use. Add the module to a system, run the system,
+and you will see xGraph mirror what you say. An example of this can be
+found in <code class="highlighter-rouge">ExampleSystems/MultipleEntitiesSingleModule/HelloWorld/</code> folder for this example.</p>
+
+<p>To add a module to a system, you add the module definition to the system’s
+structure file. Typically, this file is a <code class="highlighter-rouge">config.json</code> file. The
+<code class="highlighter-rouge">config.json</code> for our example is found in
+<code class="highlighter-rouge">MultipleEntitiesSingleModule/ExampleSystems/HelloWorld/</code>. Let’s take a look:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Sources": {
+        "xGraph": "{xGraph}",
+        "xGraphTemplates": "{xGraphTemplates}"
+    },
+    "Modules": {
+        "HelloWorld":{
+            "Module": "xGraphTemplates:Modules/HelloWorld",
+                "Par":{
+                }
+            }
+        }
+    }
 }
 </code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
+
+<p>The first section, the <code class="highlighter-rouge">"Sources"</code> key of the JSON object, defines path
+variables for module sources. This is where xGraph will look for the
+modules, and a path for each key must be provided when the system is run.
+These can be module brokers, places that serve modules, or a path to a
+local file space where modules are being developed.</p>
+
+<p>The next section, the <code class="highlighter-rouge">"Modules"</code> key, is the module definitions. Here we
+have our HelloWorld module definition:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"HelloWorld":{
+    "Module": "xGraphTemplates:Modules/HelloWorld",
+    "Par":{
+        "SomePar": "Hello Mars"
+    }
 }
 </code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">"Module"</code> key provides the path to the HelloWorld module source. You
+will notice this path,
+<code class="highlighter-rouge">"xGraphTemplates:Modules/HelloWorld"</code>,
+has the prefix <code class="highlighter-rouge">xGraphTemplates:</code>. This is a path variable found in the
+“Sources” section of the configuration file.</p>
+
+<p>The <code class="highlighter-rouge">"Source"</code> key is a reference of the path variable that will tell
+xGraph where to look for the Module.</p>
+
+<p>The <code class="highlighter-rouge">"Par"</code> object holds parameter key-value pairs that will be passed to
+the HelloWorld module. This module definition has an optional Par,
+<code class="highlighter-rouge">"SomePar"</code>, just as an example. The value of <code class="highlighter-rouge">"SomePar"</code> will print
+when HelloWorld gets the Setup command.</p>
+
+<p>This is everything you need to add the HelloWorld module to a system.
+Run the system, and you will see the module at work!</p>
+
+<hr />
+
+<h3 id="module-interface">Module Interface</h3>
+
+<p>The next section is the API documentation for this module. This
+documentation should be built for xGraph users, who are not necessarily
+developer. More information on xGraph module documentation requirements
+can be found on the xGraph Wiki.</p>
+
+<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+
+<p>Parameters are defined in the module definition and stored in this.Par.
+Some are required, while some may be optional. Below, the Parameters
+that HelloWorld expects are defined.</p>
+
+<ul>
+  <li><strong>Par.SomePar</strong> : HelloWorld will check if this parameter exists on
+startup. If it exists, HelloWorld will print the value of SomePar.</li>
+</ul>
+
+<hr />
+
+<h4 id="output-commands">Output Commands</h4>
+
+<p>The Output Commands are all the command that HelloWorld can send to
+other modules.</p>
+
+<p><strong><em>(HelloWorld does not require any parameters to be defined in the
+config.json file.)</em></strong></p>
+
+<hr />
+
+<h4 id="input-commands">Input Commands</h4>
+<p>The Input Commands are all the command that HelloWorld can
+receive.</p>
+
+<h5 id="startcom-fun">Start(com, fun)</h5>
+<p>Start is called when HelloWorld is first generated. Start sets up a
+listener for standard in. When text is received, the console repeats
+the input and sends a message to the other entity. This entity
+increments a value, and returns it to the first entity, where the value
+is printed.</p>
+
+<h6 id="parameters">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
 
             </div>
           </div>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Validate | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Validate" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/Validate/" />
+<meta property="og:url" content="http://localhost:4000/Validate/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/Validate/","headline":"Validate","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body class="bg-is-gray">
+    <div class="page"><header class="" role="banner"><nav class="navbar navbar-expand-md bg-light-green main-nav fixed-top">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item"><a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item active"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item"><a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item"><a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
+    </div></nav>
+
+</header>
+<main class="main" aria-label="Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 vertical-menu bg-light">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Mouse/">Mouse</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/NeDB/">NeDB</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/PanelView/">PanelView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Perceptron/">Perceptron</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Ping/">Ping</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Plexus/">Plexus</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Pong/">Pong</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/RootView/">RootView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/SQLite/">SQLite</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/ServerProxy/">ServerProxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/TableView/">TableView</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/Validate/">Validate</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/WebProxy/">WebProxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/WebViewer/">WebViewer</a>
+                          </li></ul>
+            </div>
+            <div class="col-md-9 bg-white content">
+              <h3 id="validate">Validate</h3>
+
+<p>v1.0.0</p>
+
+<p>Introspective Systems, LLC.</p>
+
+<hr />
+<h4 id="validate-1">Validate</h4>
+
+<p>Validate is a module that runs tests on other modules. The tests for a
+module are described in a test.json file, which should be included with
+each module. Validate generates the module being tested, and then
+perform the tests that are laid out it the test.json file.</p>
+
+<hr />
+
+<h4 id="how-to-use-validate">How To Use Validate</h4>
+
+<p>To test a module using Validate, you need to supply Validate with a list
+of tests in the form of a JSON object. These tests should be included in
+a test.json file in each module. Next we will look at how to build a
+test.json for a module.</p>
+
+<p>The JSON object of the test.json for any module has 2 main sections:
+<code class="highlighter-rouge">State</code> and <code class="highlighter-rouge">Cases</code>.</p>
+
+<p>State references a json object that defines the parameters, (<code class="highlighter-rouge">this.Par</code>),
+that must be defined to run the module or perform the tests given.</p>
+
+<p>Cases references an array of test cases. Each test case must have the
+<code class="highlighter-rouge">"Command"</code> key defined. This key references the JSON object that is the
+message the that will be sent to the module being tested. The module must
+accept this command for the test to pass.</p>
+
+<p>The test case can also have a <code class="highlighter-rouge">"SentMessages"</code> key, a <code class="highlighter-rouge">"Response"</code> key,
+or both.</p>
+
+<p><code class="highlighter-rouge">"SentMessages"</code> references an array of messages that should be sent
+when the module being tested receives the test command. The command object
+in the “SendMessages” array and the command object as sent must match exactly.</p>
+
+<p><code class="highlighter-rouge">"Response"</code> references an object that is expected to be returned from
+the original command.</p>
+
+<p>Setup and Start test cases (if they exist) must be in order as the first
+2 test cases in the <code class="highlighter-rouge">"Cases"</code> array. If only one of these exist, then it
+must come as the first test in the array.</p>
+
+<p>Three special string values are important to know.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">"xGraphSelfPid"</code> is the pid of the Module apex being tested.</li>
+  <li><code class="highlighter-rouge">"xGraphTesterPid"</code> is the pid of Validate (this module, the
+                      module performing the test).</li>
+  <li><code class="highlighter-rouge">"*"</code> is a wildcard available to test for a key without defining the
+      value. The wildcard can only be used in the Response object.</li>
+</ul>
+
+<p>Example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"Server"</span><span class="p">:</span><span class="s2">"xGraphTesterPid"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"Table"</span><span class="p">:{</span><span class="w">
+			</span><span class="s2">"Test"</span><span class="p">:</span><span class="s2">"xGraphTesterPid"</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Cases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="s2">"Start"</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"SentMessages"</span><span class="p">:[</span><span class="w">
+				</span><span class="p">{</span><span class="w">
+					</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="s2">"Subscribe"</span><span class="p">,</span><span class="w">
+					</span><span class="s2">"Pid"</span><span class="p">:</span><span class="s2">"xGraphSelfPid"</span><span class="w">
+				</span><span class="p">}</span><span class="w">
+			</span><span class="p">]</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="s2">"Subscribe"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Name"</span><span class="p">:</span><span class="s2">"TestDestination"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraphTesterPid"</span><span class="w">
+			</span><span class="p">}</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Destination"</span><span class="p">:</span><span class="s2">"TestDestination"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraphTesterPid"</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"Response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+			</span><span class="p">}</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>To Check for array length and values  use</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"Response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"Documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"String"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Null"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"Number"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+
+<p>Parameters are defined in the module definition and stored in the Par attribute 
+of the Entities this attribute.</p>
+
+<p>Validate requires two parameters must be defined in the module definition.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">{"TestModule":"xGraphModuleAddress"}</code>: Where xGraphModuleAddress is
+                                      the xGraph module that will be tested.</li>
+  <li><code class="highlighter-rouge">{"TestJson":"@file String"}</code>: Where String is the path of the test.json
+                                  containing the tests.</li>
+</ul>
+
+<p>The following is an example of how this looks in the module definition.
+Note that the module being tested, defined by the xGraphModuleAddress,
+also needs to be included in the array of deferred modules so that
+it’s code is compiled.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.Validate"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"Source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"TestModule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraphModuleAddress"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"TestJson"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@file: {PathTo}test.json"</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="output-commands">Output Commands</h3>
+<p>The Output Commands are all of the commands that Validate can send.</p>
+
+<p><em>(Validate does not send any commands.)</em></p>
+
+<hr />
+
+<h3 id="input-commands">Input Commands</h3>
+<p>The Input Commands are all of the commands that Plexus can receive.</p>
+
+<p><em>(Validate does not send any commands.)</em></p>
+
+            </div>
+          </div>
+        </main><footer class="site-footer h-card bg-dark text-light-green">
+  <div class="container">
+
+
+    <h2 class="footer-heading"><a class="u-url text-green" href="/">xGraph</a></h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+</div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

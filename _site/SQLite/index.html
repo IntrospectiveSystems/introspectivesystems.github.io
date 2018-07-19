@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>SQLite | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="SQLite" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/SQLite/" />
+<meta property="og:url" content="http://localhost:4000/SQLite/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/SQLite/","headline":"SQLite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,7 +45,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
@@ -64,7 +64,7 @@
                           </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
                           </li><li class="nav-item"><a class="nav-link" href="/RootView/">RootView</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/SQLite/">SQLite</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/SQLite/">SQLite</a>
                           </li><li class="nav-item"><a class="nav-link" href="/ServerProxy/">ServerProxy</a>
                           </li><li class="nav-item"><a class="nav-link" href="/TableView/">TableView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Validate/">Validate</a>
@@ -73,30 +73,183 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h3 id="sqlite">SQLite</h3>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.1.0</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>Introspective Systems, LLC</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<hr />
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>SQLite is an adapter that allows xGraph to communicate with SQLite
+databases. SQLite wraps the Sqlite3 node.js module.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<h3 id="module-interface">Module Interface</h3>
+
+<h4 id="module-definition-parameters-thispar">Module Definition Parameters (<code class="highlighter-rouge">this.Par</code>)</h4>
+
+<p>Parameters are defined in the module definition and stored in this.Par.
+Below, the Parameters that SQLite expects are defined.</p>
+
+<ul>
+  <li><strong>Par.Filename</strong> (<em>required</em>): The filename of the SQLite database that
+                                  will be accessed or created.</li>
+</ul>
+
+<hr />
+
+<h4 id="output-commands">Output Commands</h4>
+<p>The Output Commands are all the command that SQLite can send.</p>
+
+<p><em>(SQLite does not send any commands.)</em></p>
+
+<hr />
+
+<h4 id="input-commands">Input Commands</h4>
+<p>The Input Commands are all the command that SQLite can
+receive.</p>
+
+<h5 id="setupcom-fun">Setup(com, fun)</h5>
+<p>Setup is called when the SQLite module is first generated. The Setup
+command sets up the connection to the SQLite3 node module.</p>
+
+<h6 id="parameters">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+</ul>
+
+<h6 id="returns">Returns</h6>
+<p><em>None</em></p>
+
+<h5 id="startcom-fun">Start(com, fun)</h5>
+<p>Setup is called when the SQLite module is first generated. The Setup
+command sets up the connection to the SQLite3 node module.</p>
+
+<h6 id="parameters-1">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+</ul>
+
+<h6 id="returns-1">Returns</h6>
+<p><em>None</em></p>
+
+<h5 id="configurecom-fun">Configure(com, fun)</h5>
+<p>Configure sets a configuration option for the database. A valid Option
+and Value must be provided.</p>
+
+<h6 id="parameters-2">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>com.Option</strong> (<em>required</em>): <code class="highlighter-rouge">'trace'</code></td>
+          <td><code class="highlighter-rouge">'profile'</code></td>
+          <td><code class="highlighter-rouge">'busyTimeout'</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>com.Value</strong> (<em>required</em>): If Option is trace or profile, com.Value
+      is a function. For busyTimeout, com.Value is a an integer.</li>
+</ul>
+
+<h6 id="returns-2">Returns</h6>
+<p><em>None</em></p>
+
+<h5 id="closecom-fun">Close(com, fun)</h5>
+<p>The Close command closes the database.</p>
+
+<h6 id="parameters-3">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+</ul>
+
+<h6 id="returns-3">Returns</h6>
+<p><em>None</em></p>
+
+<h5 id="runcom-fun">Run(com, fun)</h5>
+<p>Run runs the provided SQL query with the provided parameters. It does not
+retrieve any result data.</p>
+
+<h6 id="parameters-4">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
+                      has placeholders the values for the placeholders
+                      must be provided in com.Param.</li>
+  <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
+</ul>
+
+<h6 id="returns-4">Returns</h6>
+<p><em>None</em></p>
+
+<h5 id="getcom-fun">Get(com, fun)</h5>
+<p>Get runs the SQL query with the specified parameters and returns the first result row.</p>
+
+<h6 id="parameters-5">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
+                      has placeholders the values for the placeholders
+                      must be provided in com.Param.</li>
+  <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
+</ul>
+
+<h6 id="returns-5">Returns</h6>
+<ul>
+  <li><strong>com.Row</strong>: The first row returned by the Sql query.</li>
+</ul>
+
+<h5 id="allcom-fun">All(com, fun)</h5>
+<p>The All command runs the SQL query with the specified parameters and returns all result rows.</p>
+
+<h6 id="parameters-6">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
+                      has placeholders the values for the placeholders
+                      must be provided in com.Param.</li>
+  <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
+</ul>
+
+<h6 id="returns-6">Returns</h6>
+<ul>
+  <li><strong>com.Rows</strong>: The all rows returned by the Sql query.</li>
+</ul>
+
+<h5 id="eachcom-fun">Each(com, fun)</h5>
+<p>The Each command runs the SQL query with the specified parameters and
+calls the callback once for each result row.</p>
+
+<h6 id="parameters-7">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run. If the query
+                      has placeholders the values for the placeholders
+                      must be provided in com.Param.</li>
+  <li><strong>com.Param</strong>: The parameters to replace the placeholders in the SQL Query.</li>
+  <li><strong>com.Callback</strong> (<em>required</em>): The callback function that will be called
+                      once for each row returned.</li>
+</ul>
+
+<h6 id="returns-7">Returns</h6>
+<p><em>None</em></p>
+
+<h5 id="execcom-fun">Exec(com, fun)</h5>
+<p>The Exec command runs all SQL queries in the supplied string. No result
+rows are retrieved. If a query fails, no subsequent statements will be
+executed. statements will be executed.</p>
+
+<h6 id="parameters-8">Parameters</h6>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Sql</strong> (<em>required</em>): The SQL Query that will be run.</li>
+</ul>
+
+<h6 id="returns-8">Returns</h6>
+<p><em>None</em></p>
 
             </div>
           </div>

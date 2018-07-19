@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>Pong | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="Pong" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/Pong/" />
+<meta property="og:url" content="http://localhost:4000/Pong/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/Pong/","headline":"Pong","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,7 +45,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
@@ -60,7 +60,7 @@
                           </li><li class="nav-item"><a class="nav-link" href="/Perceptron/">Perceptron</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Ping/">Ping</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Plexus/">Plexus</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/Pong/">Pong</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/Pong/">Pong</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
                           </li><li class="nav-item"><a class="nav-link" href="/RootView/">RootView</a>
@@ -73,30 +73,61 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="pong-module">[Pong Module]:</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<hr />
+<h4 id="description">Description</h4>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>This is the Pong module. This module works with the Ping module as an
+example of how multiple modules (Ping and Pong) communicate inside a
+system.</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<p>An example of this system can be found in
+<code class="highlighter-rouge">MultipleModules/ExampleSystems/PingPong</code>.</p>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>Whenever the Pong module recieves the <code class="highlighter-rouge">Ping</code> command, the Pong module sends
+a <code class="highlighter-rouge">Pong</code> command to the Pong module.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<hr />
+
+<h3 id="module-definition-parameters">Module Definition Parameters</h3>
+
+<p>Below, the Parameters that Ping expects are defined.</p>
+
+<ul>
+  <li><strong>Par.Ping</strong> (<em>required</em>): The Pid of the Ping module.</li>
+</ul>
+
+<hr />
+
+<h3 id="output-commands">Output Commands</h3>
+
+<p>All the command that HelloWorld can send to other modules.</p>
+
+<h4 id="cmd-pong">Cmd: ‘Pong’</h4>
+<p>The <code class="highlighter-rouge">Pong</code> command is sent to the module referenced in <code class="highlighter-rouge">this.Par.Ping</code>,
+ideally the Pong module.</p>
+
+<h6 id="command-object">Command Object</h6>
+<ul>
+  <li><strong>object.Cmd</strong>: “Pong” (The command.)</li>
+</ul>
+
+<h6 id="reference">Reference</h6>
+<p><code class="highlighter-rouge">this.Par.Ping</code></p>
+
+<hr />
+
+<h3 id="input-commands">Input Commands</h3>
+<p>The Input Commands are all the command that HelloWorld can
+receive.</p>
+
+<h5 id="pingcom-fun">Ping(com, fun)</h5>
+<p>When Ping is received, Pong sends a <code class="highlighter-rouge">Pong</code> command to the module
+referenced in <code class="highlighter-rouge">this.Par.Ping</code>.</p>
+
+<h6 id="parameters">Parameters</h6>
+<p><em>(Pong does not expect any Parameters with a <code class="highlighter-rouge">Pong</code> command.)</em></p>
 
             </div>
           </div>

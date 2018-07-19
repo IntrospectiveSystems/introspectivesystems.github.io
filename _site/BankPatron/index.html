@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>BankPatron | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="BankPatron" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/BankPatron/" />
+<meta property="og:url" content="http://localhost:4000/BankPatron/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/BankPatron/","headline":"BankPatron","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,12 +45,12 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/BankPatron/">BankPatron</a>
                           </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
                           </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
@@ -73,30 +73,127 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="bankpatron">BankPatron</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.1</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<h2 id="introspective-systems">Introspective Systems</h2>
+<h2 id="description">Description</h2>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<p>This is the BankPatron Module. This module, together with the BankAccount
+and BankPatron systems, is an example of how an xGraph system can work
+with another system. The BankPatron module acts as a command line user
+interface, prompting the user to make a selection, and then sending that
+command to the BankAccount system.</p>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<hr />
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<h1 id="module-definition-parameters">Module Definition Parameters</h1>
+
+<ul>
+  <li><strong>Par.BankAccount</strong> (<em>required</em>): The Pid, the CheckBalance, Deposit,
+                                  and Withdraw commands.</li>
+</ul>
+
+<hr />
+
+<h1 id="output-commands">Output Commands</h1>
+<p>The following Commands can be sent by BankPatron.</p>
+
+<h3 id="cmd-bankpatronwaiting">Cmd: ‘BankPatronWaiting’</h3>
+<p>BankPatronWaiting is sent to the module refereed at <code class="highlighter-rouge">this.Par.BankAccount</code>.
+When the command is returned from BankAccount, BankPatron know’s communication 
+is set up, and will launch the text interface.</p>
+
+<h4 id="command-object">Command Object</h4>
+<ul>
+  <li><strong>object.Cmd</strong>: “BankPatronWaiting” (The command.)</li>
+</ul>
+
+<h4 id="reference">Reference</h4>
+<p><code class="highlighter-rouge">this.Par.BankAccount</code></p>
+
+<h3 id="cmd-checkbalance">Cmd: ‘CheckBalance’</h3>
+<p>CheckBalance is sent to the module referenced at <code class="highlighter-rouge">this.Par.BankAccount</code>.
+CheckBalance attempts to get a balance from a bank account. CheckBalance
+expects a callback with a “Message” key in the command object,
+<code class="highlighter-rouge">object.Message</code>.</p>
+
+<h4 id="command-object-1">Command Object</h4>
+<ul>
+  <li><strong>object.Cmd</strong>: “CheckBalance” (The command.)</li>
+</ul>
+
+<h4 id="reference-1">Reference</h4>
+<p><code class="highlighter-rouge">this.Par.BankAccount</code></p>
+
+<h3 id="cmd-deposit">Cmd: ‘Deposit’</h3>
+<p>Deposit is sent to the module referenced at <code class="highlighter-rouge">this.Par.BankAccount</code>. In the command
+object, Deposit sends an amount to be deposited. Deposit expects a callback
+with a “Message” key in the command object, <code class="highlighter-rouge">object.Message</code>.</p>
+
+<h4 id="command-object-2">Command Object</h4>
+<ul>
+  <li><strong>object.Cmd</strong>: “CheckBalance” (The command.)</li>
+  <li><strong>object.Amount</strong>: The amount to be deposited. Must be a positive number.</li>
+</ul>
+
+<h4 id="reference-2">Reference</h4>
+<p><code class="highlighter-rouge">this.Par.BankAccount</code></p>
+
+<h3 id="cmd-withdraw">Cmd: ‘Withdraw’</h3>
+<p>Withdraw is sent to the module referenced at <code class="highlighter-rouge">this.Par.BankAccount</code>. In the command
+object, Withdraw sends an amount to be withdrawn. Withdraw expects a callback
+with a “Message” key in the command object, <code class="highlighter-rouge">object.Message</code>.</p>
+
+<h4 id="command-object-3">Command Object</h4>
+<ul>
+  <li><strong>object.Cmd</strong>: “CheckBalance” (The command.)</li>
+  <li><strong>object.Amount</strong>: The amount to be deposited. Must be a positive number.</li>
+</ul>
+
+<h4 id="reference-3">Reference</h4>
+<p><code class="highlighter-rouge">this.Par.BankAccount</code></p>
+
+<hr />
+
+<h2 id="input-commands">Input Commands</h2>
+<p>The following Commands can be received by BankPatron.</p>
+
+<h3 id="setupcom-fun">Setup(com, fun)</h3>
+<p>Setup is called when BankPatron is instantiated. It sets up a stream from
+standard in.</p>
+
+<h4 id="parameters">Parameters</h4>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
+
+<h3 id="startcom-fun">Start(com, fun)</h3>
+<p>Start is called after Setup. Start sends a <code class="highlighter-rouge">BankPatronWaiting</code> command to the 
+module referenced at <code class="highlighter-rouge">this.Par.BankAccount</code> so that it can establish communication 
+is happening. Once BankPatron receives the callback from the BankPatronWaiting 
+command, it dispatches the <code class="highlighter-rouge">StartUserInteraction</code> command to itself.</p>
+
+<h4 id="parameters-1">Parameters</h4>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
+
+<h3 id="startuserinteractioncom-fun">StartUserInteraction(com, fun)</h3>
+<p>StartUserInteraction is called after from Start once communication with BankAccount 
+has been established. StartUserInteraction prompts the user with their options, waits 
+for user input, and sends the appropriate command to the BankAccount. Users can choose 
+to “Check Balance”, “Deposit”, or “Withdraw”. If the user selects “Deposit” or “Withdraw”, 
+they are prompted to enter an amount.</p>
+
+<h4 id="parameters-2">Parameters</h4>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
 
             </div>
           </div>

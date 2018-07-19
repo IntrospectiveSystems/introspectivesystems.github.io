@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>Plexus | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="Plexus" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/Plexus/" />
+<meta property="og:url" content="http://localhost:4000/Plexus/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/Plexus/","headline":"Plexus","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,7 +45,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
@@ -59,7 +59,7 @@
                           </li><li class="nav-item"><a class="nav-link" href="/PanelView/">PanelView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Perceptron/">Perceptron</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Ping/">Ping</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/Plexus/">Plexus</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/Plexus/">Plexus</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Pong/">Pong</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
@@ -73,30 +73,173 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="plexus">Plexus</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.0.0</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>Introspective Systems, LLC.</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<hr />
+<h4 id="plexus-1">Plexus</h4>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>Plexus is a dynamic router that routes connections, and assigns the
+port to servers requesting publication. Plexus registers a server with a
+channel name and host, and assigns that server a port. Plexus handles
+connection requests by channel name.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<hr />
+
+<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+
+<p>Plexus has the following module definition parameters.</p>
+
+<p><strong><em>(Plexus does not require any parameters to be defined in the
+config.json file.)</em></strong></p>
+
+<hr />
+
+<h4 id="output-commands">Output Commands</h4>
+
+<p>The Output Commands are all the command that Plexus can send to
+other modules.</p>
+
+<p><em>(Plexus does not send any commands.)</em></p>
+
+<hr />
+
+<h4 id="input-commands">Input Commands</h4>
+<p>The Input Commands are all the commands that Plexus can
+receive.</p>
+
+<h5 id="setupcom-fun">Setup(com, fun)</h5>
+
+<p>Setup the required vault variables</p>
+
+<h6 id="parameters">Parameters</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>com</td>
+      <td><code class="highlighter-rouge">Object</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>fun</td>
+      <td><code class="highlighter-rouge">Function</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="returns">Returns</h6>
+
+<ul>
+  <li><code class="highlighter-rouge">com</code></li>
+</ul>
+
+<h5 id="publishcom-fun">Publish(com, fun)</h5>
+
+<p>Publish a Proxy (server) to the Plexus</p>
+
+<h6 id="parameters-1">Parameters</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>com</td>
+      <td><code class="highlighter-rouge">Object</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>com.Chan</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>the channel that the server will be supporting</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>com.Host</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>the host that the server will be listening on</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>fun</td>
+      <td><code class="highlighter-rouge">Function</code></td>
+      <td>(err, com)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="returns-1">Returns</h6>
+
+<ul>
+  <li><code class="highlighter-rouge">com.Port</code>  the port that the server shall listen at</li>
+</ul>
+
+<h5 id="subscribecom-fun">Subscribe(com, fun)</h5>
+
+<p>A Proxy (client) can request the data of a Proxy server</p>
+
+<h6 id="parameters-2">Parameters</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>com</td>
+      <td><code class="highlighter-rouge">Object</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>com.Chan</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>the channel that the client will be connecting to</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>fun</td>
+      <td><code class="highlighter-rouge">Function</code></td>
+      <td>(err, com)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="returns-2">Returns</h6>
+
+<ul>
+  <li><code class="highlighter-rouge">com.Host</code>  The host for the client to connect on</li>
+  <li><code class="highlighter-rouge">com.Port</code>  The port for the client to connect to</li>
+</ul>
 
             </div>
           </div>

@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>AceEditorView | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="AceEditorView" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/AceEditorView/" />
+<meta property="og:url" content="http://localhost:4000/AceEditorView/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/AceEditorView/","headline":"AceEditorView","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,10 +45,10 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
                           </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
@@ -73,30 +73,77 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="aceeditorview">AceEditorview</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.0.0</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>Introspective Systems, LLC.</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<hr />
+<h4 id="aceeditorview-1">AceEditorView</h4>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>The AceEditorView entity is the Apex and only entity of the AceEditorView Module. This entity requres its Setup function invoked during the Setup phase of Nexus startup.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<p>The main capability of this entity is to add and render an Ace Editor Session to the div of the Module.</p>
+
+<hr />
+
+<h3 id="module-definition-parameters">Module Definition Parameters</h3>
+
+<p>Parameters are defined in the module definition and stored in the Par attribute
+of the Entities this attribute.
+Some are required, while some are optional. Below are the Parameters
+that AceEditorView expects to be defined.</p>
+
+<p>Two Pars can be set in the module definition, but they are all optional.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">"Controller": "xGraphPid"</code>  - where xGraphPid should be replaced by the pid of the Module acting as this Modules controller.</li>
+  <li><code class="highlighter-rouge">"EvokeView": "xGraphModuleAddress"</code>  - where xGraphModuleAddress should be replaced by the address of the view that should be popped up when evoked.</li>
+</ul>
+
+<p>An example of how this looks in the module definition of a config.json</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"AceEditorView"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.AceEditorView"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Controller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$ControllerProxy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"AutoSave"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="output-commands">Output Commands</h3>
+
+<p>The Output Commands are all the commands that AceEditorView can send to other modules.</p>
+
+<p>If included in the Par, the AceEditorView will send two functions to the Par.Controller module:</p>
+
+<p><code class="highlighter-rouge">{"Cmd":"Save", "Data":"String"}</code> - where Data is the string of the text.</p>
+
+<hr />
+
+<h3 id="input-commands">Input Commands</h3>
+<p>The Input Commands are all the commands that AceEditorView can receive.</p>
+
+<p>Utilizing the <a href="https://ace.c9.io/#about=&amp;nav=api">Ace API</a></p>
+
+<p>Examples:</p>
+
+<p>Returns the string of text currently highlighted.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="s2">"getCopyText"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Sets the current document text to <code class="highlighter-rouge">value</code> at <code class="highlighter-rouge">cursorPos</code></p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setValue"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"value"</span><span class="p">,</span><span class="w"> </span><span class="err">cursorPos</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
             </div>
           </div>

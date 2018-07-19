@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>FlatFile | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="FlatFile" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/FlatFile/" />
+<meta property="og:url" content="http://localhost:4000/FlatFile/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/FlatFile/","headline":"FlatFile","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,13 +45,13 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/FlatFile/">FlatFile</a>
                           </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Mouse/">Mouse</a>
@@ -73,30 +73,56 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="flatfile-v111">FlatFile v1.1.1</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p><em>Introspective Systems, LLC</em></p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<hr />
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<p>FlatFile creates a FlatFile database using JSON format. By default data
+is saved in local working directory as Database.db. Records are simply
+overwritten on new Put commands.</p>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<hr />
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<h3 id="module-interface">Module Interface</h3>
+
+<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+
+<p><strong>Database</strong>: <em>String</em> - Full filename and path to load and store data. Defaults to ‘Database.db’.</p>
+
+<h4 id="input-commands">Input Commands</h4>
+
+<p><strong>Get</strong> -  Get a single record value by key, return in com.Info[key].</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"Key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KeyName"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Put</strong> - Add a record to the database, stores all key value pairs contained in com.Data.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Put"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Key3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value3"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Delete</strong> - Deletes every record as defined in com.Data.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Key1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Key2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Key3"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>List</strong> - List all keys stored in the database, returns as array in com.Info. <em>Requires no additional parameters</em></p>
+
+<h4 id="output-commands">Output Commands</h4>
+
+<p><em>None</em></p>
 
             </div>
           </div>

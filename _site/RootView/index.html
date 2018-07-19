@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>RootView | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="RootView" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/RootView/" />
+<meta property="og:url" content="http://localhost:4000/RootView/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/RootView/","headline":"RootView","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,7 +45,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
@@ -63,7 +63,7 @@
                           </li><li class="nav-item"><a class="nav-link" href="/Pong/">Pong</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/RootView/">RootView</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/RootView/">RootView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/SQLite/">SQLite</a>
                           </li><li class="nav-item"><a class="nav-link" href="/ServerProxy/">ServerProxy</a>
                           </li><li class="nav-item"><a class="nav-link" href="/TableView/">TableView</a>
@@ -73,30 +73,104 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h3 id="rootview">RootView</h3>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
+<p>Version 1.0.0</p>
+
+<p>Introspective Systems LLC.</p>
+
+<hr />
+
+<p>A <code class="highlighter-rouge">RootView</code> is the most basic root container view, and is the starting
+point for most view layouts. That is, it is the most basic view that can
+attach itself to the DOM.</p>
+
+<p>RootView builds and renders a page by reading and building the view
+modules specified in the <code class="highlighter-rouge">"Layout"</code> parameter. RootView only works with
+view modules, or any module who’s Apex entity is a Viewify subclass.</p>
+
+<h4 id="loading-a-single-view">Loading a single view</h4>
+
+<p>You can create a user interface with a single, customized, full screen
+view by loading a custom built view in RootView using the <code class="highlighter-rouge">Layout</code>
+parameter. In the example below, RootView will build and then render the
+view module defined by <code class="highlighter-rouge">$MyView</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.RootView"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$MyView"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="loading-multiple-view-modules">Loading multiple view modules</h4>
+
+<p>If you want to build a user interface using more than one view, then you
+need to use a container view, such as <a href="./PanelView">PanelView</a>, to split
+up the available screen space.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.RootView"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Layout"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"View"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$Panel"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"$LeftView"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"$RightView"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can continue to add nested container views split up the available
+space, and adding views that fill in the space, or render content, where
+you want.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.RootView"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Layout"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"View"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$Panel"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"View"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$Panel"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"$LeftView"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"$MiddleView"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"$RightView"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="module-interface">Module Interface</h3>
+
+<p>Below you can find all the details on how to interact with the RootView
 module.</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<h4 id="module-definition-parameters">Module Definition Parameters</h4>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<p>The following parameters are passed to the RootView module on
+instantiation.</p>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<ul>
+  <li><strong>this.Par.Layout</strong> : The view that will be built and rendered by
+RootView.</li>
+  <li><strong>this.Par.Layout.View</strong> : The view module that will be RootView’s
+direct child.</li>
+  <li><strong>this.Par.Layout.Children</strong> : If the view module specified in the
+“View” parameter can load child views, list he child views here.</li>
+</ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<hr />
+
+<h4 id="output-commands">Output Commands</h4>
+
 
             </div>
           </div>

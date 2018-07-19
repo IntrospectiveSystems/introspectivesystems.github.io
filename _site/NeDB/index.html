@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>NeDB | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="NeDB" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/NeDB/" />
+<meta property="og:url" content="http://localhost:4000/NeDB/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/NeDB/","headline":"NeDB","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body class="bg-is-gray">
+    <div class="page"><header class="" role="banner"><nav class="navbar navbar-expand-md bg-light-green main-nav fixed-top">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item"><a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item active"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item"><a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item"><a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
+    </div></nav>
+
+</header>
+<main class="main" aria-label="Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 vertical-menu bg-light">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Mouse/">Mouse</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/NeDB/">NeDB</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/PanelView/">PanelView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Perceptron/">Perceptron</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Ping/">Ping</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Plexus/">Plexus</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Pong/">Pong</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Popup/">Popup</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Proxy/">Proxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/RootView/">RootView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/SQLite/">SQLite</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/ServerProxy/">ServerProxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/TableView/">TableView</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/Validate/">Validate</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/WebProxy/">WebProxy</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/WebViewer/">WebViewer</a>
+                          </li></ul>
+            </div>
+            <div class="col-md-9 bg-white content">
+              <h3 id="nedb">NeDB</h3>
+
+<p>Version 1.0.0</p>
+
+<p>Introspective Systems, LLC.</p>
+
+<hr />
+
+<p>This module is a wrapper for the npm package <a href="https://github.com/louischatriot/nedb">NeDB</a>.</p>
+
+<h4 id="module-definition-parameters">Module Definition Parameters</h4>
+
+<h5 id="filename"><code class="highlighter-rouge">Filename</code></h5>
+
+<p>NeDB only requires one parameter in its module definition, <code class="highlighter-rouge">"Filename"</code>,
+which is the name of the database file. The database will be loaded from
+the file if it already exists, or the file will be created if it is a new
+database.</p>
+
+<p>Example</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"NeDB"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.NeDB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./database.nedb"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="reset"><code class="highlighter-rouge">Reset</code></h5>
+
+<p>Optionally, if you would like the database to reset when the system is
+restarted, you can Provide it a parameter of <code class="highlighter-rouge">"Reset": true</code>.</p>
+
+<p>Example</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"NeDB"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.NeDB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./database.nedb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Reset"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="input-commands">Input Commands</h4>
+
+<h5 id="insert">Insert</h5>
+
+<p>To insert a document into the database, send an <code class="highlighter-rouge">'Insert'</code> command with
+a <code class="highlighter-rouge">com.Document</code> object.</p>
+
+<p>The object will be stored in the database and will have a string ID
+referenced at <code class="highlighter-rouge">_id</code>. <code class="highlighter-rouge">'Insert'</code> returns an object with the key
+<code class="highlighter-rouge">com.Document._id</code> so you can reference your document later by ID.</p>
+
+<p>Example</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+  <span class="na">Cmd</span><span class="p">:</span> <span class="s1">'Insert'</span><span class="p">,</span>
+  <span class="na">Document</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">Example</span><span class="p">:</span> <span class="s1">'Document'</span><span class="p">,</span>
+    <span class="na">Data</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Database</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="s1">'the document</span><span class="se">\'</span><span class="s1">s new id is '</span> <span class="o">+</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">Document</span><span class="p">.</span><span class="nx">_id</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h5 id="find">Find</h5>
+
+<p>The <code class="highlighter-rouge">'Find'</code> command is used to retrieve documents. The command object
+must include a query object, <code class="highlighter-rouge">com.Where</code>.</p>
+
+<p>The only guaranteed way to retrieve a single document is by its <code class="highlighter-rouge">_id</code>.
+However, you can also return the set of all documents that meet a set
+of conditions.</p>
+
+<p>The <code class="highlighter-rouge">'Find'</code> command requires a query object, <code class="highlighter-rouge">com.Where</code>. This
+query object specifies what your query string is looking for.</p>
+
+<p>For example, given a database of documents,</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cat"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"susie"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cat"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mary"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lizard"</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>the code</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">Cmd</span><span class="p">:</span> <span class="s1">'Find'</span><span class="p">,</span>
+            <span class="na">Where</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">pet</span><span class="p">:</span> <span class="s1">'cat'</span>
+            <span class="p">}</span>
+          <span class="p">};</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">cmd</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Database</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">){</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">doc</span> <span class="k">of</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">Documents</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">doc</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>will print out</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"_id": 0, "name": "billy", "pet": "cat"}
+{"_id": 4, "name": "joe", "pet": "cat"}
+</code></pre></div></div>
+
+<h5 id="remove">Remove</h5>
+
+<p>The <code class="highlighter-rouge">'Remove'</code> command deletes a document (or many at once). The command
+object must include a query object, <code class="highlighter-rouge">com.Where</code>.</p>
+
+<p>The only guaranteed way to retrieve a single document is by its <code class="highlighter-rouge">_id</code>.
+However, you can also return the set of all documents that meet a set
+of conditions.</p>
+
+<p>The <code class="highlighter-rouge">'Remove'</code> command requires a query object, <code class="highlighter-rouge">com.Where</code>. This
+query object specifies what your query string is looking for.</p>
+
+<p><code class="highlighter-rouge">'Remove'</code> returns the number of documents that were deleted in <code class="highlighter-rouge">com.DeletedCount</code>.</p>
+
+<p>For example, given a database of documents,</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cat"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"susie"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cat"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mary"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lizard"</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>the code</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">Cmd</span><span class="p">:</span> <span class="s1">'Remove'</span><span class="p">,</span>
+            <span class="na">Where</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">pet</span><span class="p">:</span> <span class="s1">'cat'</span>
+            <span class="p">}</span>
+          <span class="p">};</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">cmd</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">.</span><span class="nx">Database</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">){</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">cmd</span><span class="p">.</span><span class="nx">DeletedCount</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>will print out</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>and leave you with the database:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"susie"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mary"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lizard"</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+            </div>
+          </div>
+        </main><footer class="site-footer h-card bg-dark text-light-green">
+  <div class="container">
+
+
+    <h2 class="footer-heading"><a class="u-url text-green" href="/">xGraph</a></h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+</div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

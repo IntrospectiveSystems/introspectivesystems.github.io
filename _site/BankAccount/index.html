@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>BankAccount | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="BankAccount" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/BankAccount/" />
+<meta property="og:url" content="http://localhost:4000/BankAccount/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/BankAccount/","headline":"BankAccount","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,11 +45,11 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/BankAccount/">BankAccount</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/BankAccount/">BankAccount</a>
                           </li><li class="nav-item"><a class="nav-link" href="/BankPatron/">BankPatron</a>
                           </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
                           </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
@@ -73,30 +73,91 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="bankaccount">BankAccount</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.1</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>Introspective Systems</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<hr />
+<h2 id="description">Description</h2>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>This is the BankAccount Module. This module, together with the
+BankAccount and BankPatron systems, is an example of how an xGraph system
+can work with another system. The BankAccount module acts as an account,
+with the ability to check the balance of the account, deposit to the
+account, or withdrawal from the account, by acting on the “Check Balance,
+“Deposit”, and “Withdraw” commands.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<hr />
+
+<h2 id="module-definition-parameters">Module Definition Parameters</h2>
+
+<p>Below, the parameters that BankAccount expects are defined.</p>
+
+<ul>
+  <li><strong>Par.Balance</strong> (<em>optional</em>) The initial balance of the account.</li>
+</ul>
+
+<hr />
+
+<h2 id="output-commands">Output Commands</h2>
+
+<p>(<em>BankAccount does not send any commands.</em>)</p>
+
+<hr />
+
+<h1 id="input-commands">Input Commands</h1>
+
+<h2 id="cmd-start">Cmd: “Start”</h2>
+<p>The Start is sent to the BankAccount module when BankAccount is run in
+an xGraph system. Start checks to see if there was a Balance parameter
+defined for this instance. If there is no starting balance, instantiate
+<code class="highlighter-rouge">this.Par.Balance</code> to 0.</p>
+
+<h4 id="parameters">Parameters</h4>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
+
+<h2 id="cmd-checkbalance">Cmd: “CheckBalance”</h2>
+<p>The <code class="highlighter-rouge">CheckBalance</code> command has no parameters and returns the current
+account balance.</p>
+
+<h4 id="parameters-1">Parameters</h4>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
+
+<h4 id="returns">Returns</h4>
+<ul>
+  <li><strong>com.Message</strong>: A message with the current account balance.</li>
+</ul>
+
+<h2 id="cmd-deposit">Cmd: “Deposit”</h2>
+<p>The <code class="highlighter-rouge">Deposit</code> command takes an amount to be deposited and adds it
+in the account balance.</p>
+
+<h4 id="parameters-2">Parameters</h4>
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Amount</strong> (<em>required</em>): The amount to be deposited. Must be a
+  positive number.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
+
+<h2 id="cmd-withdrawal">Cmd: “Withdrawal”</h2>
+<p>The <code class="highlighter-rouge">Withdrawal</code> command takes an amount to be withdrawn and removes it
+from the account balance.</p>
+
+<ul>
+  <li><strong>com</strong> (<em>required</em>): The command object.</li>
+  <li><strong>com.Amount</strong> (<em>required</em>): The amount to be withdrawn. Must be a
+  positive number.</li>
+  <li><strong>fun</strong> (<em>required</em>): The callback function.</li>
+</ul>
 
             </div>
           </div>

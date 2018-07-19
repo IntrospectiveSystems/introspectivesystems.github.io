@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Module Broker | xGraph</title>
+<title>Mouse | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Module Broker" />
+<meta property="og:title" content="Mouse" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/module-broker/" />
-<meta property="og:url" content="http://localhost:4000/module-broker/" />
+<link rel="canonical" href="http://localhost:4000/Mouse/" />
+<meta property="og:url" content="http://localhost:4000/Mouse/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/module-broker/","headline":"Module Broker","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/Mouse/","headline":"Mouse","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -45,7 +45,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 vertical-menu bg-light">
-              <ul class="nav flex-column"><li class="nav-item active font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/module-broker/">Module Broker</a>
                         </li><li class="nav-item"><a class="nav-link" href="/2DView/">2DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/3DView/">3DView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/AceEditorView/">AceEditorView</a>
@@ -54,7 +54,7 @@
                           </li><li class="nav-item"><a class="nav-link" href="/FlatFile/">FlatFile</a>
                           </li><li class="nav-item"><a class="nav-link" href="/HelloWorld/">HelloWorld</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Menubar/">Menubar</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/Mouse/">Mouse</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/Mouse/">Mouse</a>
                           </li><li class="nav-item"><a class="nav-link" href="/NeDB/">NeDB</a>
                           </li><li class="nav-item"><a class="nav-link" href="/PanelView/">PanelView</a>
                           </li><li class="nav-item"><a class="nav-link" href="/Perceptron/">Perceptron</a>
@@ -73,30 +73,66 @@
                           </li></ul>
             </div>
             <div class="col-md-9 bg-white content">
-              <h1 id="module-broker">Module Broker</h1>
+              <h1 id="mouse">Mouse</h1>
 
-<p>The xGraph module broker provides users with access to all of xGraph’s core modules. You can use xGraph core 
-modules without downloading the modules by specifying the xGraph module broker as the source for a core 
-module.</p>
+<p>v1.0.0</p>
 
-<p>To load a module from the xGraph module broker, provide the address of the xGraph module broker as the source 
-of the module.</p>
+<p>Introspective Systems, LLC.</p>
 
-<p>A module broker address is represented by a string with the module broker prefix, <code class="highlighter-rouge">mb://</code>, followed by a URI 
-and a port. If you do not include a port, it will default to 27000.</p>
+<hr />
+<h4 id="mouse-1">Mouse</h4>
 
-<p>The xGraph module broker is hosted at modulebroker.xgraphdev.com and communicates over the 27000 port. 
-Following are two examples of a module source pointing to the xGraph module broker.</p>
+<p>The Mouse entity is the Apex and only entity of the Mouse Module.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com"
-}
-</code></pre></div></div>
-<p>and</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Source: {
-  "Core": "md://modulebroker.xgraphdev.com:27000"
-}
-</code></pre></div></div>
+<p>The main capability of this entity is to add a mouse (&amp;keydown) listener to the canvas that is provided when the SetDomElement command is called. Currently MouseEnter, MouseLeave, Wheel, LeftMouseDown, RightMouseDown, LeftMouseUp, RightMouseUp, and KeyDown events are captured.</p>
+
+<hr />
+
+<h3 id="module-definition-parameters">Module Definition Parameters</h3>
+
+<p>Parameters are defined in the module definition and stored in the Par attribute 
+of the Entities this attribute.
+The Parameters that Mouse expects to be defined include.</p>
+
+<p>One Par must be set in the module definition.</p>
+
+<p><code class="highlighter-rouge">{"Handler" : "xGraphPid"}</code>  - where xGraphPid shall be replaced by the pid of the View Module that is the destination of Mouse module DispatchEvent commands.</p>
+
+<p>An example of how this looks in the module definition of a config.json</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.Mouse"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"Handler"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraphPid"</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="output-commands">Output Commands</h3>
+
+<p>The Output Commands are all the commands that Mouse can send to
+other modules.</p>
+
+<p>The only message sent from the Mouse module is to Par.Handler and is of the form:</p>
+
+<p><code class="highlighter-rouge">{ Cmd: "DispatchEvent", info: "Object , mouse: "Object }</code> – where info is set as the information about the event (ex. LeftMouseDown), and mouse is set to the current state of the mouse (ex. Mode:”idle”, inPanel: true).</p>
+
+<hr />
+
+<h3 id="input-commands">Input Commands</h3>
+<p>The Input Commands are all the commands that Mouse can
+receive.</p>
+
+<p>Set the DOM Element that the mouse will listen on.</p>
+
+<p>Example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SetDomElement"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"DomElement"</span><span class="p">:</span><span class="w"> </span><span class="err">this.Vlt.div</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
             </div>
           </div>
