@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Setup a Test System | xGraph</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Setup a Test System" />
+<meta name="author" content="Introspective Systems" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
+<link rel="canonical" href="http://localhost:4000/setup-test-system/" />
+<meta property="og:url" content="http://localhost:4000/setup-test-system/" />
+<meta property="og:site_name" content="xGraph" />
+<script type="application/ld+json">
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/setup-test-system/","headline":"Setup a Test System","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="xGraph" /></head>
+<body class="bg-is-gray">
+    <div class="page"><header class="" role="banner"><nav class="navbar navbar-expand-md bg-light-green main-nav fixed-top">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">xGraph</a>
+      <a class="navbar-co-brand" href="https://www.introspectivesystems.com/">by Introspective Systems</a><button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
+             data-target="#navbar-content"
+            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/basics/">Basics</a>
+              </li><li class="nav-item active"><a class="nav-link" href="/getting-started/">Getting Started</a>
+              </li><li class="nav-item"><a class="nav-link" href="/module-broker/">Module Broker</a>
+              </li><li class="nav-item"><a class="nav-link" href="/platform/">Platform</a>
+              </li><li class="nav-item"><a class="nav-link" href="/contributing/">Contributing</a>
+              </li></ul>
+      </div>
+    </div></nav>
+
+</header>
+<main class="main" aria-label="Content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 vertical-menu bg-light">
+              <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/getting-started/">Getting Started</a>
+                        </li><li class="nav-item"><a class="nav-link" href="/generating-systems/">Generating Systems</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/generating-modules/">Generating Modules</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/setup-test-system/">Setup a Test System</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/setup-new-module/">Setup a New Module</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/viewify/">Viewify</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/viewify-quick-start/">Viewify Quick Start</a>
+                          </li></ul>
+            </div>
+            <div class="col-md-9 bg-white content">
+              <h1 id="setup-a-test-system">Setup a Test System</h1>
+
+<p>You can setup a test system for an xGraph module using the <a href="/Validate/">Validate</a> module. The Validate module 
+is great for building and running unit tests of xGraph modules. Here we will walk though the process of 
+generating a new system and adding new modules too it.</p>
+
+<h2 id="generate-a-new-system">Generate a new system</h2>
+
+<p>We will use the xGraph Command Line Interface (CLI) to generate a new system. In your command line tool, 
+make sure you are in your root working directory. I will still be in the <code class="highlighter-rouge">Tutorials</code> project directory.</p>
+
+<p>You can use the <code class="highlighter-rouge">xgraph generate system</code> command to create a new system. Finnish the command with the name of 
+the system being generated.</p>
+
+<p>Here I will enter <code class="highlighter-rouge">xgraph generate system TestSystems/FileStream</code>. When the system is generated successfully 
+you will see a success message with the system’s complete path.</p>
+
+<p><img src="http://localhost:4000/assets/images/setup-test-systems/01.png" alt="success-message" /></p>
+
+<p>Generate system creates a new system in the path provided. If you give generate system a relative path or a 
+simple name, it will create the system relative to the current working directory (cwd). This is either the 
+directory that you are currently in, or the directory set using –cwd.</p>
+
+<p>Now I can find my FileStream test system file, it’s <code class="highlighter-rouge">config.json</code>, in 
+<code class="highlighter-rouge">C:\Users\Introspective\WebstormProjects\Tutorials\TestSystems\FileStream</code></p>
+
+<p><img src="http://localhost:4000/assets/images/setup-test-systems/02.png" alt="FileStream-test-system" /></p>
+
+<p>Find the config.json file for the system you just generated. This is where we will add all the modules that 
+are included in our system. We will start building our system by adding the modules we will be using to the 
+system’s structure object.</p>
+
+<p>Open the <code class="highlighter-rouge">config.json</code> file in your favorite text editor or JavaScript IDE.</p>
+
+<h2 id="add-modules-to-the-system">Add modules to the system</h2>
+
+<p>We are building a system to test our FileStream module as we build it, so we will need to use the Validate 
+module to run our tests. Now we need to add the Validate module and the FileStream module to our test 
+system’s structure file.</p>
+
+<p>In the <code class="highlighter-rouge">config.json</code> file, you will find an object with three keys: <code class="highlighter-rouge">"Sources"</code>, <code class="highlighter-rouge">"Modules"</code> and a subsection 
+of modules, <code class="highlighter-rouge">"Deferred"</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Sources": {},
+	"Modules": {
+		"Deferred": []
+	}
+}
+</code></pre></div></div>
+
+<h3 id="adding-sources">Adding Sources</h3>
+
+<p>The <code class="highlighter-rouge">"Sources"</code> object holds locations where modules can be retrieved. This allows you to define paths for 
+module directories and module broker source objects at a system level.</p>
+
+<p>Sources are recorded using a key, and valued with a path. Then the source key is used to specify module 
+sources in the <code class="highlighter-rouge">"Modules"</code> section of the system structure object.</p>
+
+<p>Our FileStream system will use modules from two sources: the xGraph core, and our local <code class="highlighter-rouge">.\Modules\</code> 
+directory. We will add two entries to our <code class="highlighter-rouge">"Sources"</code> object, core and local, where a reference to the xGraph 
+core module broker will be stored in <code class="highlighter-rouge">"core"</code>, and ‘“local”<code class="highlighter-rouge"> will point to the </code>.\Modules` directory in our 
+<code class="highlighter-rouge">"Tutorial"</code> directory.</p>
+
+<p>A reference to a module broker is represented as an object with one or two keys: <code class="highlighter-rouge">"Host"</code> and <code class="highlighter-rouge">"Port"</code>. To 
+connect to the xGraph core module broker, we only need to specify the value of <code class="highlighter-rouge">"Host"</code>, because the <code class="highlighter-rouge">"Port"</code> 
+is set to the default.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Sources": {
+		"core": {
+			"Host": "modulebroker.xgraphdev.com"
+},
+	"local": "./Modules/"
+},
+    "Modules": {
+        "Deferred": []
+    }
+}
+</code></pre></div></div>
+
+<h3 id="adding-modules">Adding Modules</h3>
+
+<p>First we will add the Validate module to the system by adding it’s module definition to the <code class="highlighter-rouge">"Modules"</code> 
+object. The Validate module is from the xGraph core, in the xGraph namespace, so we will start the object 
+with</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Module": "xGraph.Validate", 
+    "Source": "core"
+}
+</code></pre></div></div>
+
+<p>Additionally, we will need to provide the Validate module’s initial parameters. These are listed as keys in 
+the <code class="highlighter-rouge">"Par"</code> object in the module’s definition. Validate requires two parameters: TestModule, and TestJson. 
+TestModule holds the namespace of the module we will be testing. TestJson specifies the .json file that holds 
+the tests that will be run.</p>
+
+<p>We will be testing our FileStream module, and our test file will be a <code class="highlighter-rouge">test.json</code> file that we will create in 
+the FileStream module after this. Here is our finished module definition object:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Module": "xGraph.Validate", 
+    "Source": "core",
+    "Par" : {
+        "TestModule": "IS.FileStream",
+        "TestJson": "@file ../../Modules/FileStream/test.json"
+    }
+}
+</code></pre></div></div>
+
+<p>We will add this Validate module definition to the system structure object’s <code class="highlighter-rouge">"Module"</code> object, using the key 
+<code class="highlighter-rouge">"Validate"</code>, as below.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Sources": {
+		"core": "../xGraph/Modules/",
+		"local": "./Modules/"
+	},
+	"Modules": {
+		"Validate": {
+			"Module": "xGraph.Validate",
+			"Source": "core",
+			"Par" : {
+				"TestModule": "IS.FileStream",
+				"TestJson": "@file: ../../Modules/IS/FileStream/test.json"
+			}
+		},
+		"Deferred": []
+	}
+}
+</code></pre></div></div>
+
+<p>Next, we need to add the FileStream module to the <code class="highlighter-rouge">"Deferred"</code> section. We need to list the FileStream module 
+here because it will be generated by the Validate module. Adding FileStream to the deferred module list will 
+pre-load the module into memory, reducing the time it takes for the system to generate the module.</p>
+
+<p>Typically, any module generated using the genModule command,  <code class="highlighter-rouge">this.genModule(moduleDefinition)</code>, needs to be 
+included in the <code class="highlighter-rouge">"Deferred"</code> list. Systems that have to generate unknown modules must have permission to do 
+so at runtime, using the <code class="highlighter-rouge">--allow-add-module</code> flag.</p>
+
+<p>To add FileStream to the deferred module list, we add an object with the module’s namespace and source. Here, 
+our module’s namespace is <code class="highlighter-rouge">"IS.FileStream"</code>, and the source is local.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Module": "FileStream",
+	"Source": "local"
+}
+</code></pre></div></div>
+
+<p>Finally, we add this object to our system’s <code class="highlighter-rouge">"Deferred"</code> array. Here is our completed <code class="highlighter-rouge">config.json</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Sources": {
+		"core": {
+			"Host": "modulebroker.xgraphdev.com"
+},
+		"local": "./Modules/"
+	},
+	"Modules": {
+		"Validate": {
+			"Module": "xGraph.Validate",
+			"Source": "core",
+			"Par" : {
+				"TestModule": "FileStream",
+				"TestJson": "@file: ../../Modules/FileStream/test.json"
+			}
+		},
+		"Deferred": [
+			{
+				"Module": "FileStream",
+				"Source": "local"
+			}
+		]
+	}
+}
+</code></pre></div></div>
+
+<p>Now we can run our system using the xgraph command line interface.</p>
+
+<p>Enter this command into my command line tool,
+<code class="highlighter-rouge">xgraph reset --cwd ./TestSystems/FileSystem/</code></p>
+
+<p>The system will run, and it should print: 0 Tests, All test concluded, and All tests Passed!</p>
+
+<p>You will write unit tests to include in the FileStream module. This is outlined in the Setup a New 
+Module tutorial.</p>
+
+            </div>
+          </div>
+        </main><footer class="site-footer h-card bg-dark text-light-green">
+  <div class="container">
+
+
+    <h2 class="footer-heading"><a class="u-url text-green" href="/">xGraph</a></h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Introspective Systems</li><li><a class="u-email" href="mailto:info@introspectivesystems.com">info@introspectivesystems.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/IntrospectiveSystems"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">IntrospectiveSystems</span></a></li><li><a href="https://www.twitter.com/AtIntrospective"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">AtIntrospective</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>xGraph makes development of complex systems easy with its graph architecture of self-similar parts.</p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+</div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+
+</html>

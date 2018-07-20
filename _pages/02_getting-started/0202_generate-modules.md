@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Building Modules
-permalink: /building-modules/
+title: Generating Modules
+permalink: /generating-modules/
 tags: ['getting-started']
 ---
 
-# Building Modules
+# Generating Modules
 
 xGraph fosters an open source community and we encourage developers to build their own xGraph modules. 
 Additionally, if you are building a specialized system, you may want to build your own xGraph modules. 
