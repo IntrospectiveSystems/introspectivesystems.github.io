@@ -25,7 +25,7 @@ database.
 
 Example
 
-```json
+```
 {
   "NeDB": {
     "Module": "xGraph.NeDB",
@@ -43,7 +43,7 @@ restarted, you can Provide it a parameter of `"Reset": true`.
 
 Example
 
-```json
+```
 {
   "NeDB": {
     "Module": "xGraph.NeDB",
@@ -68,7 +68,7 @@ referenced at `_id`. `'Insert'` returns an object with the key
 
 Example
 
-``` javascript
+```
 this.send({
   Cmd: 'Insert',
   Document: {
@@ -96,7 +96,7 @@ query object specifies what your query string is looking for.
 
 For example, given a database of documents,
 
-``` json
+```
 [
   {"_id": 0, "name": "billy", "pet": "cat"},
   {"_id": 1, "name": "bob", "pet": "dog"},
@@ -109,7 +109,7 @@ For example, given a database of documents,
 
 the code
 
-``` javascript
+```
 let cmd = {
             Cmd: 'Find',
             Where: {
@@ -149,7 +149,7 @@ query object specifies what your query string is looking for.
 
 For example, given a database of documents,
 
-``` json
+```
 [
   {"_id": 0, "name": "billy", "pet": "cat"},
   {"_id": 1, "name": "bob", "pet": "dog"},
@@ -162,7 +162,7 @@ For example, given a database of documents,
 
 the code
 
-``` javascript
+```
 let cmd = {
             Cmd: 'Remove',
             Where: {
@@ -185,7 +185,7 @@ will print out
 
 and leave you with the database:
 
-``` json
+```
 [
   {"_id": 1, "name": "bob", "pet": "dog"},
   {"_id": 2, "name": "susie", "pet": "none"},

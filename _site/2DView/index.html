@@ -114,17 +114,17 @@ stored in the <code class="highlighter-rouge">Par</code> key of the Entity’s <
 </ul>
 
 <p>An example of how this looks in the module definition of a config.json</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"2DView"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.2DView"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"Controller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$ControllerProxy"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$ServerProxy"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"EvokeView"</span><span class="p">:</span><span class="s2">"xGraph.3DView"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "2DView": {
+    "Module": "xGraph.2DView",
+    "Par": {
+      "Controller": "$ControllerProxy",
+      "Server": "$ServerProxy",
+      "EvokeView":"xGraph.3DView"
+    }
+  }
+}
+</code></pre></div></div>
 
 <hr />
 
@@ -179,72 +179,72 @@ to when Flow is set to Push.</p>
 
 <p>Example:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DrawObjects"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"Objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">idx</span><span class="p">,</span><span class="w">
-      </span><span class="err">geometry</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"geom"</span><span class="p">,</span><span class="w">
-        </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Circle"</span><span class="p">,</span><span class="w">
-        </span><span class="err">arguments</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="err">fill</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"fill"</span><span class="p">,</span><span class="w">
-        </span><span class="err">color</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">xFFFFFF</span><span class="p">,</span><span class="w">
-        </span><span class="err">alpha</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="err">tint</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">xFFFFFF</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="p">,</span><span class="w">
-      </span><span class="err">position</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">this.Vlt.View.Renderer.width</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="p">,</span><span class="w">
-        </span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="err">this.Vlt.View.Renderer.height</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="err">scale</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="p">,</span><span class="w">
-        </span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">Math.random()</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="err">responseHandler</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">Cmd</span><span class="p">:</span><span class="w"> </span><span class="s2">"EvokeExample"</span><span class="p">,</span><span class="w">
-        </span><span class="err">Handler</span><span class="p">:</span><span class="w"> </span><span class="err">this.Par.Pid</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "Cmd": "DrawObjects",
+  "Objects": [
+    {
+      id: idx,
+      geometry: {
+        id: "geom",
+        name: "Circle",
+        arguments: [5, 5, 3]
+      },
+      fill: {
+        id: "fill",
+        color: 0xFFFFFF,
+        alpha: 1
+      },
+      tint: 0xFFFFFF * Math.random(),
+      position: {
+        x: this.Vlt.View.Renderer.width * Math.random(),
+        y: this.Vlt.View.Renderer.height * Math.random()
+      },
+      scale: {
+        x: 20 * Math.random(),
+        y: 20 * Math.random()
+      },
+      responseHandler: {
+        Cmd: "EvokeExample",
+        Handler: this.Par.Pid
+      }
+    }
+  ]
+}
+</code></pre></div></div>
 
 <h3 id="imagecapture">ImageCapture</h3>
 <p>The ImageCapture command gets a base64 string of the current canvas.</p>
 
 <p>Example:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
- </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImageCapture"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+ "Cmd": "ImageCapture"
+}
+</code></pre></div></div>
 
 <h3 id="getcanvas">GetCanvas</h3>
 <p>The GetCanvas command returns the canvas of the 2DView module.</p>
 
 <p>Example:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
- </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GetCanvas"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+ "Cmd": "GetCanvas"
+}
+</code></pre></div></div>
 
 <h3 id="evokeexample">“EvokeExample”</h3>
 <p>The EvokeExample command sends an example evoke message.</p>
 
 <p>Example:</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
- </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EvokeExample"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mouse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integer"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integer"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+ "Cmd": "EvokeExample",
+  "id": "String",
+  "mouse": {
+   "x": "Integer",
+   "y": "Integer"
+  }
+}
+</code></pre></div></div>
 
             </div>
           </div>

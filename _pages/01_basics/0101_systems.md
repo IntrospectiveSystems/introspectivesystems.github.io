@@ -12,12 +12,12 @@ kernel process (Nexus.js in node). This means that an xGraph system is simply a 
 that are run as a single process using the xGraph core functionality.
 
 A **system definition** includes a **system structure** and the **system cache**. For information on how to 
-get started building xGraph systems, see [Building an xGraph System](/building-systems/).
+get started building xGraph systems, see [Generating Systems](/generating-systems/).
 
 The **system structure** is a JSON object that describes the way a system should be built. The system 
 structure object has two parts: `"Sources"`, and `"Modules"`.
 
-xGraph systems are easy to compile and run using the [xGraph Executable](/getting-started/).
+xGraph systems are easy to compile and run using the [Getting Started](/getting-started/).
 
 Here is an example of a simple system structure.
 

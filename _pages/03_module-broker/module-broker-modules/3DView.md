@@ -39,7 +39,7 @@ attribute, `this.Par`, when the module is generated.
                                             received.
 
 Here is an example of a module definition for 3DView.
-```json
+```
 {
   "3DView": {
     "Module": "xGraph.3DView",
@@ -97,7 +97,7 @@ as well as generated models.
 - **fun** (*required*): The callback function.
 
 Here is an example of a `"SetObject"` command with a single three.js object.
-```json
+```
 {
   "Cmd": "SetObjects",
   "Objects": [
@@ -152,14 +152,14 @@ in the callback function.
 - **com.Name**: The index number of the data url captured by this instance of 3DView.
 
 So if you send 3DView this command:
-```json
+```
 {
  "Cmd": "ImageCapture"
 }
 ```
 
 It will send out this command to the controller:
-```javascript
+```
  let cmd = {};
  cmd.Cmd = "SaveImage";
  cmd.Image = com.Image;
@@ -178,7 +178,7 @@ the scene will no longer look for updates.
 - **fun** (*required*): The callback function.
 
 You can send 3DView the cleanup command: 
-```json
+```
 {
  "Cmd": "Cleanup"
 }
@@ -200,7 +200,7 @@ referenced in `this.Par.EvokeView`.
 Send an example evoke message
 
 You can send 3DView the EvokeExample command:
-```json
+```
 {
  "Cmd": "EvokeExample",
   "id": "String",

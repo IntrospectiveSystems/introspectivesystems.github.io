@@ -34,7 +34,7 @@ One Par must be set in the module definition.
 destination of Mouse module DispatchEvent commands.
 
 An example of how this looks in the module definition of a config.json
-``` json
+```
 {
 	"Module": "xGraph.Mouse",
 	"Par": {
@@ -66,7 +66,7 @@ Set the DOM Element that the mouse will listen on.
 
 Example: 
 
-```json
+```
 {
 	"Cmd": "SetDomElement",
 	"DomElement": this.Vlt.div

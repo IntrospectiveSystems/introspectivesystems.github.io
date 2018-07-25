@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Setup a New Module
-permalink: /setup-new-module/
+title: Build a New Module
+permalink: /build-new-module/
 tags: ['getting-started']
 ---
 
@@ -137,7 +137,7 @@ Open `FileStream.js` and you will see an empty entity template. The default temp
 to define the entity. You can also use a JavaScript function to define an entity. To learn all about xGraph 
 entities, see our [Entity Guide](/entities/).
 
-```javascript
+```
 class FileStream {
 	Setup(com, fun) {
 		//this function is typically used to allow the entity/module to handle any internal setup
@@ -184,7 +184,7 @@ function.
 
 Now we have updated our commands to include these properties.
 
-```javascript
+```
 class FileStream {
     Setup(com, fun) {
         let that = this;
@@ -223,7 +223,7 @@ documentation for details about the [Node.js File System](https://nodejs.org/api
 In the Setup phase of instantiation, we want to load the Node.js File System and save it to the entities 
 vault object, `this.Vlt`. 
 
-```javascript
+```
 Setup(com, fun) {
 	let that = this;
 	let Par = this.Par;
@@ -251,7 +251,7 @@ is provided in the entities parameter object, accessed in `this.Par`. So we will
 the file exists, create the file if it doesn't exist, and open a pointer to the file in write mode. Then we 
 will save the file descriptor to the entities Vault so that we can use it later. Here is my Start command.
 
-```javascript
+```
 Start(com, fun){
 	let that = this;
 	let Par = this.Par;
@@ -279,7 +279,7 @@ Start(com, fun){
 Finally, we need to add the logic to the WriteFile command itself. This is easy to do using the 
 [Node.js File System](https://nodejs.org/api/fs.html).
 
-```javascript
+```
 WriteFile(com, fun){
 	let that = this;
 	let Par = this.Par;
@@ -309,7 +309,7 @@ Again, I'll use the variable `"String"` for our argument, but this time it will 
 that we expect to receive in the callback. So we will add a `"Response"` section to our test case where we 
 will check to make sure the string is included.
 
-```javascript
+```json
 {
   "State": {
     "file": "readfile.txt"
@@ -334,8 +334,8 @@ will check to make sure the string is included.
 The last thing we need to do is add the ReadFile command. Start by adding a ReadFile command, like the one 
 below, to the entity's class.
 
-```javascript
-WriteFile(com, fun){
+```
+WriteFile(com, fun) {
 	let that = this;
 	let Par = this.Par;
 	let Vlt = this.Vlt;

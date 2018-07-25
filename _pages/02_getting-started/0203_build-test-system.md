@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Setup a Test System
-permalink: /setup-test-system/
+title: Build a Test System
+permalink: /build-test-system/
 tags: ['getting-started']
 ---
 
@@ -196,5 +196,5 @@ Enter this command into my command line tool,
 
 The system will run, and it should print: 0 Tests, All test concluded, and All tests Passed!
 
-You will write unit tests to include in the FileStream module. This is outlined in the Setup a New 
-Module tutorial.
+You will write unit tests to include in the FileStream module. This is outlined in the [Build a New 
+Module](/build-new-module/) tutorial.

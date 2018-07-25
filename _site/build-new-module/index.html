@@ -3,18 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Setup a New Module | xGraph</title>
+<title>Build a New Module | xGraph</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Setup a New Module" />
+<meta property="og:title" content="Build a New Module" />
 <meta name="author" content="Introspective Systems" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
 <meta property="og:description" content="xGraph makes development of complex systems easy with its graph architecture of self-similar parts." />
-<link rel="canonical" href="http://localhost:4000/setup-new-module/" />
-<meta property="og:url" content="http://localhost:4000/setup-new-module/" />
+<link rel="canonical" href="http://localhost:4000/build-new-module/" />
+<meta property="og:url" content="http://localhost:4000/build-new-module/" />
 <meta property="og:site_name" content="xGraph" />
 <script type="application/ld+json">
-{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/setup-new-module/","headline":"Setup a New Module","@context":"http://schema.org"}</script>
+{"description":"xGraph makes development of complex systems easy with its graph architecture of self-similar parts.","author":{"@type":"Person","name":"Introspective Systems"},"@type":"WebPage","url":"http://localhost:4000/build-new-module/","headline":"Build a New Module","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -49,8 +49,8 @@
               <ul class="nav flex-column"><li class="nav-item font-weight-bold"><a class="nav-link" href="/getting-started/">Getting Started</a>
                         </li><li class="nav-item"><a class="nav-link" href="/generating-systems/">Generating Systems</a>
                           </li><li class="nav-item"><a class="nav-link" href="/generating-modules/">Generating Modules</a>
-                          </li><li class="nav-item"><a class="nav-link" href="/setup-test-system/">Setup a Test System</a>
-                          </li><li class="nav-item active"><a class="nav-link" href="/setup-new-module/">Setup a New Module</a>
+                          </li><li class="nav-item"><a class="nav-link" href="/build-test-system/">Build a Test System</a>
+                          </li><li class="nav-item active"><a class="nav-link" href="/build-new-module/">Build a New Module</a>
                           </li><li class="nav-item"><a class="nav-link" href="/viewify/">Viewify</a>
                           </li><li class="nav-item"><a class="nav-link" href="/viewify-quick-start/">Viewify Quick Start</a>
                           </li></ul>
@@ -184,21 +184,21 @@ we see the test gets sent, but you will get an error because the command doesn�
 to define the entity. You can also use a JavaScript function to define an entity. To learn all about xGraph 
 entities, see our <a href="/entities/">Entity Guide</a>.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">FileStream</span> <span class="p">{</span>
-	<span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
-		<span class="c1">//this function is typically used to allow the entity/module to handle any internal setup</span>
-		<span class="c1">//procedures prior to being connected to by other entities/modules</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class FileStream {
+	Setup(com, fun) {
+		//this function is typically used to allow the entity/module to handle any internal setup
+		//procedures prior to being connected to by other entities/modules
 
-		<span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-	<span class="p">}</span>
+		fun(null, com);
+	}
 
-	<span class="nx">Start</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">){</span>
-		<span class="c1">//this function is typically used to allow the entity/module to handle any external setup</span>
-		<span class="c1">//procedures</span>
+	Start(com, fun){
+		//this function is typically used to allow the entity/module to handle any external setup
+		//procedures
 
-		<span class="nx">fun</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-	<span class="p">}</span>
-<span class="p">};</span>
+		fun(null, com);
+	}
+};
 </code></pre></div></div>
 
 <p>The FileStream class has two methods: Setup and Start. These are the commands the entity accepts, and they 
@@ -229,34 +229,34 @@ function.</p>
 
 <p>Now we have updated our commands to include these properties.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">FileStream</span> <span class="p">{</span>
-    <span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class FileStream {
+    Setup(com, fun) {
+        let that = this;
+        let Par = this.Par;
+        let Vlt = this.Vlt;
+        let error = null;
 
-        <span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-    <span class="p">}</span>
+        fun(error, com);
+    }
 
-    <span class="nx">Start</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">){</span>
-        <span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    Start(com, fun){
+        let that = this;
+        let Par = this.Par;
+        let Vlt = this.Vlt;
+        let error = null;
 
-        <span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-    <span class="p">}</span>
+        fun(error, com);
+    }
 
-    <span class="nx">WriteFile</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">){</span>
-        <span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-        <span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    WriteFile(com, fun){
+        let that = this;
+        let Par = this.Par;
+        let Vlt = this.Vlt;
+        let error = null;
 
-        <span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        fun(error, com);
+    }
+}
 </code></pre></div></div>
 
 <p>Now we can add the programming logic to our code. We will start by considering what will happen when we 
@@ -267,23 +267,23 @@ documentation for details about the <a href="https://nodejs.org/api/fs.html">Nod
 <p>In the Setup phase of instantiation, we want to load the Node.js File System and save it to the entities 
 vault object, <code class="highlighter-rouge">this.Vlt</code>.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Setup</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Setup(com, fun) {
+	let that = this;
+	let Par = this.Par;
+	let Vlt = this.Vlt;
+	let error = null;
 
-	<span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+	let fs = this.require('fs');
 
-	<span class="k">if</span><span class="p">(</span><span class="nx">fs</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">fs</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">){</span>
-		<span class="nx">errors</span> <span class="o">=</span> <span class="s2">"Unable to load fs."</span><span class="p">;</span>
-	<span class="p">}</span>
+	if(fs == null || fs == undefined){
+		errors = "Unable to load fs.";
+	}
 
 
-	<span class="nx">Vlt</span><span class="p">.</span><span class="nx">Fs</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">;</span>
+	Vlt.Fs = fs;
 
-    <span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-    <span class="p">}</span>
+    fun(error, com);
+    }
 </code></pre></div></div>
 
 <p>Here you can see I check to see if the Node.js fs has loaded properly. If it has not, the error will be 
@@ -294,45 +294,45 @@ is provided in the entities parameter object, accessed in <code class="highlight
 the file exists, create the file if it doesn’t exist, and open a pointer to the file in write mode. Then we 
 will save the file descriptor to the entities Vault so that we can use it later. Here is my Start command.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Start</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">){</span>
-	<span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Start(com, fun){
+	let that = this;
+	let Par = this.Par;
+	let Vlt = this.Vlt;
+	let error = null;
 
 
-	<span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">Vlt</span><span class="p">.</span><span class="nx">Fs</span><span class="p">;</span>
+	let fs = Vlt.Fs;
 
 
-	<span class="nx">Vlt</span><span class="p">.</span><span class="nx">File</span> <span class="o">=</span> <span class="s2">"NewFile.csv"</span><span class="p">;</span>
-	<span class="k">if</span><span class="p">(</span><span class="nx">Par</span><span class="p">.</span><span class="nx">File</span><span class="p">){</span>
-		<span class="nx">Vlt</span><span class="p">.</span><span class="nx">File</span> <span class="o">=</span> <span class="nx">Par</span><span class="p">.</span><span class="nx">File</span><span class="p">;</span>
-	<span class="p">}</span>
+	Vlt.File = "NewFile.csv";
+	if(Par.File){
+		Vlt.File = Par.File;
+	}
 
 
-	<span class="kd">let</span> <span class="nx">fd</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">openSync</span><span class="p">(</span><span class="nx">Vlt</span><span class="p">.</span><span class="nx">File</span><span class="p">,</span> <span class="s1">'a+'</span><span class="p">);</span>
-	<span class="nx">Vlt</span><span class="p">.</span><span class="nx">Fd</span> <span class="o">=</span> <span class="nx">fd</span><span class="p">;</span>
+	let fd = fs.openSync(Vlt.File, 'a+');
+	Vlt.Fd = fd;
 
 
-	<span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-<span class="p">}</span>
+	fun(error, com);
+}
 </code></pre></div></div>
 
 <p>Finally, we need to add the logic to the WriteFile command itself. This is easy to do using the 
 <a href="https://nodejs.org/api/fs.html">Node.js File System</a>.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">){</span>
-	<span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WriteFile(com, fun){
+	let that = this;
+	let Par = this.Par;
+	let Vlt = this.Vlt;
+	let error = null;
 
 
-	<span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">Vlt</span><span class="p">.</span><span class="nx">Fs</span><span class="p">;</span>
-	<span class="nx">fs</span><span class="p">.</span><span class="nx">appendFileSync</span><span class="p">(</span><span class="nx">Vlt</span><span class="p">.</span><span class="nx">File</span><span class="p">,</span> <span class="nx">com</span><span class="p">.</span><span class="nb">String</span><span class="p">);</span>
+	let fs = Vlt.Fs;
+	fs.appendFileSync(Vlt.File, com.String);
 
-	<span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-<span class="p">}</span>
+	fun(error, com);
+}
 </code></pre></div></div>
 
 <p>Next we will add tests for the read mode.</p>
@@ -350,40 +350,40 @@ Again, I’ll use the variable <code class="highlighter-rouge">"String"</code> f
 that we expect to receive in the callback. So we will add a <code class="highlighter-rouge">"Response"</code> section to our test case where we 
 will check to make sure the string is included.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="s2">"State"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"file"</span><span class="p">:</span> <span class="s2">"readfile.txt"</span>
-    <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"read"</span>
-  <span class="p">},</span>
-  <span class="s2">"Cases"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">"Command"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"Cmd"</span><span class="p">:</span> <span class="s2">"ReadFile"</span>
-      <span class="p">},</span>
-      <span class="s2">"Response"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"Cmd"</span><span class="p">:</span> <span class="s2">"ReadFile"</span><span class="p">,</span>
-        <span class="s2">"String"</span><span class="p">:</span> <span class="s2">"This is the contents of a file."</span>
-      <span class="p">}</span>
-    <span class="p">}</span> 
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readfile.txt"</span><span class="w">
+    </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"Cases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Command"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReadFile"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"Response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReadFile"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"String"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is the contents of a file."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> 
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
 <h3 id="add-readfile-command">Add ReadFile command</h3>
 
 <p>The last thing we need to do is add the ReadFile command. Start by adding a ReadFile command, like the one 
 below, to the entity’s class.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">com</span><span class="p">,</span> <span class="nx">fun</span><span class="p">){</span>
-	<span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Par</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Par</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">Vlt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Vlt</span><span class="p">;</span>
-	<span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WriteFile(com, fun) {
+	let that = this;
+	let Par = this.Par;
+	let Vlt = this.Vlt;
+	let error = null;
 
 
 
-	<span class="nx">fun</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">com</span><span class="p">);</span>
-<span class="p">}</span>
+	fun(error, com);
+}
 </code></pre></div></div>
 
 <p>All that is left to do is add programming logic to read the file and print it to the console. You can read 

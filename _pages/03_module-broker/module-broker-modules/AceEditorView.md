@@ -37,7 +37,7 @@ Two Pars can be set in the module definition, but they are all optional.
                                             view that should be popped up when evoked.
 
 An example of how this looks in the module definition of a config.json
-``` json
+```
 {
   "AceEditorView": {
     "Module": "xGraph.AceEditorView",
@@ -69,15 +69,16 @@ Utilizing the [Ace API](https://ace.c9.io/#about=&nav=api)
 Examples:
 
 Returns the string of text currently highlighted.
-```json
+```
 {
   "Cmd":"getCopyText"
 }
 ```
 
 Sets the current document text to `value` at `cursorPos`
-```json
+```
 {
   "Cmd": "setValue",
-  "Arguments": ["value", cursorPos] }
+  "Arguments": ["value", cursorPos] 
+}
 ```

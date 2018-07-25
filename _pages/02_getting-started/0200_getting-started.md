@@ -39,9 +39,9 @@ xgraph deploy
 ```
 Deploy will look in the current working directory to run an xGraph system from a cache. 
 
-See [Building an xGraph System](/building-systems/) for more information on building xGraph systems.
+See [Generating Systems](/generating-systems/) for more information on building xGraph systems.
 
-See [Building an xGraph Module](/building-modules/) for more information on building xGraph modules. 
+See [Generating Modules](/generating-modules/) for more information on building xGraph modules. 
 
 
 ## xgraph help

@@ -44,7 +44,7 @@ Seven Parameters can be specified in the module definition, but they are all opt
 - `{"BackgroundColor": "string"}`: where string is a hex color string (i.e. `"0xababab"`).
 
 An example of how this looks in the module definition of a config.json
-``` json
+```
 {
   "2DView": {
     "Module": "xGraph.2DView",
@@ -107,7 +107,7 @@ The DrawObjects command sets objects in the 2DView stage.
 
 Example:
 
-```json
+```
 {
   "Cmd": "DrawObjects",
   "Objects": [
@@ -147,7 +147,7 @@ The ImageCapture command gets a base64 string of the current canvas.
 
 Example:
 
-```json
+```
 {
  "Cmd": "ImageCapture"
 }
@@ -158,7 +158,7 @@ The GetCanvas command returns the canvas of the 2DView module.
 
 Example:
 
-```json
+```
 {
  "Cmd": "GetCanvas"
 }
@@ -169,7 +169,7 @@ Example:
 The EvokeExample command sends an example evoke message.
 
 Example:
-```json
+```
 {
  "Cmd": "EvokeExample",
   "id": "String",

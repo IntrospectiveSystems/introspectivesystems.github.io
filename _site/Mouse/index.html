@@ -102,13 +102,13 @@ The Parameters that Mouse expects to be defined include.</p>
 destination of Mouse module DispatchEvent commands.</p>
 
 <p>An example of how this looks in the module definition of a config.json</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"Module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraph.Mouse"</span><span class="p">,</span><span class="w">
-	</span><span class="s2">"Par"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"Handler"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xGraphPid"</span><span class="w">
-	</span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Module": "xGraph.Mouse",
+	"Par": {
+		"Handler": "xGraphPid"
+	}
+}
+</code></pre></div></div>
 
 <hr />
 
@@ -133,11 +133,11 @@ receive.</p>
 
 <p>Example:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"Cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SetDomElement"</span><span class="p">,</span><span class="w">
-	</span><span class="s2">"DomElement"</span><span class="p">:</span><span class="w"> </span><span class="err">this.Vlt.div</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"Cmd": "SetDomElement",
+	"DomElement": this.Vlt.div
+}
+</code></pre></div></div>
 
             </div>
           </div>
