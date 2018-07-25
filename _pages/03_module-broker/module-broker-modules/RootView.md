@@ -40,7 +40,7 @@ view module defined by `$MyView`.
 ## Loading multiple view modules
 
 If you want to build a user interface using more than one view, then you
-need to use a container view, such as [PanelView](./PanelView), to split
+need to use a container view, such as [PanelView](/PanelView/), to split
 up the available screen space.
 
 ``` json
