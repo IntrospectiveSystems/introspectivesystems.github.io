@@ -143,6 +143,9 @@ body {
   background-color: #505050!important;
 }
 
+.navbar-light .navbar-brand {
+  color: var(--is-blue);
+}
 
 /** site.theme overrides **/
 .footer-col-wrapper {

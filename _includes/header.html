@@ -15,16 +15,14 @@
     {% assign current_tag = "contributing" -%}
   {%- endif -%}
 
-  <nav class="navbar navbar-expand-md bg-light-green main-nav fixed-top">
+  <nav class="navbar navbar-light navbar-expand-md bg-light-green main-nav fixed-top">
     <div class="container">
       <a class="navbar-brand" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
       <a class="navbar-co-brand" href="https://www.introspectivesystems.com/">by Introspective Systems</a>
       {%- if page_paths -%}
-        <button class="navbar-toggler  ml-auto" type="button" data-toggle="collapse"
-             data-target="#navbar-content"
-            aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
         <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
           {%- for path in page_paths -%}
