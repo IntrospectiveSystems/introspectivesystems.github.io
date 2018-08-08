@@ -14,9 +14,7 @@ Fork, then clone the repo:
 
     https://github.com/IntrospectiveSystems/xGraph.git
 
-Set up your machine:
-
-    Install the xGraph binary and run it.
+To set up your machine, install the xGraph binary and run it.
 
 Make your change. Add tests for your change. Make the tests pass.
 
