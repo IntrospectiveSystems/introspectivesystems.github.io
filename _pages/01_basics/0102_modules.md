@@ -8,7 +8,7 @@ tags: ['basics']
 
 An xGraph **module** is a collection of entities that work together to perform a service or task. Each module 
 includes:
-1. at least one entity to act as the Apex
+1. at least one entity (an Apex entity is required)
 2. the module structure, in a schema.json file
 3. a module.json file that describes the modules interface
 4. a README.md file for user documentation and a README.html file for developer documentation
@@ -27,9 +27,11 @@ built and saved in a system's cache, and then instantiated as a specific instanc
 modules is loaded into memory, assigned a Pid, and sent the `Setup` and `Start` commands as necessary.
 
 A module's definition is an object with three references: `Module`, `Source`, and `Par`. `Module` references 
-the module to be loaded. `Source` references a path to a local source or module broker. `Par` references an 
-object holding parameters as key-value pairs that will be passed to the module. Here is an example of a 
-module definition.
+the module to be loaded. `Source` references a path to a local source or module broker. `Par` references a JSON 
+object containing persistent state parameters as key-value pairs that will be passed to the module and made
+available through `this.Par` in the context of a module function. `Module` parameters listed in the `Par` of
+the module in the `config.json` of a system over write parameters with the same key listed in the `Par` of the
+`schema.json` module document. Here is an example of a module definition.
 
 ```
 {
@@ -140,8 +142,8 @@ the information passed through Validate's `Par`.
 
 
 ## Apex Entity
-The module's **apex** is the entity that will handle incoming messages. This entity is identified as the apex 
-in the module's structure. 
+The module's **apex** is the entity that will handle messages that originated from an external module. This 
+entity is identified as the apex in the module's structure document (`schema.json`). 
 
 ## Other Entities
 An **entity** is the lowest fractal layer in an xGraph system. All entities must be encapsulated in a module 
