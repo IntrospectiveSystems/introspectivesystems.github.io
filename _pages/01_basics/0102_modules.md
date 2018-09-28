@@ -8,7 +8,7 @@ tags: ['basics']
 
 An xGraph **module** is a collection of entities that work together to perform a service or task. Each module 
 includes:
-1. at least one entity (an Apex entity is required)
+1. at least one entity \(an Apex entity is required\)
 2. the module structure, in a schema.json file
 3. a module.json file that describes the modules interface
 4. a README.md file for user documentation and a README.html file for developer documentation
@@ -30,8 +30,8 @@ A module's definition is an object with three references: `Module`, `Source`, an
 the module to be loaded. `Source` references a path to a local source or module broker. `Par` references a JSON 
 object containing persistent state parameters as key-value pairs that will be passed to the module and made
 available through `this.Par` in the context of a module function. `Module` parameters listed in the `Par` of
-the module in the `config.json` of a system over write parameters with the same key listed in the `Par` of the
-`schema.json` module document. Here is an example of a module definition.
+the module in the `config.json` of a system over write parameters with the same key listed in the module structure
+document, `schema.json`. Here is an example of a module definition.
 
 ```
 {
